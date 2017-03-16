@@ -1,0 +1,19 @@
+= Apiman Installation Guide
+
+This guide provides detailed information about how to install and configure apiman.
+
+{{ start }}++++
+{% method %}
+
+On some pages different configuration instructions and examples are shown for different platforms. You can switch between the platforms by clicking the tab at the top of the page.
+
+For example, on this page you can select *Vert.x* or *Servlet* and will see different text in the example block.
+
+{% sample lang="Vert.x" %}
+Your configuration file for Vert.x is *`conf.json`*!
+
+{% sample lang="Servlet" %}
+Your configuration file for Servlet is *`apiman.properties`*!
+
+{% endmethod %}
+{{ end }}++++
