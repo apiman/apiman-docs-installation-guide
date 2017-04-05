@@ -4,8 +4,6 @@
         "readme": "README.adoc"
     },
     "plugins": [
-        "ungrey",
-        "splitter",
         "anchors",
         "theme-apiman"
     ],

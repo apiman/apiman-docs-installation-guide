@@ -10,7 +10,7 @@ Out of the box, the API Gateway is configured to use Elasticsearch to store the 
 
 The configuration of the Registry can be found in the gateway's config file.
 
-See section 4.2 for more information on modifying Elasticsearch settings.
+See section 4.1 for more information on modifying Elasticsearch settings.
 
 
 == API Gateway Rate Limiter
@@ -21,7 +21,7 @@ This component is used by apiman policies to enforce rate limits and uses Elasti
 
 The configuration of the Rate Limiter component can be found in the gateway's config file.
 
-See section 4.2 for more information on modifying Elasticsearch settings.
+See section 4.1 for more information on modifying Elasticsearch settings.
 
 == API Gateway Shared State
 
@@ -33,4 +33,4 @@ The shared state component uses Elasticsearch to store data.
 
 The configuration of the Shared State component can be found in the gateway's config file.
 
-See section 4.2 for more information on modifying Elasticsearch settings.
+See section 4.1 for more information on modifying Elasticsearch settings.

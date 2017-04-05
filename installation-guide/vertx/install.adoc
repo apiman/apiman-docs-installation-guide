@@ -1,13 +1,26 @@
 = Apiman Vert.x Gateway
 
-The apiman Vert.x gateway is our premiere offering and should offer the best performance characteristics of any of platforms.
+The apiman Vert.x gateway is our premiere offering and should offer the best performance characteristics of any our platforms.
 
-This implementation is the apiman gateway only, and is normally paired with the servlet version (e.g. WildFly, EAP, Jetty, etc) - although, it can be run headless for specific workloads.
+This implementation is the apiman gateway only, and is normally paired with the Manager from the Servlet version (e.g. WildFly, EAP, Jetty, etc), or can be run headless for specific workloads.
 
-== Installation
+In the future we hope to be add support for other Manager backends, such as 3scale.
 
-Download it and run with
+== Standard Distro
 
-```json
-java -jar ....
+The standard distro
+
+=== Installation
+
+Download it <link here> and run with:
+
 ```
+java -jar apiman-gateway-platforms-vertx3-{{ book.apiman.version.release }}-fat.jar -conf config.json
+```
+
+=== Configuration
+
+
+== Headless Distro
+
+=== Installation

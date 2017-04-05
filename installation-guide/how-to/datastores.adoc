@@ -1,6 +1,6 @@
 = Datastores
 
-== Elasticsearch
+== Use Elasticsearch instead of an RDBMS
 
 The API Manager is configured (by default) to use JPA as the persistence technology for storing all of its data.  But this isn't the only persistence technology supported.
 Another option is to use Elasticsearch.
@@ -56,6 +56,8 @@ These values should reflect the settings of your Elasticsearch instance.
 {% endmethod %}
 {{ end }}++++
 
+TIP: If you are using a standalone gateway instance you will need to configure it separately to point to the same datastore. For example, `conf.json` for Vert.x and `standalone.xml` for Servlet.
+
 === (Re)start apiman
 If apiman was running, you should stop it now.  Once everything is shutdown, and the changes to `apiman.properties` have been made, go ahead and start apiman up again.
 It will pick up the new settings in `apiman.properties` and attempt to use Elasticsearch instead of the database!
@@ -71,8 +73,7 @@ This built-in configuration will be lost when you switch from JPA to Elasticsear
 You will need to use the apiman admin UI to reconfigure these settings.
 Refer to the "System Administration" section of the User Guide for more information on this.
 
-
-== Standalone Elasticsearch instance/cluster
+== Use standalone Elasticsearch instance/cluster
 The apiman quickstart overlay ZIP ships by default with an embedded instance of Elasticsearch.
 This is suitable for getting up and running quickly, but is not a good long term solution.
 Instead, users are encouraged to install a standalone instance of Elasticsearch and point apiman to it.
