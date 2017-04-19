@@ -4,23 +4,110 @@ The apiman Vert.x gateway is our premiere offering and should offer the best per
 
 This implementation is the apiman gateway only, and is normally paired with the Manager from the Servlet version (e.g. WildFly, EAP, Jetty, etc), or can be run headless for specific workloads.
 
-In the future we hope to be add support for other Manager backends, such as 3scale.
+In the near future we hope to be add support for other Manager backends, such as 3scale.
 
 == Standard Distro
 
-The standard distro
+The standard distro comes pre-configured with Elasticsearch components, with the expectation that you will either run your own cluster or use the instance bundled with the apiman Manager.
 
 === Installation
 
 Download it <link here> and run with:
 
 ```
-java -jar apiman-gateway-platforms-vertx3-{{ book.apiman.version.release }}-fat.jar -conf config.json
+java -jar apiman-gateway-platforms-vertx3-{{ book.apiman.version.release }}-fat.jar -conf config-es.json
 ```
 
-=== Configuration
-
+Where `config-es.json` is your configuration file. Refer to it and its annotations for additional detail on the available options.
 
 == Headless Distro
 
+The apiman headless distro is an immutable registry that loads its configuration from a local or remote JSON file.
+
 === Installation
+
+Download it <link here> and run with:
+
+```
+java -jar apiman-gateway-platforms-vertx3-{{ book.apiman.version.release }}-fat.jar -conf config-headless.json
+```
+
+Where `config-headless.json` is your configuration file. Refer to it and its annotations for additional detail on the available options.
+
+=== File Format
+
+Configuration is provided via JSON file, rather than the apiman manager. It consists of:
+
+* An `api` array containing your APIs.
+* A `clients` array containing your Clients.
+
+```json
+{
+    "apis": [{
+        "publicAPI": true, // <1>
+        "organizationId": "foo", // <2>
+        "apiId": "foo", // <3>
+        "version": "foo", // <4>
+        "endpoint": "http://www.example.org/my-api-uri/", // <5>
+        "endpointType": "rest", // <6>
+        "endpointContentType": "json", // <7>
+        "endpointProperties": {}, // <8>
+        "parsePayload": false, // <9>
+        "apiPolicies": [{ // <10>
+            // Plugin's JSON config.
+           "policyJsonConfig": "{ \"responseCode\" : \"403\", \"ipList\" : [ \"1.2.3.4\" ] }", // <11>
+           // Plugin coordinates.
+           "policyImpl": "plugin:io.apiman.plugins:apiman-plugins-url-whitelist-policy:{{ book.version.apiman.release }}:war/io.apiman.gateway.engine.policies.IPWhitelistPolicy" // <12>
+       }]
+    }],
+    "clients": [{
+        "organizationId": "foo", // <2>
+        "clientId": "fooClient", // <13>
+        "version": "foo", // <4>
+        "apiKey": "12345", // <14>
+        "contracts": [{ // <15>
+            "apiOrgId": "foo", // <16>
+            "apiId": "foo", // <17>
+            "apiVersion": "foo", // <18>
+            "plan": "foo", // <19>
+            "policies": [] // <11>
+        }]
+    }]
+}
+```
+<1> Whether the API is public, and thus can be accessed directly without needing an API key.
+<2> Organization this entity resides within.
+<3> API's unique ID.
+<4> API's version.
+<5> API's backend (i.e. the API you are managing).
+<6> Endpoint type. Can be `rest` or `soap`.
+<7> Endpoint's preferred content type. Can be `json` or `xml`. This will ensure error messages, etc are returned in that format.
+<8> Endpoint properties. See below for valid entries.
+<9> Whether the payload should be parsed up-front (i.e. you are using a policy that doesn't work with body streaming). Avoid this unless it's an absolute necessity.
+<10> API's policies: Applied in the order specified.
+<11> The policy's configuration as JSON. Refer to the policy's documentation <link> to see the available options.
+<12> Reference to the plugin the gateway by GAV. Please refer to the policy's documentation <link> to see the available options.
+<13> Client's unique ID.
+<14> Client's unique API key.
+<15> Array of Contracts subscribing a Client to an API.
+<16> The Organization of the subscribed API.
+<17> The unique ID of the subscribed API.
+<18> The version of the subscribed API.
+<19> The plan name of the subscribed API.
+
+
+.*Endpoint Properties:*
+* Authorization type
+** Basic Auth: `authorization.type=basic`
+** Username: `basic-auth.username`
+** Password: `basic-auth.password`
+** SSL Required?: `basic-auth.requireSSL = true|false`
+* MTLS/MSSL: `authorization.type=mtls|ssl` (provide settings in gateway config file).
+
+.*Endpoint Type:*
+* `rest`: Standard RESTful endpoint type.
+* `soap`: SOAP endpoint type.
+
+
+.*Endpoint Content Type:*
+The `endpointContentType` indicates which format you want apiman's responses to be in (e.g. error messages): `endpointContentType=json|xml`.
