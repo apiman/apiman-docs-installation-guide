@@ -15,9 +15,9 @@ Download the apiman Vert.x distro from http://www.apiman.io/latest/download.html
 Extract the archive and execute it with:
 
 ```
-unzip apiman-platforms-vertx3-{{ book.apiman.version.release }}
-cd apiman-platforms-vertx3-{{ book.apiman.version.release }}
-./apiman-gateway.sh --conf configs/config-es.json
+unzip apiman-distro-vertx-{{ book.apiman.version.release }}
+cd apiman-distro-vertx-{{ book.apiman.version.release }}
+./apiman-gateway.sh --conf configs/conf-es.json
 ```
 
 Where `config-es.json` is your configuration file. Refer to the config and its annotations for additional detail.
@@ -66,7 +66,7 @@ TIP: You can optionally also set the username and password - this is only useful
     "es": {
       "protocol": "http",
       "host": "localhost",
-      "port": 19200, <1>
+      "port": 19200, // <1>
       "username": null,
       "password": null,
       "timeout": 10000
@@ -88,8 +88,8 @@ Then, modify the `registry.config` section of the config:
 "registry": {
   "class": "io.apiman.gateway.engine.vertx.polling.URILoadingRegistry",
   "config": {
-    "configUri": "file:///path/to/my/json/config.json", <1>
-    "auth": "NONE" <2>
+    "configUri": "file:///path/to/my/json/reg-config.json", // <1>
+    "auth": "NONE" // <2>
   }
 },
 ```
@@ -106,7 +106,7 @@ Standard BASIC auth with static credentials.
 
 ```json
 "config": {
-  "configUri": "https://example.org/config.json", // <1>
+  "configUri": "https://example.org/reg-config.json", // <1>
   "auth": "BASIC", // <2>
   "username": "${USERNAME}", // <3>
   "password": "${PASSWORD}" // <4>
