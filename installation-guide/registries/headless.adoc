@@ -284,15 +284,15 @@ Broadly, it consists of:
         "apiId": "foo",
         "version": "foo",
         "endpoint": "http://www.example.org/my-api-uri/",
-        "endpointType": "rest", // <0>
-        "endpointContentType": "json", // <1>
-        "endpointProperties": {}, // <2>
+        "endpointType": "rest", // <1>
+        "endpointContentType": "json", // <2>
+        "endpointProperties": {}, // <3>
         "parsePayload": false,
         "apiPolicies": [{
             // Plugin's JSON config.
-           "policyJsonConfig": "{ \"responseCode\" : \"403\", \"ipList\" : [ \"1.2.3.4\" ] }", // <3>
+           "policyJsonConfig": "{ \"responseCode\" : \"403\", \"ipList\" : [ \"1.2.3.4\" ] }", // <4>
            // Plugin coordinates.
-           "policyImpl": "plugin:io.apiman.plugins:apiman-plugins-url-whitelist-policy:{{ book.apiman.version.release }}:war/io.apiman.gateway.engine.policies.IPWhitelistPolicy" // <3>
+           "policyImpl": "plugin:io.apiman.plugins:apiman-plugins-url-whitelist-policy:{{ book.apiman.version.release }}:war/io.apiman.gateway.engine.policies.IPWhitelistPolicy" // <5>
        }]
     }],
     "clients": [{
@@ -310,11 +310,11 @@ Broadly, it consists of:
     }]
 }
 ```
-<0> See <<Endpoint Type>>.
-<1> See <<Endpoint Content Type>>.
-<2> See <<Endpoint Properties>>.
-<3> See <<Policy Config>>.
-<4> See <<Policy Implementation URI>>.
+<1> See <<Endpoint Type>>.
+<2> See <<Endpoint Content Type>>.
+<3> See <<Endpoint Properties>>.
+<4> See <<Policy Config>>.
+<5> See <<Policy Implementation URI>>.
 
 === Endpoint Type
 
@@ -336,6 +336,36 @@ The `endpointContentType` indicates which format you want apiman's responses to 
 
 === Policy Config
 
+Policy configuration is an escaped string containing the plugin's configuration generated according to the plugin's schema (predominantly JSON schema).
 
+Each plugin's schema should be with the source code (or bundled within the plugin's WAR) as defined by the `form` key in `src/main/apiman/policyDefs/<policy-Name>-policyDef.json`.
+
+For example, the Simple Header Policy's https://github.com/apiman/apiman-plugins/blob/master/simple-header-policy/src/main/apiman/plugin.json[simple-header-policyDef.json] file points to a JSON schema at https://github.com/apiman/apiman-plugins/blob/master/simple-header-policy/src/main/apiman/policyDefs/schemas/simple-header-PolicyDef.schema[schemas/simple-header-policyDef.schema].
+
+TIP: For more information, refer to the http://www.apiman.io/latest/developer-guide.html#_policy_definition[plugin developer's guide].
 
 === Policy Implementation URI
+
+The policy implementation URI is used by the apiman gateway to look up your plugins. You can find this in the plugin's `policyDef.json` file, usually located in `src/main/apiman/policyDefs/`.
+
+The format is:
+
+```
+plugin:{pluginGroupId}:{pluginArtifactId}:{pluginVersion}:{pluginType}/{fullyQualifiedClassname}
+```
+
+In our example of the Simple Header Policy it's:
+
+```
+plugin:${project.groupId}:${project.artifactId}:${project.version}:${project.packaging}/io.apiman.plugins.simpleheaderpolicy.SimpleHeaderPolicy
+```
+
+Which then informs us that the URI is:
+
+```
+plugin:io.apiman.plugins:apiman-plugins-simple-header-policy:{{ book.apiman.version.release }}:war/io.apiman.plugins.simpleheaderpolicy.SimpleHeaderPolicy
+```
+
+Note that the classifier is almost certainly `war`.
+
+TIP: For more information, refer to the http://www.apiman.io/latest/developer-guide.html#_policy_definition[plugin developer's guide].
