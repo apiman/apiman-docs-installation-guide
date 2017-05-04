@@ -6,8 +6,6 @@ The implementation is the _apiman gateway_ only, and hence is normally paired wi
 
 There are a few different common configuration examples shipped with the Vert.x distro and are outlined in more detail below, but you can customise your configurations however you see fit.
 
-NOTE: In the near future we hope to be add support for other Manager backends, such as 3scale.
-
 == Download & Installation
 
 Download the apiman Vert.x distro from http://www.apiman.io/latest/download.html#vertx[apiman.io downloads] page.
@@ -49,6 +47,8 @@ You can quickly verify whether your installation is working, you might try (if u
 WARNING: You must alter the default passwords and enable SSL for production deployments, otherwise your system will be at risk
 
 == Configurations
+
+This gateway's counterpart to `apiman.properties` is a simple JSON-based configuration file, examples of which are provided in the `configs` directory.
 
 === Elasticsearch
 
@@ -95,6 +95,8 @@ Then, modify the `registry.config` section of the config:
 ```
 <1> A file, http or https URI to a JSON file containing the registry configuration, as detailed in <<File Format>>.
 <2> Authentication method to retrieve the file, as detailed in <<Authentication Methods>>.
+
+For full documentation on this registry, refer to TODO. 
 
 ==== Authentication Methods
 
