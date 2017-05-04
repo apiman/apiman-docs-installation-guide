@@ -269,67 +269,64 @@ a| Private key
 
 == Configuration File Format
 
-Configuration is provided via JSON file. It consists of:
+Configuration of the registry is via a JSON file, https://gist.github.com/msavy/f79766b4f448672cdaf84ce4159ba2e9[the schema for which can be found on GitHub].
 
+Broadly, it consists of:
 * An `api` array containing your APIs.
 * A `clients` array containing your Clients.
 
+.Example
 ```json
 {
     "apis": [{
-        "publicAPI": true, // <1>
-        "organizationId": "foo", // <2>
-        "apiId": "foo", // <3>
-        "version": "foo", // <4>
-        "endpoint": "http://www.example.org/my-api-uri/", // <5>
-        "endpointType": "rest", // <6>
-        "endpointContentType": "json", // <7>
-        "endpointProperties": {}, // <8>
-        "parsePayload": false, // <9>
-        "apiPolicies": [{ // <10>
+        "publicAPI": true,
+        "organizationId": "foo",
+        "apiId": "foo",
+        "version": "foo",
+        "endpoint": "http://www.example.org/my-api-uri/",
+        "endpointType": "rest", // <0>
+        "endpointContentType": "json", // <1>
+        "endpointProperties": {}, // <2>
+        "parsePayload": false,
+        "apiPolicies": [{
             // Plugin's JSON config.
-           "policyJsonConfig": "{ \"responseCode\" : \"403\", \"ipList\" : [ \"1.2.3.4\" ] }", // <11>
+           "policyJsonConfig": "{ \"responseCode\" : \"403\", \"ipList\" : [ \"1.2.3.4\" ] }", // <3>
            // Plugin coordinates.
-           "policyImpl": "plugin:io.apiman.plugins:apiman-plugins-url-whitelist-policy:{{ book.apiman.version.release }}:war/io.apiman.gateway.engine.policies.IPWhitelistPolicy" // <12>
+           "policyImpl": "plugin:io.apiman.plugins:apiman-plugins-url-whitelist-policy:{{ book.apiman.version.release }}:war/io.apiman.gateway.engine.policies.IPWhitelistPolicy" // <3>
        }]
     }],
     "clients": [{
-        "organizationId": "foo", // <2>
-        "clientId": "fooClient", // <13>
-        "version": "foo", // <4>
-        "apiKey": "12345", // <14>
-        "contracts": [{ // <15>
-            "apiOrgId": "foo", // <16>
-            "apiId": "foo", // <17>
-            "apiVersion": "foo", // <18>
-            "plan": "foo", // <19>
-            "policies": [] // <11>
+        "organizationId": "foo",
+        "clientId": "fooClient",
+        "version": "foo",
+        "apiKey": "12345",
+        "contracts": [{
+            "apiOrgId": "foo",
+            "apiId": "foo",
+            "apiVersion": "foo",
+            "plan": "foo",
+            "policies": []
         }]
     }]
 }
 ```
-<1> Whether the API is public, and thus can be accessed directly without needing an API key.
-<2> Organization this entity resides within.
-<3> API's unique ID.
-<4> API's version.
-<5> API's backend (i.e. the API you are managing).
-<6> Endpoint type. Can be `rest` or `soap`.
-<7> Endpoint's preferred content type. Can be `json` or `xml`. This will ensure error messages, etc are returned in that format.
-<8> Endpoint properties. See below for valid entries.
-<9> Whether the payload should be parsed up-front (i.e. you are using a policy that doesn't work with body streaming). Avoid this unless it's an absolute necessity.
-<10> API's policies: Applied in the order specified.
-<11> The policy's configuration as JSON. Refer to the policy's documentation <link> to see the available options.
-<12> Reference to the plugin the gateway by GAV. Please refer to the policy's documentation <link> to see the available options.
-<13> Client's unique ID.
-<14> Client's unique API key.
-<15> Array of Contracts subscribing a Client to an API.
-<16> The Organization of the subscribed API.
-<17> The unique ID of the subscribed API.
-<18> The version of the subscribed API.
-<19> The plan name of the subscribed API.
+<0> See <<Endpoint Type>>.
+<1> See <<Endpoint Content Type>>.
+<2> See <<Endpoint Properties>>.
+<3> See <<Policy Config>>.
+<4> See <<Policy Implementation URI>>.
 
+=== Endpoint Type
 
-.*Endpoint Properties:*
+* `rest`: Standard RESTful endpoint type.
+* `soap`: SOAP endpoint type.
+
+=== Endpoint Content Type
+
+The `endpointContentType` indicates which format you want apiman's responses to be in (e.g. error messages).
+
+=== Endpoint Properties
+
 * Authorization type:
 ** Basic Auth: `"authorization.type": "basic"`
 ** Username: `"basic-auth.username": "<username>"`
@@ -337,11 +334,8 @@ Configuration is provided via JSON file. It consists of:
 ** SSL Required?: `"basic-auth.requireSSL": "<true|false>"`
 * MTLS/MSSL: `"authorization.type": "<mtls|ssl>"`. You should also provide the corresponding SSL certificate settings in the gateway's config file.
 
-
-.*Endpoint Type:*
-* `rest`: Standard RESTful endpoint type.
-* `soap`: SOAP endpoint type.
+=== Policy Config
 
 
-.*Endpoint Content Type:*
-The `endpointContentType` indicates which format you want apiman's responses to be in (e.g. error messages): `"endpointContentType": "<json|xml>"`.
+
+=== Policy Implementation URI
