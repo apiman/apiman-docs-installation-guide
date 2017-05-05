@@ -8,7 +8,9 @@ TIP: These components are presently optimised for Servlet editions of the gatewa
 
 To set your registry, assign your chosen implementation to:
 
-`apiman-gateway.registry=<IMPLEMENTATION>`
+```properties
+apiman-gateway.registry=<IMPLEMENTATION>
+```
 
 .Available implementations:
 [cols="2", options="header"]
@@ -64,9 +66,16 @@ a| How long to wait before starting polling in millis
 
 == Metrics
 
+Set the metrics implementation as shown:
+
+```properties
+apiman-gateway.metrics=io.apiman.gateway.engine.jdbc.JdbcMetrics
+apiman-gateway.metrics.queue.size=10000 // Example.
+```
+
 === Required Parameters
 
-Identical to <<Registry,Registry Required Parameters>>.
+See <<Registry,Registry Required Parameters>>.
 
 === Optional Parameters
 
