@@ -8,7 +8,7 @@ TIP: These components are presently optimised for Servlet editions of the gatewa
 
 To set your registry, assign your chosen implementation to:
 
-`apiman-gateway.registry`
+`apiman-gateway.registry=<IMPLEMENTATION>`
 
 .Available implementations:
 [cols="2", options="header"]
