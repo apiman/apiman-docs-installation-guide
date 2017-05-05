@@ -13,16 +13,16 @@
         },
         "pluginsConfig": {
             "theme-apiman": {
-                "split": true,
+                "split": false,
                 "languages": [
                     {
-                        "lang": "js",
-                        "name": "JavaScript",
+                        "lang": "Vertx",
+                        "name": "Vert.x",
                         "default": true
                     },
                     {
-                        "lang": "go",
-                        "name": "Go"
+                        "lang": "Servlet",
+                        "name": "Servlet"
                     }
                 ]
             }

@@ -1,0 +1,84 @@
+= JDBC Registry & Components
+Marc Savy <marc@rhymewithgravy.com>
+:toc:
+
+TIP: These components are presently optimised for Servlet editions of the gateway, whilst they will work with Vert.x the experience will likely be less performant than normal.
+
+== Registry
+
+To set your registry, assign your chosen implementation to:
+
+`apiman-gateway.registry`
+
+.Available implementations:
+[cols="2", options="header"]
+|===
+
+| Implementation
+| Notes
+
+| `io.apiman.gateway.engine.jdbc.PollCachingJdbcRegistry`
+| *Recommended*. Works well in multi-node setups.
+
+| `io.apiman.gateway.engine.jdbc.CachingJdbcRegistry`
+| Works only in single node setups.
+
+| `io.apiman.gateway.engine.jdbc.JdbcRegistry`
+| Only recommended for very low volume or test setups; causes database calls to be issued on every request.
+
+|===
+
+=== Required Parameters
+
+[cols="2,1,4", options="header"]
+|===
+
+| Name
+| Type
+| Description
+
+| datasource.jndi-location
+| String
+a| The JNDI location of the datasource you wish to use.
+
+|===
+
+=== Optional Parameters
+
+[cols="2,1,4", options="header"]
+|===
+
+| Name
+| Type
+| Description
+
+| cache-polling-interval
+| Integer
+a| Polling interval in millis
+
+| cache-polling-startup-delay
+| Integer
+a| How long to wait before starting polling in millis
+
+|===
+
+== Metrics
+
+=== Required Parameters
+
+Identical to <<Registry,Registry Required Parameters>>.
+
+=== Optional Parameters
+
+[cols="2,1,4", options="header"]
+|===
+
+| Name
+| Type
+| Description
+
+| queue.size
+| Integer
+| Metrics maximum queue size
+
+|===

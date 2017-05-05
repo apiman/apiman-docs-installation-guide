@@ -10,7 +10,7 @@ Out of the box, the API Gateway is configured to use Elasticsearch to store the 
 
 The configuration of the Registry can be found in the gateway's config file.
 
-See section 4.1 for more information on modifying Elasticsearch settings.
+See section 4.1 for more information on modifying Elasticsearch settings. TODO
 
 
 == API Gateway Rate Limiter

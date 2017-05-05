@@ -10,8 +10,11 @@
 
 == Apiman Gateway
 . link:installation-guide/gateway/gateway.adoc[General Configuration]
+. link:installation-guide/gateway/components.adoc[Registries & Components]
+.. link:installation-guide/registries-and-components/jdbc.adoc[JDBC]
+.. link:installation-guide/registries-and-components/elasticsearch.adoc[Elasticsearch]
+.. link:installation-guide/registries-and-components/headless.adoc[Headless]
 . link:installation-guide/gateway/security.adoc[Security]
-. link:installation-guide/gateway/components.adoc[Components]
 
 == Apiman Manager
 . link:installation-guide/manager/configuration.adoc[Manager]

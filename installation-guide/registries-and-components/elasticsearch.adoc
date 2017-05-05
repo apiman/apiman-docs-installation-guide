@@ -1,0 +1,363 @@
+= Elasticsearch Registry & Components
+Marc Savy <marc@rhymewithgravy.com>
+:toc:
+
+TIP: In many of the shipped configurations make use of variable substitution to reduce repetition.
+
+== Global Required Parameters
+
+[cols="2,1,4", options="header"]
+|===
+
+| Name
+| Type
+| Description
+
+| client.type
+| String
+a| The Elasticsearch client type:
+
+*Default Value*: jest
+
+| client.protocol
+| String
+a| The Elasticsearch protocol to use
+
+*Default Value*: http
+
+| client.host
+| String
+a| The ES host
+
+| client.port
+| Integer
+a| The ES port
+
+| client.timeout
+| Integer
+a| Client timeout
+
+*Default Value*: 10000
+
+|===
+
+== Global Optional Parameters
+
+[cols="2,1,4", options="header"]
+|===
+
+| Name
+| Type
+| Description
+
+| client.index
+| String
+a| An alternative Elasticsearch index name.
+
+| client.initialize
+| Boolean
+a| Initilize the storage
+
+| client.username
+| String
+a| Username if using an auth mechanism like SearchGuard, Shield, etc
+
+| client.password
+| String
+a| Password if using an auth mechanism like SearchGuard, Shield, etc
+
+| client-keystore
+| String
+a| Path to the client keystore
+
+| client-keystore.password
+| String
+a| Password for the client keystore
+
+| trust-store
+| String
+a| Path to the trust store
+
+| trust-store.password
+| String
+a| Password for the trust store
+
+|===
+
+== Registry
+
+{{ start }}++++
+{% method %}
+
+Assign your chosen implementation as shown in the example, providing configuration.
+
+{% sample lang="Vert.x" %}
+```json
+"registry": {
+  "class": "io.apiman.gateway.engine.es.PollCachingESRegistry",
+  "config": {
+    // <registry configuration>
+  }
+},
+```
+
+{% sample lang="Servlet" %}
+```properties
+apiman-gateway.registry=<IMPLEMENTATION>
+```
+
+{% endmethod %}
+{{ end }}++++
+
+.Available implementations:
+[cols="2", options="header"]
+|===
+
+| Implementation
+| Notes
+
+| `io.apiman.gateway.engine.es.PollCachingESRegistry`
+| *Recommended*. Works well in multi-node setups.
+
+| `io.apiman.gateway.engine.es.CachingESRegistry`
+| Works well in single-node setups.
+
+| `io.apiman.gateway.engine.es.ESRegistry`
+| Only recommended for very low volume or test setups; causes remote calls to be issued on every request.
+
+|===
+
+=== Required Parameters
+
+Refer also to <<Global Required Parameters>>.
+
+[cols="2,1,4", options="header"]
+|===
+
+| Name
+| Type
+| Description
+
+| cache-polling-interval
+| Integer
+a| Cache polling interval in seconds.
+
+*Default Value*: 10
+*Implementations*: PollCachingESRegistry
+
+|===
+
+=== Optional Parameters
+
+Refer also to <<Global Optional Parameters>>.
+
+[cols="2,1,4", options="header"]
+|===
+
+| Name
+| Type
+| Description
+
+| cache-polling-startup-delay
+| Integer
+a| Polling startup delay in seconds.
+
+*Default Value*: 30
+*Implementations*: PollCachingESRegistry
+
+|===
+
+== Metrics
+
+{{ start }}++++
+{% method %}
+
+Set the metrics implementation as shown.
+
+{% sample lang="Vert.x" %}
+```json
+"metrics": {
+  "class": "io.apiman.gateway.engine.es.ESMetrics",
+  "config": {
+    "client": {
+       "type": "jest",
+       "protocol": "${apiman.es.protocol}",
+       "host": "${apiman.es.host}",
+       "port": "${apiman.es.port}"
+       // <metrics configuration>
+     }
+   }
+}
+```
+
+{% sample lang="Servlet" %}
+```properties
+apiman-gateway.metrics=io.apiman.gateway.engine.es.ESMetrics
+```
+
+{% endmethod %}
+{{ end }}++++
+
+.Available implementations:
+[cols="2", options="header"]
+|===
+
+| Implementation
+| Notes
+
+| `io.apiman.gateway.engine.es.ESMetrics`
+| Batching ES metrics
+
+|===
+
+=== Required Parameters
+
+Refer also to <<Global Required Parameters>>.
+
+[cols="2,1,4", options="header"]
+|===
+
+| Name
+| Type
+| Description
+
+| queue.size
+| Integer
+a| Maximum metrics queue size
+
+*Default Value*: 10000
+
+| batch.size
+| Integer
+a| Maximum metrics batching size
+
+*Default Value*: 1000
+
+|===
+
+// Rate limiting.
+== Components
+
+=== Shared State
+
+{{ start }}++++
+{% method %}
+
+Set shared state implementation as shown.
+
+{% sample lang="Vert.x" %}
+```json
+"components": {
+  // Shared State Component Settings
+  "ISharedStateComponent": {
+    "class": "io.apiman.gateway.engine.es.ESSharedStateComponent",
+    "config": {
+      "client": {
+        "type": "jest",
+        "protocol": "${apiman.es.protocol}",
+        "host": "${apiman.es.host}",
+        "port": "${apiman.es.port}"
+        //<configuration options>
+      }
+    }
+  }
+}
+```
+
+{% sample lang="Servlet" %}
+```properties
+apiman-gateway.components.ISharedStateComponent=io.apiman.gateway.engine.es.ESSharedStateComponent
+apiman-gateway.components.ISharedStateComponent.client.type=jest
+# <configuration options>
+```
+
+{% endmethod %}
+{{ end }}++++
+
+==== Required Parameters
+
+Refer to <<Global Required Parameters>>.
+
+// Rate Limiter
+
+=== Rate Limiter
+
+{{ start }}++++
+{% method %}
+
+Set rate limiter implementation as shown.
+
+{% sample lang="Vert.x" %}
+```json
+"components": {
+  // Rate Limiter Component Settings
+  "IRateLimiterComponent": {
+    "class": "io.apiman.gateway.engine.es.ESRateLimiterComponent",
+    "config": {
+      "client": {
+        "type": "jest",
+        "protocol": "${apiman.es.protocol}",
+        "host": "${apiman.es.host}",
+        "port": "${apiman.es.port}"
+        // <configuration options>
+      }
+    }
+  }
+}
+```
+
+{% sample lang="Servlet" %}
+```properties
+apiman-gateway.components.IRateLimiterComponent=io.apiman.gateway.engine.es.ESRateLimiterComponent
+apiman-gateway.components.IRateLimiterComponent.client.type=jest
+# <configuration options>
+```
+
+{% endmethod %}
+{{ end }}++++
+
+==== Required Parameters
+
+Refer to <<Global Required Parameters>>.
+
+// Cache store component
+
+=== Cache Store
+
+{{ start }}++++
+{% method %}
+
+Set cache store implementation as shown.
+
+{% sample lang="Vert.x" %}
+```json
+"components": {
+  // Cache Store Component Settings
+  "ICacheStoreComponent": {
+    "class": "io.apiman.gateway.engine.es.ESCacheStoreComponent",
+    "config": {
+      "client": {
+        "type": "jest",
+        "protocol": "${apiman.es.protocol}",
+        "host": "${apiman.es.host}",
+        "port": "${apiman.es.port}"
+        // <configuration options>
+      }
+    }
+  }
+}
+```
+
+{% sample lang="Servlet" %}
+```properties
+apiman-gateway.components.IRateLimiterComponent=io.apiman.gateway.engine.es.ESRateLimiterComponent
+apiman-gateway.components.IRateLimiterComponent.client.type=jest
+# <configuration options>
+```
+
+{% endmethod %}
+{{ end }}++++
+
+==== Required Parameters
+
+Refer to <<Global Required Parameters>>.

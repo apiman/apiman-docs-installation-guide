@@ -6,6 +6,18 @@ The apiman headless registry uses an immutable registry to load its configuratio
 
 TIP: This registry is optimised for the Vert.x gateway implementation. Although it should work for other platforms, it is unlikely to be as performant.
 
+.Available implementations:
+[cols="2", options="header"]
+|===
+
+| Implementation
+| Notes
+
+| `io.apiman.gateway.engine.vertx.polling.URILoadingRegistry`
+| *Recommended*. Works well in multi-node setups.
+
+|===
+
 == Example
 
 ```json
@@ -153,7 +165,7 @@ a| A username. Usually only useful if using the password `flowType`.
 
 | password
 | String
-a| A passwor. Usually only useful if using the password `flowType`.
+a| A password. Usually only useful if using the password `flowType`.
 
 |===
 
@@ -327,26 +339,55 @@ The `endpointContentType` indicates which format you want apiman's responses to 
 
 === Endpoint Properties
 
-* Authorization type:
+* Authorization type (between gateway and backend):
 ** Basic Auth: `"authorization.type": "basic"`
-** Username: `"basic-auth.username": "<username>"`
-** Password: `"basic-auth.password": "<password>"`
+*** Username: `"basic-auth.username": "<username>"`
+*** Password: `"basic-auth.password": "<password>"`
 ** SSL Required?: `"basic-auth.requireSSL": "<true|false>"`
 * MTLS/MSSL: `"authorization.type": "<mtls|ssl>"`. You should also provide the corresponding SSL certificate settings in the gateway's config file.
 
 === Policy Config
 
-Policy configuration is an escaped string containing the plugin's configuration generated according to the plugin's schema (predominantly JSON schema).
+`policyJsonConfig` is an escaped string containing the policy plugin's configuration, and must be valid according to the plugin's schema.
 
-Each plugin's schema should be with the source code (or bundled within the plugin's WAR) as defined by the `form` key in `src/main/apiman/policyDefs/<policy-Name>-policyDef.json`.
+For in-built policies, you can refer to the http://www.apiman.io/latest/user-guide.html#_policies_2[Policies section of the User Guide] to see the available configuration options and samples.
+
+However, for custom policies without explicit documentation a bit more effort may be required:
+
+Each plugin's schema is defined in source code and bundled within the plugin's WAR, as defined by the `form` element in `src/main/apiman/policyDefs/<policy-Name>-policyDef.json`.
 
 For example, the Simple Header Policy's https://github.com/apiman/apiman-plugins/blob/master/simple-header-policy/src/main/apiman/plugin.json[simple-header-policyDef.json] file points to a JSON schema at https://github.com/apiman/apiman-plugins/blob/master/simple-header-policy/src/main/apiman/policyDefs/schemas/simple-header-PolicyDef.schema[schemas/simple-header-policyDef.schema].
+
+In the following sample we've built a JSON configuration corresponding to the schema.
+
+.Example Simple Header Policy config
+```json
+{
+  "addHeaders": [{
+    "headerName": "X-Clacks-Overhead",
+    "headerValue": "GNU Terry Pratchett",
+    "valueType": "String",
+    "applyTo": "Request",
+    "overwrite": true,
+    "resolvedHeaderValue": "GNU Terry Pratchett"
+  }],
+  "stripHeaders": []
+}
+```
+
+And escaped it, before inserting into `policyJsonConfig`: footnote:[One might wonder why JSON is escaped inside of JSON. The field name is somewhat of a misnomer, it is intended to be generic and could be XML, YAML, etc.]
+
+.Example Simple Header Policy in policyJsonConfig
+```json
+"policyJsonConfig": "{\"addHeaders\":[{\"headerName\":\"X-Clacks-Overhead\",\"headerValue\":\"GNU Terry Pratchett\",\"valueType\":\"String\",\"applyTo\":\"Request\",\"overwrite\":true,\"resolvedHeaderValue\":\"GNU Terry Pratchett\"}],\"stripHeaders\":[]}"
+```
 
 TIP: For more information, refer to the http://www.apiman.io/latest/developer-guide.html#_policy_definition[plugin developer's guide].
 
 === Policy Implementation URI
 
-The policy implementation URI is used by the apiman gateway to look up your plugins. You can find this in the plugin's `policyDef.json` file, usually located in `src/main/apiman/policyDefs/`.
+The policy implementation URI is used by the apiman gateway to look up your plugins.
+You can find this in the plugin's `policyDef.json` file, usually located in `src/main/apiman/policyDefs/`.
 
 The format is:
 
