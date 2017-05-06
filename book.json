@@ -6,7 +6,7 @@
     "plugins": [
         "anchorjs",
         "theme-apiman",
-        "admonitions-workaround"
+        "asciidoc-admonition-icons"
     ],
     "pluginsConfig": {
         "theme-default": {
@@ -30,17 +30,17 @@
             "note": {
                 "classes": "fa icon-note",
                 "title": "Note",
-                "content": "\uf05a" 
+                "content": "\uf05a"
             },
             "tip": {
                 "classes": "fa icon-tip",
                 "title": "Tip",
-                "content": "\uf069"
+                "content": "\uf08d"
             },
             "important": {
                 "classes": "fa icon-important",
                 "title": "Important",
-                "content": "\uf071"
+                "content": "\uf06a"
             },
             "caution": {
                 "classes": "fa icon-caution",
@@ -50,7 +50,7 @@
             "warning": {
                 "classes": "fa icon-warning",
                 "title": "Warning",
-                "content": "\uf06a"
+                "content": "\uf071"
             }
         }
     },
