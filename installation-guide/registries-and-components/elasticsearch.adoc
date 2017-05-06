@@ -2,7 +2,7 @@
 Marc Savy <marc@rhymewithgravy.com>
 :toc:
 
-TIP: Many of the shipped configurations make use of variable substitution to reduce repetition.
+NOTE: Many of the shipped configurations make use of variable substitution to reduce repetition.
 
 == Global Required Parameters
 

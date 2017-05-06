@@ -2,7 +2,7 @@
 Marc Savy <marc@rhymewithgravy.com>
 :toc:
 
-TIP: These components are presently optimised for Servlet editions of the gateway, whilst they will work with Vert.x the experience will likely be less performant than normal.
+NOTE: These components are presently optimised for Servlet editions of the gateway, whilst they will work with Vert.x the experience will likely be less performant than normal.
 
 == Registry
 

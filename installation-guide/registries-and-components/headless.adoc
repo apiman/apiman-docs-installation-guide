@@ -4,8 +4,6 @@ Marc Savy <marc@rhymewithgravy.com>
 
 The apiman headless registry uses an immutable registry to load its configuration from a local or remote JSON file.
 
-TIP: This registry is optimised for the Vert.x gateway implementation. Although it should work for other platforms, it is unlikely to be as performant.
-
 .Available implementations:
 [cols="2", options="header"]
 |===
@@ -17,6 +15,8 @@ TIP: This registry is optimised for the Vert.x gateway implementation. Although 
 | *Recommended*. Works well in multi-node setups.
 
 |===
+
+NOTE: This registry is optimised for the Vert.x gateway implementation. Although it should work for other platforms, it is unlikely to be as performant.
 
 == Example
 
