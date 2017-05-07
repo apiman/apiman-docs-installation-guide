@@ -18,7 +18,8 @@ cd apiman-distro-vertx-{{ book.apiman.version.release }}
 ./apiman-gateway.sh --conf configs/conf-es.json
 ```
 
-Where `config-es.json` is your configuration file. Refer to the config and its annotations for additional detail.
+Where `config-es.json` is your configuration file.
+Refer to the config and its annotations for additional detail.
 
 If you have started successfully then see console output something like:
 
