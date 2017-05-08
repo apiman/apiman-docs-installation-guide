@@ -24,8 +24,6 @@ TIP: As of apiman 1.1.4.Final, an instance of Elasticsearch is included in the d
 You may use it as your API Manager persistence store.
 It is running on port 19200.
 
-{{ start }}++++
-{% method %}
 === Make changes to `apiman.properties`
 
 Once Elasticsearch is running smoothly, you must make some changes to the *`apiman.properties`* file in order to tell apiman to use ES instead of a database.
@@ -33,7 +31,6 @@ You should modify the `apiman.properties` file to have the following properties 
 
 TIP: You can optionally also set the username and password - this is only useful if you are using something like Elasticsearch Shield to enable basic authentication.
 
-{% common %}
 ```properties
 apiman.es.protocol=http
 apiman.es.host=localhost
@@ -53,13 +50,12 @@ apiman-manager.storage.es.initialize=true
 Make sure you enter appropriate values for the `apiman.es.protocol`, `apiman.es.host`, and `apiman.es.port` properties.
 These values should reflect the settings of your Elasticsearch instance.
 
-{% endmethod %}
-{{ end }}++++
-
 TIP: If you are using a standalone gateway instance you will need to configure it separately to point to the same datastore. For example, `conf.json` for Vert.x and `standalone.xml` for Servlet.
 
 === (Re)start apiman
-If apiman was running, you should stop it now.  Once everything is shutdown, and the changes to `apiman.properties` have been made, go ahead and start apiman up again.
+
+If apiman was running, you should stop it now.
+Once everything is shutdown, and the changes to `apiman.properties` have been made, go ahead and start apiman up again.
 It will pick up the new settings in `apiman.properties` and attempt to use Elasticsearch instead of the database!
 
 .Perform standard admin configuration
@@ -74,22 +70,26 @@ You will need to use the apiman admin UI to reconfigure these settings.
 Refer to the "System Administration" section of the User Guide for more information on this.
 
 == Use standalone Elasticsearch instance/cluster
+
 The apiman quickstart overlay ZIP ships by default with an embedded instance of Elasticsearch.
 This is suitable for getting up and running quickly, but is not a good long term solution.
 Instead, users are encouraged to install a standalone instance of Elasticsearch and point apiman to it.
 
 === High Level Overview
+
 . Download and install https://www.elastic.co/downloads/elasticsearch[Elasticsearch]
 . Make changes to "apiman.properties" to point to your standalone Elasticsearch instance
 . (Re)start apiman!
 
 === Download and install Elasticsearch
+
 This part is pretty easy - download the Elasticsearch software and get it running.
 A very good resource for this can be found here:
 
 http://www.elastic.co/guide/en/elasticsearch/guide/master/getting-started.html
 
 === Make changes to "apiman.properties"
+
 Once Elasticsearch is running smoothly, you must make some minor changes to the *apiman.properties* file in order to tell apiman where your Elasticsearch instance is located.
 
 There are a set of global properties used for all apiman components that use Elasticsearch to load data.
@@ -106,6 +106,7 @@ apiman.es.password=
 Make sure you enter appropriate values for this properties - they should reflect the settings of your Elasticsearch installation.
 
 === (Re)start apiman
+
 If apiman was running, you should stop it now.
 Once everything is shutdown, and the changes to `apiman.properties` have been made, go ahead and start apiman up again.
 It will pick up the new settings in `apiman.properties` and attempt to use Elasticsearch instead of Infinispan.

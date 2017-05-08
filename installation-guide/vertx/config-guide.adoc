@@ -3,7 +3,9 @@ Marc Savy <marc@rhymewithgravy.com>
 :toc: macro
 :toc-title: Elements
 
-The Vert.x gateway is configured via a simple JSON file, generically referred to here as `config.json`. This guide provides a brief outline to some of the most important information, but annotations in the configuration file should be considered canonical.
+The Vert.x gateway is configured via a simple JSON file, generically referred to here as `config.json`.
+This guide provides a brief outline to some of the most important information that may be unique to this platform.
+Annotations in the configuration file should be considered canonical.
 
 toc::[]
 
@@ -19,7 +21,7 @@ Unlike standard JSON, you can insert comments into the configuration by using C-
 
 == Variables
 
-The configuration supports variable substitution (transclusion) in the form `"${SOME_VARIABLE}"`; where `SOME_VARIABLE` is the variable to be transcluded.
+The configuration supports variable substitution (transclusion) in the form `"${FOO.SOME_VARIABLE}"`; where `FOO.SOME_VARIABLE` is the variable to be transcluded.
 The following list defines the lookup sources and order of precedence for variable resolution.
 
 1. JSON config's `variables` section:
@@ -27,12 +29,14 @@ The following list defines the lookup sources and order of precedence for variab
 ```json
 {
   "variables": {
-    "SOME_VARIABLE": "foo"
+    "FOO": {
+      "SOME_VARIABLE": "foo"
+    }
   }
 }
 ```
-2. System properties: `-DSOME_VARIABLE="foo"`
-3. Environment: `export SOME_VARIABLE="foo"`
+2. System properties: `-DFOO.SOME_VARIABLE="foo"`
+3. Environment: `export FOO.SOME_VARIABLE="foo"`
 
 A default value can be provided, which will be used if other lookup sources fail.
 
@@ -85,7 +89,8 @@ If you don't want any instances of a particular verticle type, set its `count` t
 
 Which port the verticle listens on can be changed with `port`.
 
-NOTE: Verticle count only defines the number of verticles deployed in a given JVM instance. How many deployments, and hence total number of verticles exist within your overall cluster is entirely up to you.
+NOTE: Verticle count only defines the number of verticles deployed in a given JVM instance.
+How many deployments, and hence total number of verticles exist within your overall cluster is entirely up to you.
 
 === HTTP
 
@@ -93,7 +98,9 @@ Plaintext HTTP entry-point, with no transport security. Turn off by reducing cou
 
 === HTTPS
 
-Encrypted HTTPS entry-point, with TLS. Turn off by reducing count to zero. Configure the
+Encrypted HTTPS entry-point, with TLS/SSL. Turn off by reducing count to zero. Add you keystore and truststore to the <<SSL>> section of your configuration to enable this functionality.
+
+//NOTE: Refer to the link:../[security].
 
 === API
 
@@ -114,7 +121,30 @@ The hostname to bind to.
 { "endpoint": "mynode.local" }
 ```
 
-Force the gateway to report the given gateway endpoint when it is queried by the manager. By default the gateway will inspect the request used to hit the Gateway API, and use whichever address was used to reach it as the endpoint.
+Force the gateway to report the given gateway endpoint when it is queried by the manager.
+By default the gateway will inspect the request used to hit the Gateway API, and use whichever address was used to reach it as the endpoint.
+
+== SSL
+
+The SSL section configures transport security to the gateway's *front end*; that is, connections established between client app ⇋ apiman gateway.
+
+```
+ "ssl": {
+   "keystore": {
+     "path": "/the/keystore/path/here.jks",
+     "password": "password-here"
+   },
+   "truststore": {
+     "path": "/the/truststore/path/here.jks",
+     "password": "password-here"
+   }
+ }
+```
+
+The precise keystore and trust store setups to use will vary considerably depending upon your organisation and security requirements; hence, they are out of the scope of this guide.
+
+NOTE: Refer to the https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html[Java keytool reference] for more information on creating keystores and truststores.
+
 
 == Prefer Secure
 
@@ -122,4 +152,5 @@ Force the gateway to report the given gateway endpoint when it is queried by the
 { "preferSecure": true }
 ```
 
-When reporting the gateway endpoint (as above), prefer to report the secure (HTTPS) URI rather than an insecure one (HTTP).
+When reporting gateway endpoints (as above), set whether to prefer reporting the secure (HTTPS) URI rather than an insecure one (HTTP).
+This is likely the preferred option for production deployments where transport security <<SSL,has been configured>>.

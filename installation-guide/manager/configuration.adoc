@@ -1,12 +1,13 @@
-= Configuration
+= General Apiman Manager Configuration
+:toc:
 
 == Logging In
 
 Once apiman is running, you should be able to log in to the API Manager by pointing your browser at the following URL:
 
-....
+```
 http://localhost:8080/apimanui/
-....
+```
 
 You may log in with credentials *admin/admin123!*
 
@@ -32,21 +33,18 @@ Please refer to the `apiman.properties` file itself, as well as this document, f
 
 TIP: If you are running a non-Servlet gateway implementation (e.g. Vert.x), then you should refer to that gateway's configuration documentation to understand how to configure it.
 
-{{ start }}++++
-{% method %}
 === API Manager Database
 
 The API Manager, by default, is a typical CDI application and uses JPA/Hibernate to persist its data.
 The JPA layer requires a data source to connect to a supported database.
 When running in WildFly this datasource is made available by deploying the following file:
 
-....
+```
 standalone/deployments/apiman-ds.xml
-....
+```
 
 Out of the box this data source is usually a simple H2 configuration, but you can (of course) change it to support whatever database you desire.
 
-{% common %}
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <datasources>
@@ -60,8 +58,6 @@ Out of the box this data source is usually a simple H2 configuration, but you ca
   </datasource>
 </datasources>
 ```
-{% endmethod %}
-{{ end }}++++
 
 The project comes with DDLs for MySQL and PostgreSQL, to hopefully make it easy to switch away from H2.
 Note that switching databases also requires a change to the apiman.properties file.

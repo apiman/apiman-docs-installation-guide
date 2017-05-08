@@ -2,13 +2,18 @@
 
 The apiman Vert.x distro is our premiere gateway offering and should provide the best performance characteristics of any of our platforms.
 
-The implementation is the _apiman gateway_ only, and hence is normally paired with the Manager and UI from the Servlet version (e.g. WildFly, EAP, Jetty, etc), but it can be run headless for specific workloads.
+The implementation is the _apiman gateway_ only, and hence is normally paired with the Manager and UI from the link:../wildfly/install.adoc[Servlet edition] (e.g. WildFly, EAP, Jetty, etc), but it can be run headless for specific workloads.
 
-There are a few different common configuration examples shipped with the Vert.x distro and are outlined in more detail below, but you can customise your configurations however you see fit.
+There are a few different common configuration examples shipped with the Vert.x distro; they are outlined in more detail below, but you can customise your configurations however you see fit by link:../registries-and-components/overview.adoc[mixing and matching components].
 
 == Download & launch
 
-Download the apiman Vert.x distro from http://www.apiman.io/latest/download.html#vertx[apiman.io downloads] page.
+Download the latest apiman Vert.x distro from http://www.apiman.io/latest/download.html#vertx[apiman.io downloads] page, or:
+
+```
+wget https://downloads.jboss.org/apiman/{{ book.apiman.version.release }}/apiman-distro-vertx-{{ book.apiman.version.release }}.zip
+
+```
 
 Extract the archive and execute it with:
 
@@ -92,7 +97,7 @@ NOTE: Refer to the link:../registries-and-components/elasticsearch.adoc[Elastics
 
 === Headless Elasticsearch
 
-The apiman headless Elasticsearch config `conf-headless-es.json` uses an immutable registry to load its configuration from a local or remote JSON file. All other components (e.g. metrics, rate-limiting, etc) use Elasticsearch.
+The Apiman Headless Elasticsearch config `conf-headless-es.json` uses an immutable registry to load its configuration from a local or remote JSON file. All other components (e.g. metrics, rate-limiting, etc) use Elasticsearch.
 
 First, alter your configuration as detailed in the <<Elasticsearch>> section.
 

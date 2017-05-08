@@ -16,14 +16,17 @@
 .. link:installation-guide/vertx/install.adoc[Installation Walkthrough]
 .. link:installation-guide/vertx/config-guide.adoc[Config Guide]
 
-. link:installation-guide/wildfly/install.adoc[EAP & WildFly]
-.. link:installation-guide/wildfly/install.adoc#_installing_in_wildfly_10[WildFly 10]
-.. link:installation-guide/wildfly/install.adoc#_installing_in_wildfly_9[WildFly 9]
-.. link:installation-guide/wildfly/install.adoc#_installing_in_jboss_eap_7[EAP 7]
-.. link:installation-guide/wildfly/install.adoc#_installing_using_docker[Docker]
+. link:installation-guide/servlet/install.adoc[EAP & WildFly]
+.. link:installation-guide/servlet/install.adoc#_installing_in_wildfly_10[WildFly 10]
+.. link:installation-guide/servlet/install.adoc#_installing_in_wildfly_9[WildFly 9]
+.. link:installation-guide/servlet/install.adoc#_installing_in_jboss_eap_7[EAP 7]
+.. link:installation-guide/servlet/install.adoc#_installing_using_docker[Docker]
+.. link:installation-guide/servlet/config-guide.adoc[Servlet Config Guide]
 
 == Apiman Gateway
-. link:installation-guide/gateway/gateway.adoc[General Configuration]
+
+. link:installation-guide/gateway/gateway-api.adoc[Gateway API]
+.. link:installation-guide/gateway/gateway-api.adoc#_authentication[Authentication]
 
 . link:installation-guide/registries-and-components/overview.adoc[Registries & Components]
 .. link:installation-guide/registries-and-components/jdbc.adoc[JDBC]
@@ -33,16 +36,19 @@
 . link:installation-guide/gateway/security.adoc[Security]
 
 == Apiman Manager
-. link:installation-guide/manager/configuration.adoc[Manager]
-.. link:installation-guide/manager/configuration.adoc#_general_configuration[General Configuration]
-.. link:installation-guide/manager/configuration.adoc#_gateway_api_authentication[Gateway API Authentication]
+
+. link:installation-guide/manager/configuration.adoc[General Configuration]
+.. link:installation-guide/manager/configuration.adoc#_logging_in[Logging In]
 .. link:installation-guide/manager/configuration.adoc#_custom_api_catalog[Custom API Catalog]
 .. link:installation-guide/manager/configuration.adoc#_custom_plugin_registry[Custom Plugin Registry]
 .. link:installation-guide/manager/configuration.adoc#_property_replacement_in_policy_config[Policy Config Property Replacement]
-.. link:installation-guide/manager/backup-migration.adoc#_backup_migration[Backup & Migration]
-.. link:installation-guide/manager/backup-migration.adoc#_upgrading_to_a_new_apiman_version[Upgrading Apiman]
+
+. link:installation-guide/manager/backup-migration.adoc#_backup_migration[Backup & Migration]
+
+. link:installation-guide/manager/backup-migration.adoc#_upgrading_to_a_new_apiman_version[Upgrading Apiman]
 
 == How To
+
 . link:installation-guide/how-to/datastores.adoc[Datastores]
 .. link:installation-guide/how-to/datastores.adoc#_use_elasticsearch_instead_of_an_rdbms[Elasticsearch instead of RDBMS]
 .. link:installation-guide/how-to/datastores.adoc#_use_standalone_elasticsearch_instance_cluster[Standalone Elasticsearch cluster]
