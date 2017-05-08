@@ -59,7 +59,7 @@ $ ./apiman-gateway.sh --version
 
 Some example configurations ship with the distro, aiming to provide sensible defaults.
 
-TIP: Refer to the comments within the shipped configuration files and the link:../registries-and-components/overview.adoc[registries & components] documentation for further detail.
+TIP: Refer to the comments within the shipped configuration files, the link:../vertx/config-guide.adoc[configuration guide] and the link:../registries-and-components/overview.adoc[registries & components] documentation for further detail.
 
 
 === Elasticsearch

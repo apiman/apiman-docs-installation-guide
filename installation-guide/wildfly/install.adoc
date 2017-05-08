@@ -1,5 +1,4 @@
 = Wildfly & EAP
-:toc:
 
 == Overview
 This chapter explores downloading and installing the apiman quickstarts which consists of both the _apiman manager and UI_ and _apiman gateway_.
@@ -144,6 +143,7 @@ for Wildfly above).
 {{ start }}++++
 {% method %}
 === Run EAP 7
+
 The apiman overlay contains everything needed to run apiman, including:
 
 * apiman binaries (several WAR files)
@@ -167,6 +167,7 @@ cd jboss-eap*
 {{ start }}++++
 {% method %}
 == Installing using Docker
+
 Another option when installing apiman is to use our docker image.
 You're probably pretty familiar with docker if you're going that route, but here is an example of how to start up the apiman docker image:
 

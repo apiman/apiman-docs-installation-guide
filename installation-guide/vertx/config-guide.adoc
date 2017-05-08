@@ -1,7 +1,11 @@
 = Vert.x Gateway Configuration Guide
 Marc Savy <marc@rhymewithgravy.com>
+:toc: macro
+:toc-title: Elements
 
-The Vert.x gateway is configured via a simple JSON file.
+The Vert.x gateway is configured via a simple JSON file, generically referred to here as `config.json`. This guide provides a brief outline to some of the most important information, but annotations in the configuration file should be considered canonical.
+
+toc::[]
 
 == Comments
 
@@ -19,11 +23,14 @@ The configuration supports variable substitution (transclusion) in the form `"${
 The following list defines the lookup sources and order of precedence for variable resolution.
 
 1. JSON config's `variables` section:
-
++
+```json
+{
   "variables": {
     "SOME_VARIABLE": "foo"
   }
-
+}
+```
 2. System properties: `-DSOME_VARIABLE="foo"`
 3. Environment: `export SOME_VARIABLE="foo"`
 
@@ -32,6 +39,10 @@ A default value can be provided, which will be used if other lookup sources fail
 For example `${MAGIC_NUMBER:-8090}` will result in `8090` being set if `MAGIC_NUMBER` is unresolved after the prior steps.
 
 == Registries, factories and components
+
+To configure a registry, component or factory, set the `class` to the corresponding fully qualified name of a valid implementation on the classpath.
+
+You can pass arguments to the component using the `config` section.
 
 ```json
 {
@@ -55,11 +66,10 @@ For example `${MAGIC_NUMBER:-8090}` will result in `8090` being set if `MAGIC_NU
 <1> Fully qualified path to registry class.
 <2> Note the variables here, which will be resolved as defined in <<Variables>>.
 
-To configure a registry, component or factory, set the `class` to the corresponding fully qualified name of a valid implementation on the classpath.
-
-You can pass arguments to the component using the `config` section.
-
 == Verticles and scaling
+
+To scale your gateway, you can alter the number of verticles that will be spun up per-JVM when the project is deployed by changing `count`.
+If you prefer, a count value of `"auto"` will provide a sensible default based upon the number of cores.
 
 ```json
 {
@@ -71,14 +81,11 @@ You can pass arguments to the component using the `config` section.
 }
 ```
 
-To scale your gateway, you can alter the number of verticles that will be spun up per-JVM when the project is deployed by changing `count`.
-If you prefer, a count value of `"auto"` will provide a sensible default based upon the number of cores.
-
 If you don't want any instances of a particular verticle type, set its `count` to `0`.
 
 Which port the verticle listens on can be changed with `port`.
 
-NOTE: Verticle count only defines the number of verticles deployed in a given JVM instance (i.e. per `java -jar apiman<...>.jar -conf <...>`). How many deployments, and hence total number of verticles exist within your overall cluster is entirely up to you.
+NOTE: Verticle count only defines the number of verticles deployed in a given JVM instance. How many deployments, and hence total number of verticles exist within your overall cluster is entirely up to you.
 
 === HTTP
 
@@ -86,10 +93,33 @@ Plaintext HTTP entry-point, with no transport security. Turn off by reducing cou
 
 === HTTPS
 
-Encrypted HTTPS entry-point, with TLS. Turn off by reducing count to zero.
+Encrypted HTTPS entry-point, with TLS. Turn off by reducing count to zero. Configure the
 
 === API
 
 Hosts the apiman gateway API, which is typically used by the apiman manager to drive the gateway.
 For instance, publishing and retiring APIs, Contracts.
 You probably only need 1 of these.
+
+== Hostname
+
+```json
+{ "hostname": "localhost" }
+```
+The hostname to bind to.
+
+== Endpoint
+
+```json
+{ "endpoint": "mynode.local" }
+```
+
+Force the gateway to report the given gateway endpoint when it is queried by the manager. By default the gateway will inspect the request used to hit the Gateway API, and use whichever address was used to reach it as the endpoint.
+
+== Prefer Secure
+
+```json
+{ "preferSecure": true }
+```
+
+When reporting the gateway endpoint (as above), prefer to report the secure (HTTPS) URI rather than an insecure one (HTTP).
