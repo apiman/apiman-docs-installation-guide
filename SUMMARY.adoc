@@ -1,7 +1,20 @@
 = Apiman Installation Guide
 
-== Download & Install
-. link:installation-guide/vertx/install.adoc[Vert.x Gateway]
+== Introduction
+
+. link:README.adoc[Introduction]
+.. link:README.adoc#_switching_formats[Switching Formats]
+.. link:README.adoc#_understanding_syntax[Syntax]
+
+== Download & Launch
+
+. link:installation-guide/vertx/download.adoc[Vert.x Gateway]
+.. link:installation-guide/vertx/download.adoc#_download_launch[Download & Launch]
+.. link:installation-guide/vertx/download.adoc#_configurations[Configurations]
+... link:installation-guide/vertx/download.adoc#_elasticsearch[Elasticsearch]
+... link:installation-guide/vertx/download.adoc#_headless_elasticsearch[Headless ES]
+.. link:installation-guide/vertx/install.adoc[Installation Walkthrough]
+
 . link:installation-guide/wildfly/install.adoc[EAP & WildFly]
 .. link:installation-guide/wildfly/install.adoc#_installing_in_wildfly_10[WildFly 10]
 .. link:installation-guide/wildfly/install.adoc#_installing_in_wildfly_9[WildFly 9]
@@ -10,10 +23,12 @@
 
 == Apiman Gateway
 . link:installation-guide/gateway/gateway.adoc[General Configuration]
-. link:installation-guide/gateway/components.adoc[Registries & Components]
+
+. link:installation-guide/registries-and-components/overview.adoc[Registries & Components]
 .. link:installation-guide/registries-and-components/jdbc.adoc[JDBC]
 .. link:installation-guide/registries-and-components/elasticsearch.adoc[Elasticsearch]
 .. link:installation-guide/registries-and-components/headless.adoc[Headless]
+
 . link:installation-guide/gateway/security.adoc[Security]
 
 == Apiman Manager
@@ -30,5 +45,6 @@
 . link:installation-guide/how-to/datastores.adoc[Datastores]
 .. link:installation-guide/how-to/datastores.adoc#_use_elasticsearch_instead_of_an_rdbms[Elasticsearch instead of RDBMS]
 .. link:installation-guide/how-to/datastores.adoc#_use_standalone_elasticsearch_instance_cluster[Standalone Elasticsearch cluster]
+
 . link:installation-guide/how-to/security.adoc[Security]
 .. link:installation-guide/how-to/security.adoc#_external_keycloak_authentication[External Keycloak Authentication]

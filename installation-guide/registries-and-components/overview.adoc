@@ -1,0 +1,28 @@
+= Gateway Components
+
+Apiman is made up of a number of different components, many of which can be configured to use various implementations and/or providers.
+When downloading and installing apiman, the default distribution includes reasonable default values for all options.
+
+TIP: Refer to your platform's configuration documentation, or the corresponding component configuration documentation for comprehensive information.
+
+== API Gateway Registry
+
+The API Gateway includes a registry that stores the published API and Client App information.
+This registry is updated whenever a user publishes an API (or registers a Client App) from within the API Manager UI.
+The registry contains just the configuration information necessary for the API Gateway to properly apply the appropriate policies to all inbound requests.
+
+== Rate Limiter
+
+The rate limiter component is used by apiman policies to enforce rate limits and uses the specified implementation to store data.
+Different implementations are likely to have different semantic and performance characteristics which should be paid attention to.
+
+== Shared State
+
+The shared state component is used by apiman policies to share interesting state information across multiple requests.
+
+== Metrics
+
+Apiman has a metrics engine that collects a variety of valuable data before passing it to a pluggable metrics component.
+This affords all metrics implementations complete control in processing and extruding data.
+
+For example,  link:../registries-and-components/elasticsearch.adoc#_metrics[Elasticsearch] and InfluxDB and JDBC are available, amongst others.

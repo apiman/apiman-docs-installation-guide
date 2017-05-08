@@ -26,6 +26,10 @@
                 }
             ]
         },
+        "edit-link": {
+            "base": "http://github.com/msavy/apiman-docs-installation-guide",
+            "label": "Edit This Page"
+        },
         "admonitions": {
             "note": {
                 "classes": "fa icon-note",

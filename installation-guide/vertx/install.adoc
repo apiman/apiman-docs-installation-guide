@@ -1,100 +1,22 @@
-= Apiman Vert.x Gateway
+= Install Gateway into Apiman Manager
+Marc Savy <marc@rhymewithgravy.com>
 
-The apiman Vert.x distro is our premiere gateway offering and should provide the best performance characteristics of any of our platforms.
+* Log into the Apiman Manager as an administrator and navigate to the `Manage Gateways` page.
 
-The implementation is the _apiman gateway_ only, and hence is normally paired with the Manager and UI from the Servlet version (e.g. WildFly, EAP, Jetty, etc), but it can be run headless for specific workloads.
+image::../assets/manage-gateways.png[]
 
-There are a few different common configuration examples shipped with the Vert.x distro and are outlined in more detail below, but you can customise your configurations however you see fit.
+---
 
-== Download & Installation
+* Add new gateway or modify existing one:
 
-Download the apiman Vert.x distro from http://www.apiman.io/latest/download.html#vertx[apiman.io downloads] page.
+TIP: If you're using the standard Apiman Manager distro with Keycloak, then the default username and password will be: *apimanager*/*apiman123!*
 
-Extract the archive and execute it with:
+image::../assets/new-gateway.png[]
 
-```
-unzip apiman-distro-vertx-{{ book.apiman.version.release }}
-cd apiman-distro-vertx-{{ book.apiman.version.release }}
-./apiman-gateway.sh --conf configs/conf-es.json
-```
+---
 
-Where `config-es.json` is your configuration file.
-Refer to the config and its annotations for additional detail.
+* The gateway will now be available to publish to.
+If you have only one gateway configured it will be the default target and the UI will look no different.
+If you have multiple gateways, then you will be able to select the target at publishing time in the `Implementation` tab.
 
-If you have started successfully then see console output something like:
-
-```
-$ ./apiman-gateway.sh --conf configs/conf-es.json
-[INFO ] ... InitVerticle - Starting verticle: INITIALISER. UUID: 7c577980-716c-4bb9-93a8-e517b0ae15a5.INITIALISER.
-[INFO ] ... InitVerticle - Will deploy 1 of type API
-[INFO ] ... InitVerticle - Will deploy 8 of type HTTP
-[INFO ] ... ApiVerticle - Starting verticle: API. UUID: aad6996f-16e0-4a87-baa7-5fc4843c76bf.API.
-[INFO ] ... HttpGatewayVerticle - Starting verticle: HTTP. UUID: effa81a3-fa74-4bd6-813f-8ad09c86344b.HTTP.
-<snip>
-[INFO ] ... HttpGatewayVerticle - Starting verticle: HTTP. UUID: 09827a46-6d41-4ab1-aef2-0d152e31fe15.HTTP.
-[INFO ] ... InitVerticle - Will deploy 0 of type HTTPS
-[WARN ] ... ApiVerticle - API is running in plaintext mode. Enable SSL in config for production deployments.
-[INFO ] ... InitVerticle - Successfully deployed all verticles
-[INFO ] ... InitVerticle - Gateway API port: 8081
-[INFO ] ... VertxIsolatedDeployer - Succeeded in deploying verticle
-```
-
-== Test your installation
-
-You can quickly verify whether your installation is working, you might try (if using default host, port and protocol, otherwise alter):
-
-  $ curl -v 'http://apimanager:apiman123!@localhost:8081/system/status'
-
-WARNING: You must alter the default passwords and enable SSL for production deployments, otherwise your system will be at risk
-
-== Configurations
-
-This gateway's counterpart to `apiman.properties` is a simple JSON-based configuration file, examples of which are provided in the `configs` directory.
-
-=== Elasticsearch
-
-The Elasticsearch config `conf-es.json` comes pre-configured with Elasticsearch components.
-
-You should alter the `variables.apiman.es` configuration to match your Elasticsearch setup.
-
-You can either use the Elasticsearch instance bundled with the _apiman Manager_, or run your own cluster (which is the preferred option for production).
-
-TIP: You can optionally also set the username and password - this is only useful if you are using something like Elasticsearch Shield to enable basic authentication.
-
-```json
-"variables": {
-  "apiman": {
-    "es": {
-      "protocol": "http",
-      "host": "localhost",
-      "port": 19200, // <1>
-      "username": null,
-      "password": null,
-      "timeout": 10000
-    }
-  }
-}
-```
-<1> The default port of a standalone ES cluster is typically 9200. The ES bundled with the _apiman Manager_ is set to 19200 by default to avoid port clashes.
-
-=== Headless Elasticsearch
-
-The apiman headless Elasticsearch config `conf-headless-es.json` uses an immutable registry to load its configuration from a local or remote JSON file. All other components (e.g. metrics, rate-limiting, etc) use Elasticsearch.
-
-First, alter your configuration as detailed in the <<Elasticsearch>> section.
-
-Then, modify the `registry.config` section of the config:
-
-```json
-"registry": {
-  "class": "io.apiman.gateway.engine.vertx.polling.URILoadingRegistry",
-  "config": {
-    "configUri": "file:///path/to/my/json/reg-config.json", // <1>
-    "auth": "NONE" // <2>
-  }
-},
-```
-<1> A file, http or https URI to a JSON file containing the registry configuration, as detailed in link:../registries-and-components/headless.adoc#_configuration_file_format[Configuration File Format].
-<2> Authentication method to retrieve the file, as detailed in link:../registries-and-components/headless.adoc#_authentication[Authentication].
-
-For full documentation on this registry, refer to TODO.
+image::../assets/publish-to.png[]
