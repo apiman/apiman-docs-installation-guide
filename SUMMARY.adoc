@@ -14,6 +14,7 @@
 ... link:installation-guide/vertx/download.adoc#_elasticsearch[Elasticsearch]
 ... link:installation-guide/vertx/download.adoc#_headless_elasticsearch[Headless ES]
 .. link:installation-guide/vertx/install.adoc[Installation Walkthrough]
+.. link:installation-guide/vertx/config-guide.adoc[Config Guide]
 
 . link:installation-guide/wildfly/install.adoc[EAP & WildFly]
 .. link:installation-guide/wildfly/install.adoc#_installing_in_wildfly_10[WildFly 10]

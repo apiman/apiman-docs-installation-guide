@@ -21,7 +21,7 @@ cd apiman-distro-vertx-{{ book.apiman.version.release }}
 Where `config-es.json` is your configuration file.
 Refer to the config and its annotations for additional detail.
 
-If you have started successfully then see console output something like:
+If the gateway has started successfully then you should see console output similar to:
 
 ```
 $ ./apiman-gateway.sh --conf configs/conf-es.json
@@ -41,7 +41,7 @@ $ ./apiman-gateway.sh --conf configs/conf-es.json
 
 == Test your gateway
 
-To quickly verify whether your installation is working, try footnote:[If a non-default host, port and protocol, otherwise alter your command accordingly.]:
+To quickly verify whether the installation is working, try footnote:[If a non-default host, port and protocol, otherwise alter the command accordingly.]:
 
   $ curl -v 'http://apimanager:apiman123!@localhost:8081/system/status'
 
@@ -58,17 +58,6 @@ $ ./apiman-gateway.sh --version
 == Configurations
 
 Some example configurations ship with the distro, aiming to provide sensible defaults.
-
-=== Format
-
-The Vert.x gateway is configured via a simple JSON file.
-Unlike standard JSON, you can insert comments into the configuration by using C-style `// comment` syntax.
-
-```json
-{
-  "foo": "bar" // This is a comment.
-}
-```
 
 TIP: Refer to the comments within the shipped configuration files and the link:../registries-and-components/overview.adoc[registries & components] documentation for further detail.
 
