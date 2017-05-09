@@ -6,6 +6,10 @@
 .. link:README.adoc#_switching_formats[Switching Formats]
 .. link:README.adoc#_understanding_syntax[Syntax]
 
+. link:installation-guide/quickstart.adoc[Quickstart]
+.. link:installation-guide/vertx/quickstart.adoc[Vert.x Quickstart]
+.. link:installation-guide/servlet/quickstart.adoc[Servlet Quickstart]
+
 == Download & Launch
 
 . link:installation-guide/vertx/download.adoc[Vert.x Gateway]

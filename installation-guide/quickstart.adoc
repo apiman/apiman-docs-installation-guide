@@ -1,0 +1,10 @@
+= Apiman Quickstart
+Marc Savy <marc@rhymewithgravy.com>
+:servlet-qs: link:../installation-guide/servlet/quickstart.adoc
+:vertx-qs: link:../installation-guide/vertx/quickstart.adoc
+
+. Choose a setup:
+** {vertx-qs}[Vert.x Gateway and Servlet-based Manager] *_Recommended for best performance_*.
+** {servlet-qs}[Servlet-based Gateway and Servlet-based Manager].
+
+.
