@@ -1,4 +1,4 @@
 = Overview: How Tos
 Marc Savy <marc@rhymewithgravy.com>
 
-This chapter aims to provide some in-depth guidance on going about successfully performing some commonly used configuration tasks.
+This chapter aims to provide some in-depth guidance on successfully performing some commonly required configuration tasks.

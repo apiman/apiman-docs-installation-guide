@@ -1,5 +1,81 @@
 = Security
 
+== Gateway API Authentication
+
+The Gateway's REST API is what the API Manager invokes when publishing APIs and Client Apps to the Gateway footnote:[Some advanced configurations may interact directly with the Gateway API, whilst others may bypass it entirely by using polling, etc.].
+
+NOTE: The quickstart configurations should work out of the box, but they assume the locality of all components, including Keycloak. Real deployments will likely need to perform some reconfiguration.
+
+{{ start }}++++
+{% method %}
+This REST API should be protected, often using BASIC authentication.
+
+By default, the Gateway REST API requires BASIC authentication credentials, as well as a role of `apipublisher`.
+In other words, the Gateway REST API can only be invoked by a valid user, and that user must have the `apipublisher` role.
+
+The Keycloak client for this API is `apiman-gateway-api`, and the default user and password are: *apimanager*/*apiman123!*
+
+{% sample lang="Vert.x" %}
+
+For the Vert.x gateway, the simplest way to retrieve the necessary configuration is to generate it from your Keycloak server footnote:[Normally located at `http://localhost:8080/auth` if you're using the quickstart]:
+
+The gateway accepts Keycloak's generated JSON, allowing you to paste your chosen client configuration from the Keycloak console into the `auth.config` section.
+
+To retrieve it:
+
+. Log into Keycloak (e.g. http://localhost:8080/auth).
+. `Clients` -> `apiman-gateway-api` -> `Installation`.
+. Select `Keycloak OIDC JSON` for `Format Option`.
+. Copy the contents and merge into the `config` selection where indicated below.
+
+The precise configuration you need to provide will vary depending upon your Keycloak setup.
+
+IMPORTANT: Due to a current limitation in the underlying OAuth2 library you may be required to provide a `credentials` section to avoid issues. You can change your client type to `confidential`, or simply provide a dummy `credentials` section.
+
+```json
+"auth": {
+  "type": "keycloak",
+  "config": {
+    "flowType": "PASSWORD",
+    "requiredRole": "realm:apipublisher",
+    // Paste and overwrite your Keycloak config here.
+    "realm": "apiman",
+    "realm-public-key": "<snip>",
+    "auth-server-url": "http://localhost:8080/auth",
+    "ssl-required": "none",
+    "resource": "apiman-gateway-api",
+    // A limitation in the current OAuth2 implementation means a credentials section is required
+    // even if your client is not set to "confidential". Leave this dummy section if you're using non-confidential.
+    "credentials": {
+      "secret": "217b725d-7790-47a7-a3fc-5cf31f92a8db"
+    }
+    // End paste here
+  }
+}
+```
+
+{% sample lang="Servlet" %}
+
+The API Gateway has a REST based configuration API which the API Manager uses when publishing APIs to it. This API is protected by Keycloak authentication. The configuration included in the apiman quickstart overlay ZIP assumes that the Keycloak server is local, so you’ll need to modify the standalone-apiman.xml file to point to the remote Keycloak instance.
+
+Here is the relevant portion of the standalone-apiman.xml file that you must change:
+
+
+```xml
+<realm name="apiman">
+  <realm-public-key>MIIB..snip..QAB</realm-public-key>
+  <auth-server-url>https://keycloak-host.org:8443/auth</auth-server-url>
+  <ssl-required>none</ssl-required>
+  <enable-cors>false</enable-cors>
+  <principal-attribute>preferred_username</principal-attribute>
+</realm>
+```
+
+{% endmethod %}
+{{ end }}++++
+
+---
+
 == MTLS (Mutual SSL) Endpoint Security
 
 If you wish to use mutual SSL to ensure endpoint security between the apiman API Gateway and your back-end API(s), you must update some settings.
@@ -158,17 +234,34 @@ Best practice guides are https://www.owasp.org/[available at OWASP].
     "class": "io.apiman.gateway.platforms.vertx3.connector.ConnectorFactory",
     "config": {
       "tls": {
-        "allowSelfSigned": true,
-        "devMode": false,
-        "allowAnyHost": true,
+        // Whether self-signed certificates should be automatically trusted. *Use with care.*
+        //"allowSelfSigned": true,
+
+        // Developer mode (bypass almost all security checks). *Use with care.*
+        //"devMode": false,
+
+        // Whether certificate host checks should be bypassed. *Use with care.*
+        //"allowAnyHost": true,
+
+        // Trust store contains certificate(s) trusted by gateway.
         "trustStore": "/path/to/your/truststore.jks",
         "trustStorePassword": "abc123",
+
+        // Key store contains gateway's keys.
         "keyStore": "/path/to/your/keystore.jks",
-        "keyStorePassword": "abc123",
-        "keyAliases": "mykey,myotherkey",
-        "allowedProtocols": "TLSv1.2,TLSv1.1",
-        "allowedCiphers": "TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA,...",
-        "disallowedCiphers": "..."
+        "keyStorePassword": "abc123"
+
+        // By default all keys can be used (will try all).
+        // If alias list provided, will only attempt to use listed keys.
+        //"keyAliases": "mykey,myotherkey",
+
+        // Allowed TLS/SSL protocols and ciphers suites as CSV.
+        // Availability will vary depending on your JVM impl.
+        // Uses JVM defaults depending if not explicitly provided.
+        // See: https://docs.oracle.com/javase/8/docs/technotes/guides/security/SunProviders.html
+        //"allowedProtocols": "TLSv1.2,TLSv1.1",
+        //"allowedCiphers": "TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA,...",
+        //"disallowedCiphers": "..."
       }
     }
   }

@@ -1,4 +1,4 @@
-= Datastores
+= How To: Datastores
 
 == Use Elasticsearch instead of an RDBMS
 

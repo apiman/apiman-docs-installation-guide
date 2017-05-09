@@ -23,12 +23,9 @@
 .. link:installation-guide/servlet/install.adoc#_installing_in_wildfly_9[WildFly 9]
 .. link:installation-guide/servlet/install.adoc#_installing_in_jboss_eap_7[EAP 7]
 .. link:installation-guide/servlet/install.adoc#_installing_using_docker[Docker]
-.. link:installation-guide/servlet/config-guide.adoc[Servlet Config Guide]
+.. link:installation-guide/servlet/config-guide.adoc[Config Guide]
 
 == Apiman Gateway
-
-. link:installation-guide/gateway/gateway-api.adoc[Gateway API]
-.. link:installation-guide/gateway/gateway-api.adoc#_authentication[Authentication]
 
 . link:installation-guide/registries-and-components/overview.adoc[Registries & Components]
 .. link:installation-guide/registries-and-components/jdbc.adoc[JDBC]
@@ -36,6 +33,9 @@
 .. link:installation-guide/registries-and-components/headless.adoc[Headless]
 
 . link:installation-guide/gateway/security.adoc[Security]
+.. link:installation-guide/gateway/security.adoc#_gateway_api_authentication[Gateway API Authentication]
+.. link:installation-guide/gateway/security.adoc#_mtls_mutual_ssl_endpoint_security[Mutual TLS (MTLS/MSSL)]
+
 
 == Apiman Manager
 
@@ -49,11 +49,9 @@
 
 . link:installation-guide/manager/backup-migration.adoc#_upgrading_to_a_new_apiman_version[Upgrading Apiman]
 
+
 == How To
 
-. link:installation-guide/how-to/datastores.adoc[Datastores]
-.. link:installation-guide/how-to/datastores.adoc#_use_elasticsearch_instead_of_an_rdbms[Elasticsearch instead of RDBMS]
-.. link:installation-guide/how-to/datastores.adoc#_use_standalone_elasticsearch_instance_cluster[Standalone Elasticsearch cluster]
-
-. link:installation-guide/how-to/security.adoc[Security]
-.. link:installation-guide/how-to/security.adoc#_external_keycloak_authentication[External Keycloak Authentication]
+. link:installation-guide/how-to/datastores.adoc#_use_elasticsearch_instead_of_an_rdbms[Elasticsearch Instead of RDBMS]
+. link:installation-guide/how-to/datastores.adoc#_use_standalone_elasticsearch_instance_cluster[Standalone Elasticsearch Cluster]
+. link:installation-guide/how-to/security.adoc#_external_keycloak_authentication[External Keycloak Authentication]
