@@ -1,4 +1,4 @@
-= How To: Datastores
+= How To: Elasticsearch
 
 == Use Elasticsearch instead of an RDBMS
 

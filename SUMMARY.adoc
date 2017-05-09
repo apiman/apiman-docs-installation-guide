@@ -52,6 +52,7 @@
 
 == How To
 
-. link:installation-guide/how-to/datastores.adoc#_use_elasticsearch_instead_of_an_rdbms[Elasticsearch Instead of RDBMS]
-. link:installation-guide/how-to/datastores.adoc#_use_standalone_elasticsearch_instance_cluster[Standalone Elasticsearch Cluster]
+. link:installation-guide/how-to/elasticsearch.adoc#_use_elasticsearch_instead_of_an_rdbms[Elasticsearch Instead of RDBMS]
+. link:installation-guide/how-to/elasticsearch.adoc#_use_standalone_elasticsearch_instance_cluster[Standalone Elasticsearch Cluster]
 . link:installation-guide/how-to/security.adoc#_external_keycloak_authentication[External Keycloak Authentication]
+. link:installation-guide/how-to/jdbc.adoc[SQL Metrics Instead of Elasticsearch]
