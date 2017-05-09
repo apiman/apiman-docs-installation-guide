@@ -1,4 +1,4 @@
-= Security
+= How To: Security
 
 == External Keycloak Authentication
 
@@ -34,7 +34,7 @@ TIP: Don't forget the "*" wildcard at the end of the URL.
 
 === Point apiman at the remote Keycloak
 
-Finally, you must modify the *standalone-apiman.xml* configuration file to point apiman at the remote Keycloak server.
+You must modify the *standalone-apiman.xml* configuration file to point apiman at the remote Keycloak server.
 
 Make sure you know the full public URL of your Keycloak server and add it to the following section of *standalone-apiman.xml*:
 
@@ -48,5 +48,7 @@ Make sure you know the full public URL of your Keycloak server and add it to the
     <principal-attribute>preferred_username</principal-attribute>
 </realm>
 ```
+
+Finally, if you are using a standalone gateway, you should also configure the link:../gateway/security.adoc#_setup[Gateway API] to point to the same Keycloak instance.
 
 TIP: If you manually created the apiman realm in Keycloak, you will also need to copy the realm's public key into <realm-public-key> above.

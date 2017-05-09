@@ -6,14 +6,16 @@ The Gateway's REST API is what the API Manager invokes when publishing APIs and 
 
 NOTE: The quickstart configurations should work out of the box, but they assume the locality of all components, including Keycloak. Real deployments will likely need to perform some reconfiguration.
 
-{{ start }}++++
-{% method %}
 This REST API should be protected, often using BASIC authentication.
 
 By default, the Gateway REST API requires BASIC authentication credentials, as well as a role of `apipublisher`.
 In other words, the Gateway REST API can only be invoked by a valid user, and that user must have the `apipublisher` role.
 
 The Keycloak client for this API is `apiman-gateway-api`, and the default user and password are: *apimanager*/*apiman123!*
+
+{{ start }}++++
+{% method %}
+=== Setup
 
 {% sample lang="Vert.x" %}
 
@@ -58,8 +60,7 @@ IMPORTANT: Due to a current limitation in the underlying OAuth2 library you may 
 
 The API Gateway has a REST based configuration API which the API Manager uses when publishing APIs to it. This API is protected by Keycloak authentication. The configuration included in the apiman quickstart overlay ZIP assumes that the Keycloak server is local, so you’ll need to modify the standalone-apiman.xml file to point to the remote Keycloak instance.
 
-Here is the relevant portion of the standalone-apiman.xml file that you must change:
-
+Here is the relevant portion of the **standalone-apiman.xml** file that you must change:
 
 ```xml
 <realm name="apiman">
