@@ -1,10 +1,38 @@
 = Apiman Quickstart
 Marc Savy <marc@rhymewithgravy.com>
-:servlet-qs: link:../installation-guide/servlet/quickstart.adoc
-:vertx-qs: link:../installation-guide/vertx/quickstart.adoc
+:servlet-mgr: link:../servlet/install.adoc
+:vertx-gw: link:download.adoc
+:gw-install-walkthrough: link:install.adoc
+:ui-footnote: footnote:[Typically this will be http://localhost:8080/apimanui]
 
-. Choose a setup:
-** {vertx-qs}[Vert.x Gateway and Servlet-based Manager] *_Recommended for best performance_*.
-** {servlet-qs}[Servlet-based Gateway and Servlet-based Manager].
 
-.
+== Choose Your Setup
+
+. <<Vert.x Gateway and Servlet-based Manager>> *_Recommended for best performance_*.
+. <<Servlet-based Gateway and Servlet-based Manager>>. Simplest for a quick test.
+
+---
+
+== Vert.x Gateway and Servlet-based Manager
+
+Apiman consists of two broad parts, the Gateway and the Manager.
+This quickstart separates those elements, with the Gateway implemented in Vert.x; our most performant platform, and the Manager a Servlet-based implementation.
+
+They are linked together in a trivial few steps.
+
+. Select and download a {servlet-mgr}[Servlet all-in-one distro] of apiman (e.g. WildFly, EAP, Tomcat).
+    * Optional: Before launching, remove `apiman-gateway.war` from the deployment.
+. Download the {vertx-gw}[Vert.x distro] and launch using the `conf-es.json` configuration.
+. Log into the apiman UI {ui-footnote} as an admin user (default: admin/admin123!).
+. Follow the steps outlined in the {gw-install-walkthrough}[gateway installation walkthrough] footnote:[If you created a new gateway rather than editing an existing entry, you may want to delete the old one to avoid any confusion.].
+
+🎉  Done!
+
+== Servlet-based Gateway and Servlet-based Manager
+
+The Servlet-based quickstart is an all-in-one with little-or-no additional configuration needed to get going. You can start with this platform and migrate to the Vert.x gateway at a later date. It's ideal for trying out apiman in the shortest possible time.
+
+. Select and download a {servlet-mgr}[Servlet all-in-one distro] of apiman (e.g. WildFly, EAP, Tomcat).
+. Launch and log into the apiman UI.
+
+🎉  Done!
