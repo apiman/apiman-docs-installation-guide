@@ -1,6 +1,6 @@
 = Apiman Vert.x Gateway
 
-The apiman Vert.x distro is our premiere gateway offering and should provide the best performance characteristics of any of our platforms.
+The apiman Vert.x distro is our premier gateway offering and should provide the best performance characteristics of any of our platforms.
 
 The implementation is the _apiman gateway_ only, and hence is normally paired with the Manager and UI from the link:../wildfly/install.adoc[Servlet edition] (e.g. WildFly, EAP, Jetty, etc), but it can be run headless for specific workloads.
 
