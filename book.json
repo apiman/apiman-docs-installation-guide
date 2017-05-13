@@ -6,7 +6,8 @@
     "plugins": [
         "anchorjs",
         "theme-apiman",
-        "asciidoc-admonition-icons"
+        "asciidoc-admonition-icons",
+        "ga"
     ],
     "pluginsConfig": {
         "theme-default": {
@@ -56,6 +57,9 @@
                 "title": "Warning",
                 "content": "\uf071"
             }
+        },
+        "ga": {
+            "token": "UA-56678850-1"
         }
     },
     "variables": {
