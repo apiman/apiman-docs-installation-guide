@@ -7,7 +7,8 @@
         "anchorjs",
         "theme-apiman",
         "asciidoc-admonition-icons",
-        "ga"
+        "ga",
+        "edit-link"
     ],
     "pluginsConfig": {
         "theme-default": {
@@ -28,7 +29,7 @@
             ]
         },
         "edit-link": {
-            "base": "http://github.com/msavy/apiman-docs-installation-guide",
+            "base": "https://github.com/apiman/apiman-docs-installation-guide/tree/master",
             "label": "Edit This Page"
         },
         "admonitions": {
