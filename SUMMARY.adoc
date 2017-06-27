@@ -15,7 +15,9 @@
 .. link:installation-guide/vertx/download.adoc#_configurations[Configurations]
 ... link:installation-guide/vertx/download.adoc#_elasticsearch[Elasticsearch]
 ... link:installation-guide/vertx/download.adoc#_headless_elasticsearch[Headless ES]
+... link:installation-guide/vertx/download.adoc#_3scale_immutable[3scale Immutable]
 .. link:installation-guide/vertx/install.adoc[Installation Walkthrough]
+
 .. link:installation-guide/vertx/config-guide.adoc[Config Guide]
 
 . link:installation-guide/servlet/install.adoc[EAP & WildFly]
@@ -31,6 +33,8 @@
 .. link:installation-guide/registries-and-components/jdbc.adoc[JDBC]
 .. link:installation-guide/registries-and-components/elasticsearch.adoc[Elasticsearch]
 .. link:installation-guide/registries-and-components/headless.adoc[Headless]
+.. link:installation-guide/registries-and-components/3scale_immutable.adoc[3scale Immutable]
+
 
 . link:installation-guide/gateway/security.adoc[Security]
 .. link:installation-guide/gateway/security.adoc#_gateway_api_authentication[Gateway API Authentication]
