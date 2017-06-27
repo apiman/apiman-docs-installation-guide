@@ -284,6 +284,7 @@ a| Private key
 Configuration of the registry is via a JSON file, https://gist.github.com/msavy/f79766b4f448672cdaf84ce4159ba2e9[the schema for which can be found on GitHub].
 
 Broadly, it consists of:
+
 * An `api` array containing your APIs.
 * A `clients` array containing your Clients.
 
