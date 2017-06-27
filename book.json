@@ -8,9 +8,13 @@
         "theme-apiman",
         "asciidoc-admonition-icons",
         "ga",
-        "edit-link"
+        "edit-link",
+        "versions"
     ],
     "pluginsConfig": {
+        "versions": {
+            "type": "branches"
+        },
         "theme-default": {
             "showLevel": true
         },
