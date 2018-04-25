@@ -91,12 +91,14 @@ Of course, there is a database schema that must be installed in your database, w
 | apiman-gateway.initializers
 | String
 a| Initializer type (always JDBC for this use-case)
-   *Required Value*: `jdbc`
+
+*Required Value*: `jdbc`
 
 | apiman-gateway.initializers.jdbc=
 | String
 a| Use JDBC initialiser (always for this use-case)
-   *Required Value*: `io.apiman.gateway.engine.jdbc.JdbcInitializer`
+
+*Required Value*: `io.apiman.gateway.engine.jdbc.JdbcInitializer`
 
 | apiman-gateway.initializers.jdbc.datasource.jndi-location
 | String
@@ -105,9 +107,10 @@ a| JNDI location for your data source
 | apiman-gateway.initializers.jdbc.datasource.type
 | String
 a| Datasource type: 
-  *Values*: h2, mysql5, postgresql9, oracle12 
+
+*Available Values*: h2, mysql5, postgresql9, oracle12 
   
-  Note, your particular DB version may work successfully with one of these variants.
+Note, your particular DB version may work successfully with one of these variants.
 
 |===
 
