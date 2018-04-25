@@ -6,6 +6,8 @@ NOTE: These components are presently optimised for Servlet editions of the gatew
 
 TIP: We ship a range of sample DDLs to get you started for all major databases. In your distribution look in `apiman/ddls` directory, or refer to the link:https://github.com/apiman/apiman/tree/master/distro/data/src/main/resources/ddls[Apiman Repo].
 
+A gateway registry and components that uses JDBC (i.e. SQL databases, such as PostgreSQL, MySQL, Oracle, etc).
+
 == Registry
 
 To set your registry, assign your chosen implementation to:
@@ -72,6 +74,48 @@ a| Polling interval in millis
 a| How long to wait before starting polling in millis
 
 |===
+
+== Database Initializer
+
+Of course, there is a database schema that must be installed in your database, which creates the tables and indexes needed. This schema can be automatically created by apiman the first time it is used. To enable this feature, you must configure the API Gateway JDBC initializer in the apiman.properties file, like so:
+
+
+[cols="2,1,4", options="header"]
+|===
+
+| Name
+| Type
+| Description
+
+| apiman-gateway.initializers=jdbc
+| String
+a| Initializer type (always JDBC for this use-case)
+
+| apiman-gateway.initializers.jdbc=io.apiman.gateway.engine.jdbc.JdbcInitializer
+| String
+a| Use JDBC initialiser (always for this use-case)
+
+| apiman-gateway.initializers.jdbc.datasource.jndi-location
+| String
+a| JNDI location for your data source 
+
+| apiman-gateway.initializers.jdbc.datasource.type
+| String
+a| Datasource type: h2, mysql5, postgresql9, oracle12 (your particular version may work successfully with one of these variants).
+
+|===
+
+Example:
+
+```
+# Initializer for the Gateway JDBC
+# ################################
+apiman.jdbc.datasource.jndi-location=java:jboss/datasources/apiman-gateway
+apiman-gateway.initializers=jdbc
+apiman-gateway.initializers.jdbc=io.apiman.gateway.engine.jdbc.JdbcInitializer
+apiman-gateway.initializers.jdbc.datasource.jndi-location=${apiman.jdbc.datasource.jndi-location}
+apiman-gateway.initializers.jdbc.datasource.type=mysql5
+```
 
 == Metrics
 
