@@ -47,6 +47,13 @@ a| The JNDI location of the datasource you wish to use.
 
 |===
 
+Example:
+
+```properties
+apiman-gateway.registry=io.apiman.gateway.engine.jdbc.JdbcRegistry
+apiman-gateway.registry.datasource.jndi-location=java:jboss/datasources/apiman-gateway
+```
+
 === Optional Parameters
 
 [cols="2,1,4", options="header"]
@@ -78,6 +85,8 @@ apiman-gateway.metrics.queue.size=10000 // Example.
 === Required Parameters
 
 See <<Registry,Registry Required Parameters>>.
+
+IMPORTANT: Must be configured with the JNDI location of the datasource to use.
 
 === Optional Parameters
 
