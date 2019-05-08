@@ -66,21 +66,21 @@ a| Username if using an auth mechanism like SearchGuard, Shield, etc
 | String
 a| Password if using an auth mechanism like SearchGuard, Shield, etc
 
-| client-keystore
+| client.keystore
 | String
-a| Path to the client keystore
+a| Path to the client KeyStore
 
-| client-keystore.password
+| client.keystore.password
 | String
-a| Password for the client keystore
+a| Password for the client KeyStore
 
-| trust-store
+| client.truststore
 | String
-a| Path to the trust store
+a| Path to the TrustStore
 
-| trust-store.password
+| client.truststore.password
 | String
-a| Password for the trust store
+a| Password for the TrustStore
 
 |===
 
