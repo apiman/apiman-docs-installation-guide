@@ -137,14 +137,19 @@ The SSL section configures transport security to the gateway's *front end*; that
    "truststore": {
      "path": "/the/truststore/path/here.jks",
      "password": "password-here"
-   }
+   },
+   // Allowed TLS/SSL protocols for Client <-> Gateway (Server)
+   "allowedProtocols": "TLSv1.1, TLSv1.2"
  }
 ```
 
-The precise keystore and trust store setups to use will vary considerably depending upon your organisation and security requirements; hence, they are out of the scope of this guide.
+The precise keystore and truststore setups to use will vary considerably depending upon your organisation and security requirements; hence, they are out of the scope of this guide.
 
 NOTE: Refer to the https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html[Java keytool reference] for more information on creating keystores and truststores.
 
+=== Allowed TLS Protocols
+
+If you want to use a specific TLS version for the connection between client app ⇋ apiman gateway you can add the TLS version in a comma separated list with the setting `allowedProtocols`.
 
 == Prefer Secure
 
