@@ -38,7 +38,8 @@ You must modify the *standalone-apiman.xml* configuration file to point apiman a
 
 Make sure you know the full public URL of your Keycloak server and add it to the following section of *standalone-apiman.xml*:
 
-```xml
+[source,xml]
+----
 <realm xmlns:kc="urn:jboss:domain:keycloak:1.0" name="apiman">
     <realm-public-key>MIIBIjAN<...>AQAB</realm-public-key>
     <auth-server-url>http://apiman.myorg.com:8080/auth</auth-server-url>
@@ -47,7 +48,7 @@ Make sure you know the full public URL of your Keycloak server and add it to the
     <enable-cors>false</enable-cors>
     <principal-attribute>preferred_username</principal-attribute>
 </realm>
-```
+----
 
 Finally, if you are using a standalone gateway, you should also configure the link:../gateway/security.adoc#_setup[Gateway API] to point to the same Keycloak instance.
 

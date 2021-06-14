@@ -17,22 +17,24 @@ First you will need to download both WildFly 10 and apiman:
 * http://download.jboss.org/wildfly/10.1.0.Final/{{ book.wildfly10.version }}.zip[Download WildFly 10]
 * http://downloads.jboss.org/apiman/{{ book.apiman.version.release }}/apiman-distro-wildfly10-{{ book.apiman.version.release }}-overlay.zip[Download apiman {{ book.apiman.version.release }}]
 
-```
+[source]
+----
 curl http://download.jboss.org/wildfly/{{ book.wildfly10.version }}/wildfly-{{ book.wildfly10.version }}.zip -o wildfly-{{ book.wildfly10.version }}.zip
 
 curl http://downloads.jboss.org/apiman/{{ book.apiman.version.release }}/apiman-distro-wildfly10-{{ book.apiman.version.release }}-overlay.zip -o apiman-distro-wildfly10-{{ book.apiman.version.release }}-overlay.zip
-```
+----
 
 
 === Unpack
 
 Once both files have been downloaded, simply unpack both in the same location.
 
-```
+[source]
+----
 unzip {{ book.wildfly10.version }}.zip
 
 unzip -o apiman-distro-wildfly10-{{ book.apiman.version.release }}-overlay.zip -d {{ book.wildfly10.version }}
-```
+----
 
 === Run WildFly 10
 
@@ -48,10 +50,11 @@ The apiman overlay contains everything needed to run apiman, including:
 For this reason, there is no additional configuration required to run apiman.
 Simply start up WildFly using the apiman configuration file:
 
-```
+[source]
+----
 cd {{ book.wildfly10.version }}
 ./bin/standalone.sh -c standalone-apiman.xml
-```
+----
 
 == Installing in WildFly 9
 
@@ -66,22 +69,24 @@ First you will need to download both WildFly 9 and apiman:
 * http://download.jboss.org/wildfly/{{ book.wildfly9.version }}/wildfly-{{ book.wildfly9.version }}.zip[Download WildFly 9]
 * http://downloads.jboss.org/apiman/{{ book.apiman.version.release }}/apiman-distro-wildfly9-{{ book.apiman.version.release }}-overlay.zip[Download apiman {{ book.apiman.version.release }}]
 
-```
+[source]
+----
 curl http://download.jboss.org/wildfly/{{ book.wildfly9.version }}/wildfly-{{ book.wildfly9.version }}.zip -o wildfly-{{ book.wildfly9.version }}.zip
 
 curl http://downloads.jboss.org/apiman/{{ book.apiman.version.release }}/apiman-distro-wildfly9-{{ book.apiman.version.release }}-overlay.zip -o apiman-distro-wildfly9-{{ book.apiman.version.release }}-overlay.zip
-```
+----
 
 
 === Unpack
 
 Once both files have been downloaded, simply unpack both in the same location.
 
-```
+[source]
+----
 unzip wildfly-{{ book.wildfly9.version }}.zip
 
 unzip -o apiman-distro-wildfly9-{{ book.apiman.version.release }}-overlay.zip -d wildfly-{{ book.wildfly9.version }}
-```
+----
 
 
 === Run WildFly 9
@@ -98,10 +103,11 @@ The apiman overlay contains everything needed to run apiman, including:
 For this reason, there is no additional configuration required to run apiman.  Simply start up
 WildFly using the apiman configuration file:
 
-```
+[source]
+----
 cd wildfly-{{ book.wildfly9.version }}
 ./bin/standalone.sh -c standalone-apiman.xml
-```
+----
 
 == Installing in JBoss EAP 7
 
@@ -134,20 +140,22 @@ The apiman overlay contains everything needed to run apiman, including:
 For this reason, there is no additional configuration required to run apiman.
 Simply start up EAP using the apiman configuration file:
 
-```
+[source]
+----
 cd jboss-eap*
 ./bin/standalone.sh -c standalone-apiman.xml
-```
+----
 
 == Installing using Docker
 
 Another option when installing apiman is to use our docker image.
 You're probably pretty familiar with docker if you're going that route, but here is an example of how to start up the apiman docker image:
 
-```
+[source]
+----
 docker pull jboss/apiman-wildfly
 docker run -it -p 8080:8080 -p 8443:8443 jboss/apiman-wildfly
-```
+----
 
 NOTE: You can find apiman on https://registry.hub.docker.com/repos/apiman/[Docker Hub].
 
@@ -155,9 +163,10 @@ NOTE: You can find apiman on https://registry.hub.docker.com/repos/apiman/[Docke
 
 Once apiman is running, you should be able to log in to the API Manager by pointing your browser at the following URL:
 
-```
+[source]
+----
 http://localhost:8080/apimanui/
-```
+----
 
 You may log in with credentials *admin/admin123!*
 

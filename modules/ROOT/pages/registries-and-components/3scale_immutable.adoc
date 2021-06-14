@@ -27,7 +27,8 @@ NOTE: This registry is optimised for the Vert.x gateway implementation. Although
 
 == Example
 
-```json
+[source,json]
+----
 "registry": {
   "class": "io.apiman.gateway.engine.threescale.ThreeScaleImmutableRegistry",
   "config": {
@@ -43,7 +44,7 @@ NOTE: This registry is optimised for the Vert.x gateway implementation. Although
     },
   }
 }
-```
+----
 <1> https://support.3scale.net/docs/accounts/tokens[3scale access token].
 <2> API endpoint, if SaaS is usually the `https://<username>-admin.3scale.net` provided.
 <3> 3scale backend to do auth and reports. By default this is the SaaS endpoint, but if you are deploying on-prem you should alter this.
@@ -131,12 +132,13 @@ Refer to the subsections for each auth mechanism for respective configuration op
 |===
 
 .Example
-```json
+[source,json]
+----
 "policyConfig": {
     "overlayUri": "file:///path/to/your/apiman-your-3scale-overlay.json",
     "auth": "NONE"
 }
-```
+----
 
 == Policy Overlay Configuration
 
@@ -145,7 +147,8 @@ Configuration of the registry is via a simple JSON file consisting of a list of 
 Importantly, the `apiId` field maps to your 3scale *system name*.
 
 .Example
-```json
+[source,json]
+----
 {
   "apis": [{
     "apiId": "My3ScaleSystemID", // <1>
@@ -157,7 +160,7 @@ Importantly, the `apiId` field maps to your 3scale *system name*.
     }]
   }]
 }
-```
+----
 <1> See <<API ID>>.
 <2> The ordered policy chain to be applied to your API.
 <3> See <<Policy Config>>.
@@ -167,7 +170,7 @@ Importantly, the `apiId` field maps to your 3scale *system name*.
 
 The API ID should match your 3scale system ID. For example if your system name is `anotherservice` then you should set your `apiId` field as `anotherservice`:
 
-image:../assets/3scale-system-id.png[]
+image:../../assets/3scale-system-id.png[]
 
 Apiman will map the defined policy chain into the same 3scale API.
 
@@ -186,7 +189,8 @@ For example, the Simple Header Policy's https://github.com/apiman/apiman-plugins
 In the following sample we've built a JSON configuration corresponding to the schema.
 
 .Example Simple Header Policy config
-```json
+[source,json]
+----
 {
   "addHeaders": [{
     "headerName": "X-Clacks-Overhead",
@@ -198,14 +202,15 @@ In the following sample we've built a JSON configuration corresponding to the sc
   }],
   "stripHeaders": []
 }
-```
+----
 
 And escaped it, before inserting into `policyJsonConfig`: footnote:[One might wonder why JSON is escaped inside of JSON. The field name is somewhat of a misnomer, it is intended to be generic and could be XML, YAML, etc.]
 
 .Example Simple Header Policy in policyJsonConfig
-```json
+[source,json]
+----
 "policyJsonConfig": "{\"addHeaders\":[{\"headerName\":\"X-Clacks-Overhead\",\"headerValue\":\"GNU Terry Pratchett\",\"valueType\":\"String\",\"applyTo\":\"Request\",\"overwrite\":true,\"resolvedHeaderValue\":\"GNU Terry Pratchett\"}],\"stripHeaders\":[]}"
-```
+----
 
 TIP: For more information, refer to the http://www.apiman.io/latest/developer-guide.html#_policy_definition[plugin developer's guide].
 
@@ -216,21 +221,24 @@ You can find this in the plugin's `policyDef.json` file, usually located in `src
 
 The format is:
 
-```
+[source]
+----
 plugin:{pluginGroupId}:{pluginArtifactId}:{pluginVersion}:{pluginType}/{fullyQualifiedClassname}
-```
+----
 
 In our example of the Simple Header Policy it's:
 
-```
+[source]
+----
 plugin:${project.groupId}:${project.artifactId}:${project.version}:${project.packaging}/io.apiman.plugins.simpleheaderpolicy.SimpleHeaderPolicy
-```
+----
 
 Which then informs us that the URI is:
 
-```
+[source]
+----
 plugin:io.apiman.plugins:apiman-plugins-simple-header-policy:{{ book.apiman.version.release }}:war/io.apiman.plugins.simpleheaderpolicy.SimpleHeaderPolicy
-```
+----
 
 Note that the classifier is almost certainly `war`.
 
@@ -263,7 +271,8 @@ a| A password. Consider using variable substitution.
 |===
 
 .Example
-```json
+[source,json]
+----
 "config": {
   "policyConfig": {
     "overlayUri": "file:///path/to/your/apiman-your-3scale-overlay.json",
@@ -272,7 +281,7 @@ a| A password. Consider using variable substitution.
     "password": "bar" // <1>
   }
 }
-```
+----
 <1> Consider using environment substitution, like $\{foo}
 
 
@@ -292,7 +301,8 @@ The precise configuration you need to provide will vary depending upon your Keyc
 IMPORTANT: Due to a current limitation in the underlying OAuth2 library you may be required to provide a `credentials` section to avoid issues. You can change your client type to `confidential`, or simply provide a dummy `credentials` section.
 
 .Example
-```json
+[source,json]
+----
 "config": {
   "policyConfig": {
     "auth": "KeycloakOAuth2",
@@ -311,7 +321,7 @@ IMPORTANT: Due to a current limitation in the underlying OAuth2 library you may 
     // End paste here.
   }
 }
-```
+----
 
 .Required Parameters
 [cols="2,1,4", options="header"]

@@ -12,9 +12,10 @@ A gateway registry and components that uses JDBC (i.e. SQL databases, such as Po
 
 To set your registry, assign your chosen implementation to:
 
-```properties
+[source,properties]
+----
 apiman-gateway.registry=<IMPLEMENTATION>
-```
+----
 
 .Available implementations:
 [cols="2", options="header"]
@@ -51,10 +52,11 @@ a| The JNDI location of the datasource you wish to use.
 
 Example:
 
-```properties
+[source,properties]
+----
 apiman-gateway.registry=io.apiman.gateway.engine.jdbc.JdbcRegistry
 apiman-gateway.registry.datasource.jndi-location=java:jboss/datasources/apiman-gateway
-```
+----
 
 === Optional Parameters
 
@@ -116,7 +118,8 @@ Note, your particular DB version may work successfully with one of these variant
 
 Example:
 
-```
+[source]
+----
 # Initializer for the Gateway JDBC
 # ################################
 apiman.jdbc.datasource.jndi-location=java:jboss/datasources/apiman-gateway
@@ -124,16 +127,17 @@ apiman-gateway.initializers=jdbc
 apiman-gateway.initializers.jdbc=io.apiman.gateway.engine.jdbc.JdbcInitializer
 apiman-gateway.initializers.jdbc.datasource.jndi-location=${apiman.jdbc.datasource.jndi-location}
 apiman-gateway.initializers.jdbc.datasource.type=mysql5
-```
+----
 
 == Metrics
 
 Set the metrics implementation as shown:
 
-```properties
+[source,properties]
+----
 apiman-gateway.metrics=io.apiman.gateway.engine.jdbc.JdbcMetrics
 apiman-gateway.metrics.queue.size=10000 // Example.
-```
+----
 
 === Required Parameters
 

@@ -92,19 +92,23 @@ a| Password for the TrustStore
 Assign your chosen implementation as shown in the example, providing configuration.
 
 {% sample lang="Vert.x" %}
-```json
+
+[source,json]
+----
 "registry": {
   "class": "io.apiman.gateway.engine.es.PollCachingESRegistry",
   "config": {
     // <registry configuration>
   }
 },
-```
+----
 
 {% sample lang="Servlet" %}
-```properties
+
+[source,properties]
+----
 apiman-gateway.registry=<IMPLEMENTATION>
-```
+----
 
 {% endmethod %}
 {{ end }}++++
@@ -175,7 +179,9 @@ a| Polling startup delay in seconds.
 Set the metrics implementation as shown.
 
 {% sample lang="Vert.x" %}
-```json
+
+[source,json]
+----
 "metrics": {
   "class": "io.apiman.gateway.engine.es.ESMetrics",
   "config": {
@@ -188,12 +194,14 @@ Set the metrics implementation as shown.
      }
    }
 }
-```
+----
 
 {% sample lang="Servlet" %}
-```properties
+
+[source,properties]
+----
 apiman-gateway.metrics=io.apiman.gateway.engine.es.ESMetrics
-```
+----
 
 {% endmethod %}
 {{ end }}++++
@@ -246,7 +254,9 @@ a| Maximum metrics batching size
 Set shared state implementation as shown.
 
 {% sample lang="Vert.x" %}
-```json
+
+[source,json]
+----
 "components": {
   // Shared State Component Settings
   "ISharedStateComponent": {
@@ -262,14 +272,16 @@ Set shared state implementation as shown.
     }
   }
 }
-```
+----
 
 {% sample lang="Servlet" %}
-```properties
+
+[source,properties]
+----
 apiman-gateway.components.ISharedStateComponent=io.apiman.gateway.engine.es.ESSharedStateComponent
 apiman-gateway.components.ISharedStateComponent.client.type=jest
 # <configuration options>
-```
+----
 
 {% endmethod %}
 {{ end }}++++
@@ -288,7 +300,9 @@ Refer to <<Global Required Parameters>>.
 Set rate limiter implementation as shown.
 
 {% sample lang="Vert.x" %}
-```json
+
+[source,json]
+----
 "components": {
   // Rate Limiter Component Settings
   "IRateLimiterComponent": {
@@ -304,14 +318,16 @@ Set rate limiter implementation as shown.
     }
   }
 }
-```
+----
 
 {% sample lang="Servlet" %}
-```properties
+
+[source,properties]
+----
 apiman-gateway.components.IRateLimiterComponent=io.apiman.gateway.engine.es.ESRateLimiterComponent
 apiman-gateway.components.IRateLimiterComponent.client.type=jest
 # <configuration options>
-```
+----
 
 {% endmethod %}
 {{ end }}++++
@@ -330,7 +346,9 @@ Refer to <<Global Required Parameters>>.
 Set cache store implementation as shown.
 
 {% sample lang="Vert.x" %}
-```json
+
+[source,json]
+----
 "components": {
   // Cache Store Component Settings
   "ICacheStoreComponent": {
@@ -346,14 +364,16 @@ Set cache store implementation as shown.
     }
   }
 }
-```
+----
 
 {% sample lang="Servlet" %}
-```properties
+
+[source,properties]
+----
 apiman-gateway.components.IRateLimiterComponent=io.apiman.gateway.engine.es.ESRateLimiterComponent
 apiman-gateway.components.IRateLimiterComponent.client.type=jest
 # <configuration options>
-```
+----
 
 {% endmethod %}
 {{ end }}++++

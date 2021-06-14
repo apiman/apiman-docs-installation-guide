@@ -34,7 +34,8 @@ The precise configuration you need to provide will vary depending upon your Keyc
 
 IMPORTANT: Due to a current limitation in the underlying OAuth2 library you may be required to provide a `credentials` section to avoid issues. You can change your client type to `confidential`, or simply provide a dummy `credentials` section.
 
-```json
+[source,json]
+----
 "auth": {
   "type": "keycloak",
   "config": {
@@ -54,7 +55,7 @@ IMPORTANT: Due to a current limitation in the underlying OAuth2 library you may 
     // End paste here
   }
 }
-```
+----
 
 {% sample lang="Servlet" %}
 
@@ -62,7 +63,8 @@ The API Gateway has a REST based configuration API which the API Manager uses wh
 
 Here is the relevant portion of the **standalone-apiman.xml** file that you must change:
 
-```xml
+[source,xml]
+----
 <realm name="apiman">
   <realm-public-key>MIIB..snip..QAB</realm-public-key>
   <auth-server-url>https://keycloak-host.org:8443/auth</auth-server-url>
@@ -70,7 +72,7 @@ Here is the relevant portion of the **standalone-apiman.xml** file that you must
   <enable-cors>false</enable-cors>
   <principal-attribute>preferred_username</principal-attribute>
 </realm>
-```
+----
 
 {% endmethod %}
 {{ end }}++++
@@ -229,7 +231,9 @@ Best practice guides are https://www.owasp.org/[available at OWASP].
 
 {% sample lang="Vert.x" %}
 .Conf JSON
-```json
+
+[source,json]
+----
 {
   "connector-factory": {
     "class": "io.apiman.gateway.platforms.vertx3.connector.ConnectorFactory",
@@ -267,11 +271,13 @@ Best practice guides are https://www.owasp.org/[available at OWASP].
     }
   }
 }
-```
+----
 
 {% sample lang="Servlet" %}
 .apiman.properties
-```properties
+
+[source,properties]
+----
 # ---------------------------------------------------------------------
 # SSL/TLS settings for the gateway connector(s).
 # ---------------------------------------------------------------------
@@ -298,7 +304,7 @@ apiman-gateway.connector-factory.tls.allowAnyHost=false
 
 # Whether self-signed certificates should be automatically trusted. *Use with great care.*
 apiman-gateway.connector-factory.tls.allowSelfSigned=false
-```
+----
 {% endmethod %}
 {{ end }}++++
 

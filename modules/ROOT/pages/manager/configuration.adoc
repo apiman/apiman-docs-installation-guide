@@ -5,9 +5,10 @@
 
 Once apiman is running, you should be able to log in to the API Manager by pointing your browser at the following URL:
 
-```
+[source]
+----
 http://localhost:8080/apimanui/
-```
+----
 
 You may log in with credentials *admin/admin123!*
 
@@ -39,13 +40,15 @@ The API Manager, by default, is a typical CDI application and uses JPA/Hibernate
 The JPA layer requires a data source to connect to a supported database.
 When running in WildFly this datasource is made available by deploying the following file:
 
-```
+[source]
+----
 standalone/deployments/apiman-ds.xml
-```
+----
 
 Out of the box this data source is usually a simple H2 configuration, but you can (of course) change it to support whatever database you desire.
 
-```xml
+[source,xml]
+----
 <?xml version="1.0" encoding="UTF-8"?>
 <datasources>
   <datasource jndi-name="jdbc/ApiManDT" pool-name="apiman-manager-api" enabled="true"
@@ -57,16 +60,17 @@ Out of the box this data source is usually a simple H2 configuration, but you ca
     </security>
   </datasource>
 </datasources>
-```
+----
 
 The project comes with DDLs for MySQL and PostgreSQL, to hopefully make it easy to switch away from H2.
 Note that switching databases also requires a change to the apiman.properties file.
 The following should be changed to appropriate values for your database:
 
-```properties
+[source,properties]
+----
 apiman.hibernate.dialect=io.apiman.manager.api.jpa.ApimanMySQL5Dialect
 apiman.hibernate.hbm2ddl.auto=validate
-```
+----
 
 Note that the following dialects are available:
 
@@ -110,10 +114,11 @@ This can either be done by stashing it in some web server location so you have a
 The last step is to make apiman aware of your custom API Catalog file.  The
 catalog is configured in the `apiman.properties` file via these properties:
 
-```
+[source]
+----
 apiman-manager.api-catalog.type=io.apiman.manager.api.core.catalog.JsonApiCatalog
 apiman-manager.api-catalog.catalog-url=https://cdn.rawgit.com/apiman/apiman-api-catalog/1.2.0.Final/catalog.json
-```
+----
 
 Simply change the URL defined by the `apiman-manager.api-catalog.catalog-url` property and you're good to go!
 
@@ -151,9 +156,10 @@ This can either be done by stashing it in some web server location so you have a
 The last step is to make apiman aware of your custom plugin registry file.
 The registry is configured in the *apiman.properties* file via the following property:
 
-```
+[source]
+----
 apiman-manager.plugins.registries=https://cdn.rawgit.com/apiman/apiman-plugin-registry/1.2.0.Final/registry.json
-```
+----
 
 The value of this property is a comma-separated list of URLs.
 Each URL in the list should point to a valid plugin registry JSON file.
@@ -188,9 +194,10 @@ Once you have some values externalized into system properties or environment
 variables, you can reference them easily in your apiman policies.
 All you need to do is use the Ant style syntax to refer to your externalized values, like this:
 
-```
+[source]
+----
 ${MY_ENVIRONMENT_VARIABLE}
-```
+----
 
 A variable of this style can be used in any apiman policy configuration field.
 The variables are resolved when the policy configuration is first loaded, and

@@ -20,9 +20,10 @@ However, once approach to data backups that is consistent across all configurati
 
 This can be done via the UI or via the following API Manager REST endpoint:
 
-```
+[source]
+----
 https://HOST:PORT/apiman/system/export
-```
+----
 
 == Migrating Data Between Environments
 

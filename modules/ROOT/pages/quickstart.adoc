@@ -11,7 +11,7 @@ Marc Savy <marc@rhymewithgravy.com>
 . <<Vert.x Gateway and Servlet-based Manager>> *_Recommended for best performance_*.
 . <<Servlet-based Gateway and Servlet-based Manager>>. Simplest for a quick test.
 
----
+'''
 
 == Vert.x Gateway and Servlet-based Manager
 

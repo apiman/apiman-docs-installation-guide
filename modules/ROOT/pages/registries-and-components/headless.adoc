@@ -20,7 +20,8 @@ NOTE: This registry is optimised for the Vert.x gateway implementation. Although
 
 == Example
 
-```json
+[source,json]
+----
 "registry": {
   "class": "io.apiman.gateway.engine.vertx.polling.URILoadingRegistry",
   "config": {
@@ -28,7 +29,7 @@ NOTE: This registry is optimised for the Vert.x gateway implementation. Although
     "auth": "NONE" // <2>
   }
 },
-```
+----
 <1> A file, http or https URI to a JSON file containing the registry configuration, as detailed in <<Configuration File Format>>.
 <2> Authentication method to retrieve the file, as detailed in <<Authentication>>.
 
@@ -86,14 +87,15 @@ a| A password. Consider using variable substitution.
 |===
 
 .Example
-```json
+[source,json]
+----
 "config": {
   "configUri": "https://example.org/reg-config.json",
   "auth": "BASIC",
   "username": "MyUsername",
   "password": "${PASSWORD}" // <1>
 }
-```
+----
 <1> The password in this example is defined as a variable to be substituted from the config variables, system properties or environment.
 
 === Keycloak OAuth2
@@ -112,7 +114,8 @@ The precise configuration you need to provide will vary depending upon your Keyc
 IMPORTANT: Due to a current limitation in the underlying OAuth2 library you may be required to provide a `credentials` section to avoid issues. You can change your client type to `confidential`, or simply provide a dummy `credentials` section.
 
 .Example
-```json
+[source,json]
+----
 "config": {
   "auth": "KeycloakOAuth2",
   "flowType": "password",
@@ -129,7 +132,7 @@ IMPORTANT: Due to a current limitation in the underlying OAuth2 library you may 
   }
   // End paste here.
 }
-```
+----
 
 .Required Parameters
 [cols="2,1,4", options="header"]
@@ -289,7 +292,8 @@ Broadly, it consists of:
 * A `clients` array containing your Clients.
 
 .Example
-```json
+[source,json]
+----
 {
     "apis": [{
         "publicAPI": true,
@@ -322,7 +326,7 @@ Broadly, it consists of:
         }]
     }]
 }
-```
+----
 <1> See <<Endpoint Type>>.
 <2> See <<Endpoint Content Type>>.
 <3> See <<Endpoint Properties>>.
@@ -362,7 +366,8 @@ For example, the Simple Header Policy's https://github.com/apiman/apiman-plugins
 In the following sample we've built a JSON configuration corresponding to the schema.
 
 .Example Simple Header Policy config
-```json
+[source,json]
+----
 {
   "addHeaders": [{
     "headerName": "X-Clacks-Overhead",
@@ -374,14 +379,15 @@ In the following sample we've built a JSON configuration corresponding to the sc
   }],
   "stripHeaders": []
 }
-```
+----
 
 And escaped it, before inserting into `policyJsonConfig`: footnote:[One might wonder why JSON is escaped inside of JSON. The field name is somewhat of a misnomer, it is intended to be generic and could be XML, YAML, etc.]
 
 .Example Simple Header Policy in policyJsonConfig
-```json
+[source,json]
+----
 "policyJsonConfig": "{\"addHeaders\":[{\"headerName\":\"X-Clacks-Overhead\",\"headerValue\":\"GNU Terry Pratchett\",\"valueType\":\"String\",\"applyTo\":\"Request\",\"overwrite\":true,\"resolvedHeaderValue\":\"GNU Terry Pratchett\"}],\"stripHeaders\":[]}"
-```
+----
 
 TIP: For more information, refer to the http://www.apiman.io/latest/developer-guide.html#_policy_definition[plugin developer's guide].
 
@@ -392,21 +398,24 @@ You can find this in the plugin's `policyDef.json` file, usually located in `src
 
 The format is:
 
-```
+[source]
+----
 plugin:{pluginGroupId}:{pluginArtifactId}:{pluginVersion}:{pluginType}/{fullyQualifiedClassname}
-```
+----
 
 In our example of the Simple Header Policy it's:
 
-```
+[source]
+----
 plugin:${project.groupId}:${project.artifactId}:${project.version}:${project.packaging}/io.apiman.plugins.simpleheaderpolicy.SimpleHeaderPolicy
-```
+----
 
 Which then informs us that the URI is:
 
-```
+[source]
+----
 plugin:io.apiman.plugins:apiman-plugins-simple-header-policy:{{ book.apiman.version.release }}:war/io.apiman.plugins.simpleheaderpolicy.SimpleHeaderPolicy
-```
+----
 
 Note that the classifier is almost certainly `war`.
 

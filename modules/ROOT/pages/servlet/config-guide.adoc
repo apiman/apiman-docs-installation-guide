@@ -23,11 +23,12 @@ The following list defines the lookup sources and order of precedence for variab
 
 1. Properties defined in `apiman.properties`:
 +
-```properties
+[source,properties]
+----
 FOO.SOMEVARIABLE=1234
 # some.value will now become 1234
 some.value=${FOO.SOMEVARIABLE}
-```
+----
 2. System properties: `-DFOO.SOME_VARIABLE="foo"`
 3. Environment: `export FOO.SOME_VARIABLE="foo"`
 

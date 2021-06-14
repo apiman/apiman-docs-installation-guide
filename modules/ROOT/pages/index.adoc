@@ -66,7 +66,8 @@ a| Favourite project?
 
 === As JSON
 
-```json
+[source,json]
+----
 {
   "project": {
     "name": "apiman",
@@ -80,11 +81,12 @@ a| Favourite project?
     "favourite": true
   }
 }
-```
+----
 
 === As Properties
 
-```properties
+[source,properties]
+----
 project.name=apiman
 project.type=JAVA
 project.tags=api-management,excellent
@@ -92,4 +94,4 @@ project.version.major=1
 project.version.minor=3
 project.version.micro=0
 project.favourite=true
-```
+----

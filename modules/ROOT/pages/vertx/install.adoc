@@ -3,7 +3,7 @@ Marc Savy <marc@rhymewithgravy.com>
 
 * Log into the Apiman Manager as an administrator and navigate to the `Manage Gateways` page.
 
-image::../assets/manage-gateways.png[]
+image::../../assets/manage-gateways.png[]
 
 ---
 
@@ -11,7 +11,7 @@ image::../assets/manage-gateways.png[]
 
 TIP: If you're using the standard Apiman Manager distro with Keycloak, then the default username and password will be: *apimanager*/*apiman123!*
 
-image::../assets/new-gateway.png[]
+image::../../assets/new-gateway.png[]
 
 ---
 
@@ -19,4 +19,4 @@ image::../assets/new-gateway.png[]
 If you have only one gateway configured it will be the default target and the UI will look no different.
 If you have multiple gateways, then you will be able to select the target at publishing time in the `Implementation` tab.
 
-image::../assets/publish-to.png[]
+image::../../assets/publish-to.png[]
