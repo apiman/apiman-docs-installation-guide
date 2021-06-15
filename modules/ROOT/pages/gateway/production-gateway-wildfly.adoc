@@ -22,11 +22,12 @@ Which apiman deployments should you delete?  These:
 Because you will be using an external/standalone Keycloak server, it is useful to disable the Keycloak components that are bundled with the apiman quickstart overlay ZIP.
 To do that, *remove* the following subsystem from the *standalone-apiman.xml* file:
 
-```xml
+[source,xml]
+----
 <subsystem xmlns="urn:jboss:domain:keycloak-server:1.1">
   <web-context>auth</web-context>
 </subsystem>
-```
+----
 
 == Configuring Keycloak Authentication for the Gateway API
 
@@ -39,7 +40,8 @@ instance.
 
 Here is the relevant portion of the *standalone-apiman.xml* file that you must change:
 
-```xml
+[source,xml]
+----
 <realm name="apiman">
   <realm-public-key>MIIB..snip..QAB</realm-public-key>
   <auth-server-url>https://keycloak-host.org:8443/auth</auth-server-url>
@@ -47,4 +49,4 @@ Here is the relevant portion of the *standalone-apiman.xml* file that you must c
   <enable-cors>false</enable-cors>
   <principal-attribute>preferred_username</principal-attribute>
 </realm>
-```
+----

@@ -170,7 +170,7 @@ Importantly, the `apiId` field maps to your 3scale *system name*.
 
 The API ID should match your 3scale system ID. For example if your system name is `anotherservice` then you should set your `apiId` field as `anotherservice`:
 
-image:../../assets/3scale-system-id.png[]
+image::3scale-system-id.png[]
 
 Apiman will map the defined policy chain into the same 3scale API.
 

@@ -55,3 +55,9 @@
 ** xref:how-to/elasticsearch.adoc#_use_standalone_elasticsearch_instance_cluster[Standalone Elasticsearch Cluster]
 ** xref:how-to/security.adoc#_external_keycloak_authentication[External Keycloak Authentication]
 ** xref:how-to/jdbc.adoc[SQL Metrics Instead of Elasticsearch]
+
+* xref:production.adoc[Production Guide]
+** Gateway
+*** xref:gateway/production-gateway.adoc[Vertx]
+*** xref:gateway/production-gateway-wildfly.adoc[Wildfly]
+** xref:manager/production-manager.adoc[Manager]

@@ -9,11 +9,12 @@ An important step is to let the API Gateway know what its public endpoint is.  T
 {% sample lang="Vert.x" %}
 To set the public endpoint of the API Gateway, add the following to `conf.json`:
 
-```json
+[source,json]
+----
 {
   "publicEndpoint": "https://api-gateway-host.org:8443"// <1>
 }
-```
+----
 <1> You can also append a path, etc. This is useful if you are behind a proxy and need to report a specific endpoint.
 
 {% sample lang="Servlet" %}
@@ -42,7 +43,8 @@ In order to configure the gateway properly, you will need to configure the locat
 {% sample lang="Vert.x" %}
 To do this, modify these properties in the `conf.json` file **for each ES component**. For example:
 
-```json
+[source,json]
+----
 "registry": {
   "class": "io.apiman.gateway.engine.es.ESRegistry",
   "config": {
@@ -55,7 +57,7 @@ To do this, modify these properties in the `conf.json` file **for each ES compon
     }
   }
 }
-```
+----
 <1> You could use Environment Variables or System Properties such as `${ES_HOST}` `${ES_PORT}`.
 
 {% sample lang="Servlet" %}

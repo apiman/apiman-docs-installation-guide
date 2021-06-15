@@ -1,4 +1,4 @@
-= Apiman Production Guide {{ book.apiman.version.release }}
+= Apiman Production Guide
 
 This guide should serve as a guide to manually deploy apiman into production.
 // However, we also offer a
@@ -13,7 +13,7 @@ Before we get started, it may be useful to know the overall architecture of apim
 Let's start with a picture!
 
 .Architecture of apiman
-image:images/apiman-architecture.png[Architecture of apiman]
+image::apiman-architecture.png[Architecture of apiman]
 
 The apiman solution is made up of a number of pieces, including:
 
