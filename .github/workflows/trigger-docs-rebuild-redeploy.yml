@@ -11,9 +11,7 @@ jobs:
   sendRebuildDispatchEvent:
     runs-on: ubuntu-latest
     steps:
-      - name: >- 
-          Send rebuild-apiman-antora-docs repository dispatch event to apiman/apiman-docs to 
-          trigger the Apiman Antora docs to be rebuilt and redeployed.
+      - name: Send rebuild-apiman-antora-docs repository dispatch event to apiman/apiman-docs to trigger the Apiman Antora docs to be rebuilt and redeployed.
         uses: peter-evans/slash-command-dispatch@v2.1.3
         with:
           token: $ {{ secrets.REPO_DISPATCH_ACCESS_TOKEN }}
