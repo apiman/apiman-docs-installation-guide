@@ -4,7 +4,7 @@
 
 The Gateway's REST API is what the API Manager invokes when publishing APIs and Client Apps to the Gateway footnote:[Some advanced configurations may interact directly with the Gateway API, whilst others may bypass it entirely by using polling, etc.].
 
-NOTE: The quickstart configurations should work out of the box, but they assume the locality of all components, including Keycloak. Real deployments will likely need to perform some reconfiguration.
+NOTE: The quickstart configurations should work out of the box, but they assume the locality of all components, including Keycloak.Real deployments will likely need to perform some reconfiguration.
 
 This REST API should be protected, often using BASIC authentication.
 
@@ -13,11 +13,9 @@ In other words, the Gateway REST API can only be invoked by a valid user, and th
 
 The Keycloak client for this API is `apiman-gateway-api`, and the default user and password are: *apimanager*/*apiman123!*
 
-{{ start }}++++
-{% method %}
 === Setup
 
-{% sample lang="Vert.x" %}
+==== Vert.x
 
 For the Vert.x gateway, the simplest way to retrieve the necessary configuration is to generate it from your Keycloak server footnote:[Normally located at `http://localhost:8080/auth` if you're using the quickstart]:
 
@@ -32,7 +30,7 @@ To retrieve it:
 
 The precise configuration you need to provide will vary depending upon your Keycloak setup.
 
-IMPORTANT: Due to a current limitation in the underlying OAuth2 library you may be required to provide a `credentials` section to avoid issues. You can change your client type to `confidential`, or simply provide a dummy `credentials` section.
+IMPORTANT: Due to a current limitation in the underlying OAuth2 library you may be required to provide a `credentials` section to avoid issues.You can change your client type to `confidential`, or simply provide a dummy `credentials` section.
 
 [source,json]
 ----
@@ -57,7 +55,7 @@ IMPORTANT: Due to a current limitation in the underlying OAuth2 library you may 
 }
 ----
 
-{% sample lang="Servlet" %}
+==== Servlet
 
 The API Gateway has a REST based configuration API which the API Manager uses when publishing APIs to it. This API is protected by Keycloak authentication. The configuration included in the apiman quickstart overlay ZIP assumes that the Keycloak server is local, so you’ll need to modify the standalone-apiman.xml file to point to the remote Keycloak instance.
 
@@ -73,11 +71,6 @@ Here is the relevant portion of the **standalone-apiman.xml** file that you must
   <principal-attribute>preferred_username</principal-attribute>
 </realm>
 ----
-
-{% endmethod %}
-{{ end }}++++
-
----
 
 == MTLS (Mutual SSL) Endpoint Security
 
@@ -216,9 +209,6 @@ for each node.
 Despite the initial administrative work setting up the CA and signing the certificates, this process is drastically less effort to maintain in large deployments.
 Only the trusted CA needs to be in the truststore, and any certificates signed by it are trusted by virtue of this.
 
-
-{{ start }}++++
-{% method %}
 === Make changes to configuration
 
 Once you have your Trust Store and Key Store properly configured, you must alter your configuration file.
@@ -229,9 +219,9 @@ Omit any properties which are not relevant to you, with the exception of `trustS
 CAUTION: The settings chosen here have significant security implications.
 Best practice guides are https://www.owasp.org/[available at OWASP].
 
-{% sample lang="Vert.x" %}
-.Conf JSON
+==== Vert.x
 
+.conf-es.json
 [source,json]
 ----
 {
@@ -273,9 +263,8 @@ Best practice guides are https://www.owasp.org/[available at OWASP].
 }
 ----
 
-{% sample lang="Servlet" %}
+==== Servlet
 .apiman.properties
-
 [source,properties]
 ----
 # ---------------------------------------------------------------------
@@ -305,8 +294,6 @@ apiman-gateway.connector-factory.tls.allowAnyHost=false
 # Whether self-signed certificates should be automatically trusted. *Use with great care.*
 apiman-gateway.connector-factory.tls.allowSelfSigned=false
 ----
-{% endmethod %}
-{{ end }}++++
 
 === (Re)start apiman
 
