@@ -86,12 +86,10 @@ a| Password for the TrustStore
 
 == Registry
 
-{{ start }}++++
-{% method %}
 
 Assign your chosen implementation as shown in the example, providing configuration.
 
-{% sample lang="Vert.x" %}
+=== Vert.x
 
 [source,json]
 ----
@@ -103,15 +101,12 @@ Assign your chosen implementation as shown in the example, providing configurati
 },
 ----
 
-{% sample lang="Servlet" %}
+=== Servlet
 
 [source,properties]
 ----
 apiman-gateway.registry=<IMPLEMENTATION>
 ----
-
-{% endmethod %}
-{{ end }}++++
 
 .Available implementations:
 [cols="2", options="header"]
@@ -173,12 +168,9 @@ a| Polling startup delay in seconds.
 
 == Metrics
 
-{{ start }}++++
-{% method %}
-
 Set the metrics implementation as shown.
 
-{% sample lang="Vert.x" %}
+=== Vert.x
 
 [source,json]
 ----
@@ -196,15 +188,12 @@ Set the metrics implementation as shown.
 }
 ----
 
-{% sample lang="Servlet" %}
+=== Servlet
 
 [source,properties]
 ----
 apiman-gateway.metrics=io.apiman.gateway.engine.es.ESMetrics
 ----
-
-{% endmethod %}
-{{ end }}++++
 
 .Available implementations:
 [cols="2", options="header"]
@@ -248,12 +237,9 @@ a| Maximum metrics batching size
 
 === Shared State
 
-{{ start }}++++
-{% method %}
-
 Set shared state implementation as shown.
 
-{% sample lang="Vert.x" %}
+=== Vert.x
 
 [source,json]
 ----
@@ -274,7 +260,7 @@ Set shared state implementation as shown.
 }
 ----
 
-{% sample lang="Servlet" %}
+=== Servlet
 
 [source,properties]
 ----
@@ -283,23 +269,15 @@ apiman-gateway.components.ISharedStateComponent.client.type=jest
 # <configuration options>
 ----
 
-{% endmethod %}
-{{ end }}++++
-
 ==== Required Parameters
 
 Refer to <<Global Required Parameters>>.
 
-// Rate Limiter
-
 === Rate Limiter
-
-{{ start }}++++
-{% method %}
 
 Set rate limiter implementation as shown.
 
-{% sample lang="Vert.x" %}
+=== Vert.x
 
 [source,json]
 ----
@@ -320,7 +298,7 @@ Set rate limiter implementation as shown.
 }
 ----
 
-{% sample lang="Servlet" %}
+=== Servlet
 
 [source,properties]
 ----
@@ -329,23 +307,15 @@ apiman-gateway.components.IRateLimiterComponent.client.type=jest
 # <configuration options>
 ----
 
-{% endmethod %}
-{{ end }}++++
-
 ==== Required Parameters
 
 Refer to <<Global Required Parameters>>.
 
-// Cache store component
-
 === Cache Store
-
-{{ start }}++++
-{% method %}
 
 Set cache store implementation as shown.
 
-{% sample lang="Vert.x" %}
+==== Vert.x
 
 [source,json]
 ----
@@ -366,7 +336,7 @@ Set cache store implementation as shown.
 }
 ----
 
-{% sample lang="Servlet" %}
+==== Servlet
 
 [source,properties]
 ----
@@ -374,9 +344,6 @@ apiman-gateway.components.IRateLimiterComponent=io.apiman.gateway.engine.es.ESRa
 apiman-gateway.components.IRateLimiterComponent.client.type=jest
 # <configuration options>
 ----
-
-{% endmethod %}
-{{ end }}++++
 
 ==== Required Parameters
 

@@ -1,12 +1,6 @@
 = Apiman Production Guide
 
 This guide should serve as a guide to manually deploy apiman into production.
-// However, we also offer a
-// simple shell script that can do much of the work for you.
-// It will likely always be a work in progress,
-// so many production deployers may not feel comfortable using it.
-// However, it can currently install the
-// following components:
 
 == Architecture Summary
 Before we get started, it may be useful to know the overall architecture of apiman.
