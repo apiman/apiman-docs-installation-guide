@@ -30,8 +30,6 @@
 **** xref:registries-and-components/jdbc.adoc[JDBC]
 **** xref:registries-and-components/elasticsearch.adoc[Elasticsearch]
 **** xref:registries-and-components/headless.adoc[Headless]
-**** xref:registries-and-components/3scale_immutable.adoc[3scale Immutable]
-
 
 *** xref:gateway/security.adoc[Security]
 **** xref:gateway/security.adoc#_gateway_api_authentication[Gateway API Authentication]

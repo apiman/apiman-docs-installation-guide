@@ -116,41 +116,4 @@ Then, modify the `registry.config` section of the config:
 <1> A file, http or https URI to a JSON file containing the registry configuration, as detailed in link:../registries-and-components/headless.adoc#_configuration_file_format[Configuration File Format].
 <2> Authentication method to retrieve the file, as detailed in link:../registries-and-components/headless.adoc#_authentication[Authentication].
 
-NOTE: Refer to the link:../registries-and-components/headless.adoc[Elasticsearch headless registry documentation] for a complete list of configuration options..
-
-=== 3scale Immutable
-
-The 3scale immutable registry config `conf-3scale-immutable-es.json` uses a https://www.3scale.net/[3scale] backend to derive its configuration, rather than the Apiman manager. It works with both 3scale SaaS and 3scale on-prem.
-
-This config is _immutable_; configuration is loaded only once at startup, and a restart is required to reflect new changes.
-
-This initial 3scale integration is on the apiman side only; applying policies requires a separate JSON overlay file to be provided and is not yet stored in the 3scale backend.
-
-. Alter your configuration as detailed in the <<Elasticsearch>> section. This is used for for apiman metrics, distributed state, caching, etc.
-. Refer to the link:../registries-and-components/3scale_immutable.adoc[3scale registry documentation] to understand the mandatory and other configuration options available for the 3scale registry.
-. Optionally, you can provide a JSON overlay to apply apiman policies to your 3scale APIs. In future we hope to provide a cohesive integration of this feature.
-. After loading your APIs will be available at: `/services/<API SYSTEM NAME>`. For example, `http://localhost:8081/services/mycoolapi`.
-
-.Example
-```json
-"registry": {
-  "class": "io.apiman.gateway.engine.threescale.ThreeScaleImmutableRegistry",
-  "config": {
-    "accessToken": "<YOUR ACCESS TOKEN>", // <1>
-    "apiEndpoint": "https://<YOUR-USERNAME>-admin.3scale.net/", // <2>
-    "backendEndpoint": "https://su1.3scale.net:443", // <3>
-    "policyConfig": {
-      "overlayUri": "file:///my/overlay.json", // <4>
-      // For HTTP(S), BASIC and OAuth2 are supported. Refer to docs for more info.
-      "auth": "NONE" // <5>
-    },
-    "defaultOrgName": "${3scale.defaultOrgName}",
-    "defaultVersion": "${3scale.defaultVersion}"
-  }
-}
-```
-<1> https://support.3scale.net/docs/accounts/tokens[3scale access token].
-<2> API endpoint, if SaaS is usually the `https://<username>-admin.3scale.net` provided.
-<3> 3scale backend to do auth and reports. By default this is the SaaS endpoint, but if you are deploying on-prem you should alter this.
-<4> Apiman policy overlay file, can be HTTP, HTTPS or File.
-<5> If using HTTP/S auth can be provided.
+NOTE: Refer to the link:../registries-and-components/headless.adoc[Elasticsearch headless registry documentation] for a complete list of configuration options.
