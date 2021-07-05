@@ -1,6 +1,6 @@
 name: installation-guide
 title: Apiman Installation Guide
-version: latest
+version: 1.5.7.Final
 start_page: ROOT:index.adoc
 nav:
   - modules/ROOT/nav.adoc
