@@ -66,19 +66,19 @@ a| Username if using an auth mechanism like SearchGuard, Shield, etc
 | String
 a| Password if using an auth mechanism like SearchGuard, Shield, etc
 
-| client.keystore
+| client.keystore.path
 | String
 a| Path to the client KeyStore
 
-| client.keystore-password
+| client.keystore.password
 | String
 a| Password for the client KeyStore
 
-| client.truststore
+| client.truststore.path
 | String
 a| Path to the TrustStore
 
-| client.truststore-password
+| client.truststore.password
 | String
 a| Password for the TrustStore
 
@@ -89,6 +89,10 @@ a| Trust self-signed certificates
 | client.allowAnyHost
 | Boolean
 a| Disbale hostname verification checks
+
+| client.pollingTime
+| String
+a| The timespan to try polling for elasticsearch
 
 |===
 
