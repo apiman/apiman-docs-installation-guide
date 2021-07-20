@@ -17,7 +17,7 @@ NOTE: Many of the shipped configurations make use of variable substitution to re
 | String
 a| The Elasticsearch client type:
 
-*Default Value*: jest
+*Default Value*: es
 
 | client.protocol
 | String
@@ -66,7 +66,7 @@ a| Username if using an auth mechanism like SearchGuard, Shield, etc
 | String
 a| Password if using an auth mechanism like SearchGuard, Shield, etc
 
-| client.keystore
+| client.keystore.path
 | String
 a| Path to the client KeyStore
 
@@ -74,13 +74,25 @@ a| Path to the client KeyStore
 | String
 a| Password for the client KeyStore
 
-| client.truststore
+| client.truststore.path
 | String
 a| Path to the TrustStore
 
 | client.truststore.password
 | String
 a| Password for the TrustStore
+
+| client.allowSelfSigned
+| Boolean
+a| Trust self-signed certificates
+
+| client.allowAnyHost
+| Boolean
+a| Disbale hostname verification checks
+
+| client.pollingTime
+| String
+a| The timespan to try polling for elasticsearch
 
 |===
 
@@ -178,7 +190,7 @@ Set the metrics implementation as shown.
   "class": "io.apiman.gateway.engine.es.ESMetrics",
   "config": {
     "client": {
-       "type": "jest",
+       "type": "es",
        "protocol": "${apiman.es.protocol}",
        "host": "${apiman.es.host}",
        "port": "${apiman.es.port}"
@@ -249,7 +261,7 @@ Set shared state implementation as shown.
     "class": "io.apiman.gateway.engine.es.ESSharedStateComponent",
     "config": {
       "client": {
-        "type": "jest",
+        "type": "es",
         "protocol": "${apiman.es.protocol}",
         "host": "${apiman.es.host}",
         "port": "${apiman.es.port}"
@@ -265,7 +277,7 @@ Set shared state implementation as shown.
 [source,properties]
 ----
 apiman-gateway.components.ISharedStateComponent=io.apiman.gateway.engine.es.ESSharedStateComponent
-apiman-gateway.components.ISharedStateComponent.client.type=jest
+apiman-gateway.components.ISharedStateComponent.client.type=es
 # <configuration options>
 ----
 
@@ -287,7 +299,7 @@ Set rate limiter implementation as shown.
     "class": "io.apiman.gateway.engine.es.ESRateLimiterComponent",
     "config": {
       "client": {
-        "type": "jest",
+        "type": "es",
         "protocol": "${apiman.es.protocol}",
         "host": "${apiman.es.host}",
         "port": "${apiman.es.port}"
@@ -303,7 +315,7 @@ Set rate limiter implementation as shown.
 [source,properties]
 ----
 apiman-gateway.components.IRateLimiterComponent=io.apiman.gateway.engine.es.ESRateLimiterComponent
-apiman-gateway.components.IRateLimiterComponent.client.type=jest
+apiman-gateway.components.IRateLimiterComponent.client.type=es
 # <configuration options>
 ----
 
@@ -325,7 +337,7 @@ Set cache store implementation as shown.
     "class": "io.apiman.gateway.engine.es.ESCacheStoreComponent",
     "config": {
       "client": {
-        "type": "jest",
+        "type": "es",
         "protocol": "${apiman.es.protocol}",
         "host": "${apiman.es.host}",
         "port": "${apiman.es.port}"
@@ -341,7 +353,7 @@ Set cache store implementation as shown.
 [source,properties]
 ----
 apiman-gateway.components.IRateLimiterComponent=io.apiman.gateway.engine.es.ESRateLimiterComponent
-apiman-gateway.components.IRateLimiterComponent.client.type=jest
+apiman-gateway.components.IRateLimiterComponent.client.type=es
 # <configuration options>
 ----
 
