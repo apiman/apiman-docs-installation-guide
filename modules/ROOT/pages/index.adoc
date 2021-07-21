@@ -5,15 +5,13 @@ This guide provides detailed information about how to install and configure apim
 == Switching formats
 
 On some pages different configuration instructions and examples are available for each platform.
-You can switch between the platforms by clicking the tabs at the top right of the page.
-
-For example, on this page you can select *Vert.x* or *Servlet*, and will see different text in the example block.
+They merely encode the same information using different formats.
 
 === Vert.x
-Your configuration file for Vert.x is *`conf.json`*!
+Your configuration file for Vert.x is your chosen `conf.json` file, so refer to the JSON examples.
 
 === Servlet
-Your configuration file for Servlet is *`apiman.properties`*!
+Your configuration file for Servlet is *`apiman.properties`*!, so refer to the properties examples.
 
 == Understanding syntax
 
