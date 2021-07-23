@@ -9,7 +9,7 @@ image::manage-gateways.png[]
 
 * Add a new gateway or modify an existing one:
 
-TIP: If you're using the standard Apiman Manager distro with Keycloak, then the default username and password will be: *apimanager*/*apiman123!*
+TIP: If you're using the standard Apiman Manager distro with Keycloak, then the default username and password will be: `apimanager`/`apiman123!`
 
 image::new-gateway.png[]
 
