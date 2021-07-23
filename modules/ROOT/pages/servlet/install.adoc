@@ -33,7 +33,7 @@ Once both files have been downloaded, simply unpack both in the same location.
 ----
 unzip wildfly-{wildfly-version}.zip
 
-unzip -o apiman-distro-wildfly-{apiman-version-release}-overlay.zip -d {wildfly-version}
+unzip -o apiman-distro-wildfly-{apiman-version-release}-overlay.zip -d wildfly-{wildfly-version}
 ----
 
 === Run WildFly
