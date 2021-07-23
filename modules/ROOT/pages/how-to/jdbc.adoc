@@ -2,7 +2,7 @@
 
 Sometimes you just don't want to use Elasticsearch to store your metrics, even though it's really good at it.
 We typically recommend that you stick with ES if possible, because it gives you the option of installing Kibana, opening up a whole new world of advanced analytics over the metric data.
-However, if all you want is the basic graphs/charts shown in the apiman UI, you can easily switch to storing metric data in a database.
+However, if all you want is the basic graphs/charts shown in the Apiman UI, you can easily switch to storing metric data in a database.
 
 == High Level Overview
 
@@ -26,7 +26,7 @@ TIP: Don't forget to also deploy the appropriate JDBC driver JAR for your databa
 == Enable the API Gateway JDBC initializer
 
 Of course, there is a database schema that must be installed in your database, which creates the tables and indexes needed.
-This schema can be automatically created by apiman the first time it is used.  To enable this feature, you must configure the API Gateway JDBC initializer in the *apiman.properties* file, like so:
+This schema can be automatically created by Apiman the first time it is used.  To enable this feature, you must configure the API Gateway JDBC initializer in the *apiman.properties* file, like so:
 
 [source,properties]
 ----
@@ -39,7 +39,7 @@ apiman-gateway.initializers.jdbc.datasource.jndi-location=${apiman.jdbc.datasour
 apiman-gateway.initializers.jdbc.datasource.type=mysql5
 ----
 
-This initializer will run whenever apiman starts up, and it will install the API Gateway schema/DDL into the configured database so that the metrics JDBC implementations can function properly.
+This initializer will run whenever Apiman starts up, and it will install the API Gateway schema/DDL into the configured database so that the metrics JDBC implementations can function properly.
 
 Note that you will need to set the correct value of *apiman-gateway.initializers.jdbc.datasource.type* based on the specific database you will be using.
 Possible values for this property include:
@@ -52,7 +52,7 @@ Possible values for this property include:
 
 == Configure the API Gateway metrics provider to be JDBC
 
-Next, you just need to tell apiman that you want to use JDBC instead of Elasticsearch for the storage of metrics data.
+Next, you just need to tell Apiman that you want to use JDBC instead of Elasticsearch for the storage of metrics data.
 This can be done again by setting a specific property in *apiman.properties*:
 
 [source,properties]

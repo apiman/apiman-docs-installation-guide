@@ -291,7 +291,7 @@ Broadly, it consists of:
 * A `clients` array containing your Clients.
 
 .Example
-[source,json5]
+[source,json5,subs=attributes+]
 ----
 {
     "apis": [{
@@ -308,7 +308,7 @@ Broadly, it consists of:
             // Plugin's JSON config.
            "policyJsonConfig": "{ \"responseCode\" : \"403\", \"ipList\" : [ \"1.2.3.4\" ] }", // <4>
            // Plugin coordinates.
-           "policyImpl": "plugin:io.apiman.plugins:apiman-plugins-url-whitelist-policy:{{ book.apiman.version.release }}:war/io.apiman.gateway.engine.policies.IPWhitelistPolicy" // <5>
+           "policyImpl": "plugin:io.apiman.plugins:apiman-plugins-url-whitelist-policy:{apiman-version-release}:war/io.apiman.gateway.engine.policies.IPWhitelistPolicy" // <5>
        }]
     }],
     "clients": [{
@@ -388,7 +388,7 @@ And escaped it, before inserting into `policyJsonConfig`: footnote:[One might wo
 "policyJsonConfig": "{\"addHeaders\":[{\"headerName\":\"X-Clacks-Overhead\",\"headerValue\":\"GNU Terry Pratchett\",\"valueType\":\"String\",\"applyTo\":\"Request\",\"overwrite\":true,\"resolvedHeaderValue\":\"GNU Terry Pratchett\"}],\"stripHeaders\":[]}"
 ----
 
-TIP: For more information, refer to the http://www.apiman.io/latest/developer-guide.html#_policy_definition[plugin developer's guide].
+TIP: For more information, refer to the xref:core:development:Plugins.adoc[plugin developer's guide].
 
 === Policy Implementation URI
 
@@ -411,11 +411,11 @@ plugin:${project.groupId}:${project.artifactId}:${project.version}:${project.pac
 
 Which then informs us that the URI is:
 
-[source,text]
+[source,text,subs=attributes+]
 ----
-plugin:io.apiman.plugins:apiman-plugins-simple-header-policy:{{ book.apiman.version.release }}:war/io.apiman.plugins.simpleheaderpolicy.SimpleHeaderPolicy
+plugin:io.apiman.plugins:apiman-plugins-simple-header-policy:{apiman-version-release}:war/io.apiman.plugins.simpleheaderpolicy.SimpleHeaderPolicy
 ----
 
 Note that the classifier is almost certainly `war`.
 
-TIP: For more information, refer to the http://www.apiman.io/latest/developer-guide.html#_policy_definition[plugin developer's guide].
+TIP: For more information, refer to the xref:core:development:Plugins.adoc[plugin developer's guide].

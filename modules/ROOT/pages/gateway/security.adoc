@@ -57,7 +57,7 @@ IMPORTANT: Due to a current limitation in the underlying OAuth2 library you may 
 
 ==== Servlet
 
-The API Gateway has a REST based configuration API which the API Manager uses when publishing APIs to it. This API is protected by Keycloak authentication. The configuration included in the apiman quickstart overlay ZIP assumes that the Keycloak server is local, so you’ll need to modify the standalone-apiman.xml file to point to the remote Keycloak instance.
+The API Gateway has a REST based configuration API which the API Manager uses when publishing APIs to it. This API is protected by Keycloak authentication. The configuration included in the Apiman quickstart overlay ZIP assumes that the Keycloak server is local, so you’ll need to modify the standalone-apiman.xml file to point to the remote Keycloak instance.
 
 Here is the relevant portion of the **standalone-apiman.xml** file that you must change:
 
@@ -74,7 +74,7 @@ Here is the relevant portion of the **standalone-apiman.xml** file that you must
 
 == MTLS (Mutual SSL) Endpoint Security
 
-If you wish to use mutual SSL to ensure endpoint security between the apiman API Gateway and your back-end API(s), you must update some settings.
+If you wish to use mutual SSL to ensure endpoint security between the Apiman API Gateway and your back-end API(s), you must update some settings.
 
 === High Level Overview
 
@@ -317,12 +317,12 @@ apiman-gateway.connector-factory.tls.allowAnyHost=false
 apiman-gateway.connector-factory.tls.allowSelfSigned=false
 ----
 
-=== (Re)start apiman
+=== (Re)start Apiman
 
-If apiman was running, you should stop it now.
-Once everything is shutdown, and the changes to apiman.properties have been made, go ahead and start apiman up again.
+If Apiman was running, you should stop it now.
+Once everything is shutdown, and the changes to `apiman.properties` have been made, go ahead and start Apiman up again.
 
 === Configure one or more API to use MTLS
 
-Now that the apiman MTLS feature has been configured, use the Manager UI to enable MTLS in one or more API.
+Now that the Apiman MTLS feature has been configured, use the Manager UI to enable MTLS in one or more API.
 This can be done on the "Implementation" tab when you are configuring the details of your back-end endpoint (URL, type, and endpoint security).
