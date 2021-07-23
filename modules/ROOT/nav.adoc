@@ -5,8 +5,8 @@
 
 * Platforms
 
-** xref:servlet/install.adoc[WildFly]
-**** xref:servlet/install.adoc#_installing_using_docker[Docker]
+** xref:servlet/wildfly.adoc[WildFly]
+**** xref:servlet/wildfly.adoc#_installing_using_docker[Docker]
 **** xref:servlet/config-guide.adoc[Config Guide]
 
 ** xref:vertx/download.adoc[Vert.x Gateway]
