@@ -1,8 +1,8 @@
 = Apiman Quickstart
 Marc Savy <marc@rhymewithgravy.com>
-:servlet-mgr: link:servlet/install.adoc
-:vertx-gw: link:vertx/download.adoc
-:gw-install-walkthrough: link:vertx/install.adoc
+:servlet-mgr: xref:servlet/install.adoc
+:vertx-gw: xref:vertx/download.adoc
+:gw-install-walkthrough: xref:vertx/install.adoc
 :ui-footnote: footnote:[Typically this will be http://localhost:8080/apimanui]
 
 
