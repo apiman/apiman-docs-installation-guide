@@ -50,6 +50,6 @@ Make sure you know the full public URL of your Keycloak server and add it to the
 </realm>
 ----
 
-Finally, if you are using a standalone gateway, you should also configure the link:../gateway/security.adoc#setup[Gateway API] to point to the same Keycloak instance.
+Finally, if you are using a standalone gateway, you should also configure the xref:gateway/security.adoc#_setup[Gateway API] to point to the same Keycloak instance.
 
 TIP: If you manually created the apiman realm in Keycloak, you will also need to copy the realm's public key into <realm-public-key> above.

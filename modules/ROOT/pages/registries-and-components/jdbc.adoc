@@ -1,6 +1,5 @@
 = JDBC Registry & Components
 Marc Savy <marc@rhymewithgravy.com>
-:toc:
 
 NOTE: These components are presently optimised for Servlet editions of the gateway, whilst they will work with Vert.x the experience will likely be less performant than normal.
 

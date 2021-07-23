@@ -3,22 +3,21 @@
 ** xref:index.adoc[Introduction]
 ** xref:quickstart.adoc[Quickstart]
 
-* Gateway
-** Vertx
+* Platforms
 
-*** xref:vertx/download.adoc[Vert.x Gateway]
-**** xref:vertx/download.adoc#_download_launch[Download & Launch]
-**** xref:vertx/download.adoc#_configurations[Configurations]
-***** xref:vertx/download.adoc#_elasticsearch[Elasticsearch]
-***** xref:vertx/download.adoc#_headless_elasticsearch[Headless ES]
-**** xref:vertx/install.adoc[Installation Walkthrough]
-
-*** xref:vertx/config-guide.adoc[Config Guide]
-
-** Servlet
-*** xref:servlet/install.adoc[EAP & WildFly]
+** xref:servlet/install.adoc[WildFly]
 **** xref:servlet/install.adoc#_installing_using_docker[Docker]
 **** xref:servlet/config-guide.adoc[Config Guide]
+
+** xref:vertx/download.adoc[Vert.x Gateway]
+*** xref:vertx/download.adoc#_download_launch[Download & Launch]
+*** xref:vertx/download.adoc#_configurations[Configurations]
+**** xref:vertx/download.adoc#_elasticsearch[Elasticsearch]
+**** xref:vertx/download.adoc#_headless_elasticsearch[Headless ES]
+*** xref:vertx/install.adoc[Installation Walkthrough]
+*** xref:vertx/config-guide.adoc[Config Guide]
+
+* Gateway
 
 ** Registries and Components
 

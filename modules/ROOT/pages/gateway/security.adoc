@@ -4,7 +4,7 @@
 
 The Gateway's REST API is what the API Manager invokes when publishing APIs and Client Apps to the Gateway footnote:[Some advanced configurations may interact directly with the Gateway API, whilst others may bypass it entirely by using polling, etc.].
 
-NOTE: The quickstart configurations should work out of the box, but they assume the locality of all components, including Keycloak.Real deployments will likely need to perform some reconfiguration.
+NOTE: The quickstart configurations should work out of the box, but they assume the locality of all components, including Keycloak. Real deployments will likely need to perform some reconfiguration.
 
 This REST API should be protected, often using BASIC authentication.
 
@@ -23,16 +23,16 @@ The gateway accepts Keycloak's generated JSON, allowing you to paste your chosen
 
 To retrieve it:
 
-. Log into Keycloak (e.g. http://localhost:8080/auth).
+. Log into Keycloak (e.g http://localhost:8080/auth).
 . `Clients` -> `apiman-gateway-api` -> `Installation`.
 . Select `Keycloak OIDC JSON` for `Format Option`.
 . Copy the contents and merge into the `config` selection where indicated below.
 
 The precise configuration you need to provide will vary depending upon your Keycloak setup.
 
-IMPORTANT: Due to a current limitation in the underlying OAuth2 library you may be required to provide a `credentials` section to avoid issues.You can change your client type to `confidential`, or simply provide a dummy `credentials` section.
+IMPORTANT: Due to a current limitation in the underlying OAuth2 library you may be required to provide a `credentials` section to avoid issues. You can change your client type to `confidential`, or simply provide a dummy `credentials` section.
 
-[source,json]
+[source,json5]
 ----
 "auth": {
   "type": "keycloak",
@@ -80,7 +80,7 @@ If you wish to use mutual SSL to ensure endpoint security between the apiman API
 
 . Create Trust and Key Stores
 . Make changes to your config file
-. (Re)start apiman!
+. (Re)start Apiman!
 . Configure one or more API to use MTLS
 
 === Create Trust and Key Stores
@@ -95,7 +95,7 @@ In a production system, these keys should be issued by a trusted certificate aut
 
 A *truststore* typically contains a set of certificate authorities which are trusted issuers.
 Therefore, any certificate signed by the trusted CA would be trusted by the gateway.
-If no truststore is explicitly provided to apiman the
+If no truststore is explicitly provided to Apiman the
 https://docs.oracle.com/javase/7/docs/technotes/tools/solaris/keytool.html#cacerts[default trusted certificates] provided by the JVM will be used.
 A typical use-case would be that an organization's internal signing authority is marked as trusted within in the truststore, and as the authority has been used to sign the certificate material in the keystores, they will mutually trust each other by virtue of the issuer.
 
@@ -137,43 +137,64 @@ In our hypothetical development setup, let's imagine we have two APIs and a sing
 .Walkthrough
 * Generate a keystore and export a certificate for each component:
 
-    ** Gateway:
+** Gateway:
 
-      keytool -genkey -keyalg RSA -keystore gateway_ks.jks -alias gateway
-      keytool -export -alias gateway -file gateway.cer -keystore gateway_ks.jks
+[source,bash]
+----
+keytool -genkey -keyalg RSA -keystore gateway_ks.jks -alias gateway
+keytool -export -alias gateway -file gateway.cer -keystore gateway_ks.jks
+----
 
-    ** API A:
+** API A:
 
-      keytool -genkey -keyalg RSA -keystore api_a_ks.jks -alias api_a
-      keytool -export -alias api_a -file api_a.cer -keystore api_a_ks.jks
+[source,bash]
+----
+keytool -genkey -keyalg RSA -keystore api_a_ks.jks -alias api_a
+keytool -export -alias api_a -file api_a.cer -keystore api_a_ks.jks
+----
 
-    ** API B:
+** API B:
 
-      keytool -genkey -keyalg RSA -keystore api_b_ks.jks -alias api_b
-      keytool -export -alias api_b -file api_b.cer -keystore api_b_ks.jks
+[source,bash]
+----
+keytool -genkey -keyalg RSA -keystore api_b_ks.jks -alias api_b
+keytool -export -alias api_b -file api_b.cer -keystore api_b_ks.jks
+----
 
 * Import certificates into appropriate trust stores:
 
-  ** Gateway:
+** Gateway:
 
-    keytool -import -file api_a.cer -alias api_a -keystore gateway_ts.jks
-    keytool -import -file api_b.cer -alias api_b -keystore gateway_ts.jks
+[source,bash]
+----
+keytool -import -file api_a.cer -alias api_a -keystore gateway_ts.jks
+keytool -import -file api_b.cer -alias api_b -keystore gateway_ts.jks
+----
 
-  ** API A:
+** API A:
 
-    keytool -import -file gateway.cer -alias gateway -keystore api_a_ts.jks
+[source,bash]
+----
+keytool -import -file gateway.cer -alias gateway -keystore api_a_ts.jks
+----
 
-  ** API B:
+** API B:
 
-    keytool -import -file gateway.cer -alias gateway -keystore api_b_ts.jks
+[source,bash]
+----
+keytool -import -file gateway.cer -alias gateway -keystore api_b_ts.jks
+----
 
 Now simply set the appropriate paths to the keystore and truststore in `apiman.properties` for the gateway, and set up your APIs with their respective truststores and keystores (the specifics of how to do this will depend on your API's implementation).
 
 We will also set the following in `apiman.properties` to make our development easier:
 
-  apiman-gateway.connector-factory.tls.allowAnyHost=true
+[source,properties]
+----
+apiman-gateway.connector-factory.tls.allowAnyHost=true
+----
 
-When you add your MTLS protected APIs into apiman, you should set the `API Security` field to `MTLS/Two-Way-SSL`.
+When you add your MTLS protected APIs into Apiman via the web application, you should set the `API Security` field to `MTLS/Two-Way-SSL`.
 
 ==== MTLS via Custom Certificate Authority
 
@@ -214,7 +235,7 @@ Only the trusted CA needs to be in the truststore, and any certificates signed b
 Once you have your Trust Store and Key Store properly configured, you must alter your configuration file.
 Here is a summary of the properties:
 
-Omit any properties which are not relevant to you, with the exception of `trustStore`, which is mandatory for MTLS.
+Omit any properties which are not relevant to you, except `trustStore`, which is mandatory for MTLS.
 
 CAUTION: The settings chosen here have significant security implications.
 Best practice guides are https://www.owasp.org/[available at OWASP].
@@ -222,7 +243,7 @@ Best practice guides are https://www.owasp.org/[available at OWASP].
 ==== Vert.x
 
 .conf-es.json
-[source,json]
+[source,json5]
 ----
 {
   "connector-factory": {
@@ -264,6 +285,7 @@ Best practice guides are https://www.owasp.org/[available at OWASP].
 ----
 
 ==== Servlet
+
 .apiman.properties
 [source,properties]
 ----
