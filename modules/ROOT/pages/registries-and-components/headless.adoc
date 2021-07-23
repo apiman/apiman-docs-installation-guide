@@ -1,8 +1,7 @@
 = Headless Registry
 Marc Savy <marc@rhymewithgravy.com>
-:toc:
 
-The apiman headless registry uses an immutable registry to load its configuration from a local or remote JSON file.
+The Apiman headless registry uses an immutable registry to load its configuration from a local or remote JSON file.
 
 .Available implementations:
 [cols="2", options="header"]
@@ -20,7 +19,7 @@ NOTE: This registry is optimised for the Vert.x gateway implementation. Although
 
 == Example
 
-[source,json]
+[source,json5]
 ----
 "registry": {
   "class": "io.apiman.gateway.engine.vertx.polling.URILoadingRegistry",
@@ -87,7 +86,7 @@ a| A password. Consider using variable substitution.
 |===
 
 .Example
-[source,json]
+[source,json5]
 ----
 "config": {
   "configUri": "https://example.org/reg-config.json",
@@ -114,7 +113,7 @@ The precise configuration you need to provide will vary depending upon your Keyc
 IMPORTANT: Due to a current limitation in the underlying OAuth2 library you may be required to provide a `credentials` section to avoid issues. You can change your client type to `confidential`, or simply provide a dummy `credentials` section.
 
 .Example
-[source,json]
+[source,json5]
 ----
 "config": {
   "auth": "KeycloakOAuth2",
@@ -292,7 +291,7 @@ Broadly, it consists of:
 * A `clients` array containing your Clients.
 
 .Example
-[source,json]
+[source,json5]
 ----
 {
     "apis": [{
@@ -366,7 +365,7 @@ For example, the Simple Header Policy's https://github.com/apiman/apiman-plugins
 In the following sample we've built a JSON configuration corresponding to the schema.
 
 .Example Simple Header Policy config
-[source,json]
+[source,json5]
 ----
 {
   "addHeaders": [{
@@ -384,7 +383,7 @@ In the following sample we've built a JSON configuration corresponding to the sc
 And escaped it, before inserting into `policyJsonConfig`: footnote:[One might wonder why JSON is escaped inside of JSON. The field name is somewhat of a misnomer, it is intended to be generic and could be XML, YAML, etc.]
 
 .Example Simple Header Policy in policyJsonConfig
-[source,json]
+[source,text]
 ----
 "policyJsonConfig": "{\"addHeaders\":[{\"headerName\":\"X-Clacks-Overhead\",\"headerValue\":\"GNU Terry Pratchett\",\"valueType\":\"String\",\"applyTo\":\"Request\",\"overwrite\":true,\"resolvedHeaderValue\":\"GNU Terry Pratchett\"}],\"stripHeaders\":[]}"
 ----
@@ -398,21 +397,21 @@ You can find this in the plugin's `policyDef.json` file, usually located in `src
 
 The format is:
 
-[source]
+[source,text]
 ----
 plugin:{pluginGroupId}:{pluginArtifactId}:{pluginVersion}:{pluginType}/{fullyQualifiedClassname}
 ----
 
 In our example of the Simple Header Policy it's:
 
-[source]
+[source,text]
 ----
 plugin:${project.groupId}:${project.artifactId}:${project.version}:${project.packaging}/io.apiman.plugins.simpleheaderpolicy.SimpleHeaderPolicy
 ----
 
 Which then informs us that the URI is:
 
-[source]
+[source,text]
 ----
 plugin:io.apiman.plugins:apiman-plugins-simple-header-policy:{{ book.apiman.version.release }}:war/io.apiman.plugins.simpleheaderpolicy.SimpleHeaderPolicy
 ----
