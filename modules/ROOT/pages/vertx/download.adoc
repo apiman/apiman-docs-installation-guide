@@ -1,5 +1,4 @@
 = Apiman Vert.x Gateway
-:toc:
 
 The apiman Vert.x distro is our premier gateway offering and should provide the best performance characteristics of any of our platforms.
 
