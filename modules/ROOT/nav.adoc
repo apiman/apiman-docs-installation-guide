@@ -11,16 +11,12 @@
 **** xref:vertx/download.adoc#_configurations[Configurations]
 ***** xref:vertx/download.adoc#_elasticsearch[Elasticsearch]
 ***** xref:vertx/download.adoc#_headless_elasticsearch[Headless ES]
-***** xref:vertx/download.adoc#_3scale_immutable[3scale Immutable]
 **** xref:vertx/install.adoc[Installation Walkthrough]
 
 *** xref:vertx/config-guide.adoc[Config Guide]
 
 ** Servlet
 *** xref:servlet/install.adoc[EAP & WildFly]
-**** xref:servlet/install.adoc#_installing_in_wildfly_10[WildFly 10]
-**** xref:servlet/install.adoc#_installing_in_wildfly_9[WildFly 9]
-**** xref:servlet/install.adoc#_installing_in_jboss_eap_7[EAP 7]
 **** xref:servlet/install.adoc#_installing_using_docker[Docker]
 **** xref:servlet/config-guide.adoc[Config Guide]
 
@@ -50,7 +46,7 @@
 
 * How to
 ** xref:how-to/elasticsearch.adoc#_use_elasticsearch_instead_of_an_rdbms[Elasticsearch Instead of RDBMS]
-** xref:how-to/elasticsearch.adoc#_use_standalone_elasticsearch_instance_cluster[Standalone Elasticsearch Cluster]
+** xref:how-to/elasticsearch.adoc#_use_standalone_elasticsearch_instancecluster[Standalone Elasticsearch Cluster]
 ** xref:how-to/security.adoc#_external_keycloak_authentication[External Keycloak Authentication]
 ** xref:how-to/jdbc.adoc[SQL Metrics Instead of Elasticsearch]
 
