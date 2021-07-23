@@ -78,4 +78,4 @@ apiman-manager.metrics.datasource.jndi-location=${apiman.jdbc.datasource.jndi-lo
 ----
 
 TIP: If you are deploying the API Manager and API Gateway separately (on different nodes), make sure you edit the correct `apiman.properties` files on the correct nodes.
-Feel free to make all of the above changes to all your nodes, since any properties in `apiman.properties` will be ignored on nodes where certain components are excluded.
+Feel free to make all the above changes to all your nodes, since any properties in `apiman.properties` will be ignored on nodes where certain components are excluded.

@@ -1,6 +1,5 @@
 = Elasticsearch Registry & Components
 Marc Savy <marc@rhymewithgravy.com>
-:toc:
 
 NOTE: Many of the shipped configurations make use of variable substitution to reduce repetition.
 
@@ -103,7 +102,7 @@ Assign your chosen implementation as shown in the example, providing configurati
 
 === Vert.x
 
-[source,json]
+[source,json5]
 ----
 "registry": {
   "class": "io.apiman.gateway.engine.es.PollCachingESRegistry",
@@ -184,7 +183,7 @@ Set the metrics implementation as shown.
 
 === Vert.x
 
-[source,json]
+[source,json5]
 ----
 "metrics": {
   "class": "io.apiman.gateway.engine.es.ESMetrics",
@@ -253,7 +252,7 @@ Set shared state implementation as shown.
 
 === Vert.x
 
-[source,json]
+[source,json5]
 ----
 "components": {
   // Shared State Component Settings
@@ -291,7 +290,7 @@ Set rate limiter implementation as shown.
 
 === Vert.x
 
-[source,json]
+[source,json5]
 ----
 "components": {
   // Rate Limiter Component Settings
@@ -329,7 +328,7 @@ Set cache store implementation as shown.
 
 ==== Vert.x
 
-[source,json]
+[source,json5]
 ----
 "components": {
   // Cache Store Component Settings

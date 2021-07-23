@@ -20,7 +20,7 @@ This quickstart separates those elements, with the Gateway implemented in Vert.x
 
 They are linked together in a trivial few steps.
 
-. Select and download a {servlet-mgr}[Servlet all-in-one distro] of apiman (e.g. WildFly, EAP, Tomcat).
+. Select and download a {servlet-mgr}[Servlet all-in-one distro] of apiman (e.g. WildFly, Tomcat).
     * Optional: Before launching, remove `apiman-gateway.war` from the deployment.
 . Download the {vertx-gw}[Vert.x distro] and launch using the `conf-es.json` configuration.
 . Log into the apiman UI {ui-footnote} as an admin user (default: admin/admin123!).

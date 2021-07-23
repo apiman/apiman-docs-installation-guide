@@ -25,4 +25,4 @@ The shared state component is used by apiman policies to share interesting state
 Apiman has a metrics engine that collects a variety of valuable data before passing it to a pluggable metrics component.
 This affords all metrics implementations complete control in processing and extruding data.
 
-For example,  link:../registries-and-components/elasticsearch.adoc#_metrics[Elasticsearch] and InfluxDB and JDBC are available, amongst others.
+For example,  xref:registries-and-components/elasticsearch.adoc#_metrics[Elasticsearch] and InfluxDB and JDBC are available, amongst others.

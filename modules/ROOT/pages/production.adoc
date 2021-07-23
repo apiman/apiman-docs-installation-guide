@@ -64,4 +64,4 @@ be something like:
 That will allow users of the API Manager UI to actually log in and be properly redirected back to the
 application!
 
-NOTE: If you're behind load-balancers, you may need to ensure https://keycloak.github.io/docs/userguide/keycloak-server/html/server-installation.html#proxy-address-forwarding[X-Forwarded-For] is set properly.
+NOTE: If you're behind load-balancers, you may need to ensure https://www.keycloak.org/docs/latest/server_installation/#_setting-up-a-load-balancer-or-proxy[X-Forwarded-For] is set properly.
