@@ -14,14 +14,14 @@ Once both are downloaded, it's a simple matter of unpacking both into the same l
 
 First you will need to download both WildFly and Apiman:
 
-* http://download.jboss.org/wildfly/10.1.0.Final/{wildfly-version}.zip[Download WildFly]
+* http://download.jboss.org/wildfly/{wildfly-version}/wildfly-{wildfly-version}.zip[Download WildFly]
 * http://downloads.jboss.org/apiman/{apiman-version-release}/apiman-distro-wildfly-{apiman-version-release}-overlay.zip[Download Apiman {apiman-version-release}]
 
 [source,bash,subs=attributes+]
 ----
-curl http://download.jboss.org/wildfly/{wildfly-version}/wildfly-{wildfly-version}.zip -o wildfly-{wildfly-version}.zip
+wget https://download.jboss.org/wildfly/{wildfly-version}/wildfly-{wildfly-version}.zip
 
-curl https://github.com/apiman/apiman/releases/download/{apiman-version-release}/apiman-distro-wildfly-{apiman-version-release}-overlay.zip
+wget https://github.com/apiman/apiman/releases/download/{apiman-version-release}/apiman-distro-wildfly-{apiman-version-release}-overlay.zip
 ----
 
 
