@@ -104,7 +104,7 @@ Encrypted HTTPS entry-point, with TLS/SSL. Turn off by reducing count to zero. A
 
 === API
 
-Hosts the apiman gateway API, which is typically used by the apiman manager to drive the gateway.
+Hosts the Apiman gateway API, which is typically used by the Apiman manager to drive the gateway.
 For instance, publishing and retiring APIs, Contracts.
 You probably only need 1 of these.
 
@@ -128,7 +128,7 @@ By default the gateway will inspect the request used to hit the Gateway API, and
 
 == SSL
 
-The SSL section configures transport security to the gateway's *front end*; that is, connections established between client app ⇋ apiman gateway.
+The SSL section configures transport security to the gateway's *front end*; that is, connections established between client app ⇋ Apiman Gateway.
 
 [source,json5]
 ----
@@ -152,7 +152,7 @@ NOTE: Refer to the https://docs.oracle.com/javase/8/docs/technotes/tools/unix/ke
 
 === Allowed TLS Protocols
 
-If you want to use a specific TLS version for the connection between client app ⇋ apiman gateway you can add the TLS version in a comma separated list with the setting `allowedProtocols`.
+If you want to use a specific TLS version for the connection between client app ⇋ Apiman Gateway you can add the TLS version in a comma separated list with the setting `allowedProtocols`.
 
 == Prefer Secure
 

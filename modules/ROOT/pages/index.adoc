@@ -1,6 +1,6 @@
 = Apiman Installation Guide
 
-This guide provides detailed information about how to install and configure apiman.
+This guide provides detailed information about how to install and configure Apiman.
 
 == Switching formats
 

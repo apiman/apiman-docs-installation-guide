@@ -1,12 +1,12 @@
 = Servlet Configuration
 
-The Servlet version of the apiman gateway uses Java properties as its primary source of configuration.
+The Servlet version of the Apiman gateway uses Java properties as its primary source of configuration.
 
 This includes such platforms as WildFly, EAP, Jetty and Tomcat.
 
 == Configuration Properties
 
-All of the apiman WARs share a common configuration file called *apiman.properties*, which for the WildFly and EAP editions can be found in *standalone/configuration*.
+All of the Apiman WARs share a common configuration file called *apiman.properties*, which for the WildFly and EAP editions can be found in *standalone/configuration*.
 
 This file therefore contains configuration settings for all three applications (API Manager, API Manager UI, API Gateway).
 
