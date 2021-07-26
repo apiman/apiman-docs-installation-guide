@@ -1,27 +1,27 @@
 = Apiman Production Guide
 
-This guide should serve as a guide to manually deploy apiman into production.
+This guide should serve as a guide to manually deploy Apiman into production.
 
 == Architecture Summary
-Before we get started, it may be useful to know the overall architecture of apiman.
+Before we get started, it may be useful to know the overall architecture of Apiman.
 Let's start with a picture!
 
-.Architecture of apiman
-image::apiman-architecture.png[Architecture of apiman]
+.Architecture of Apiman
+image::apiman-architecture.png[Architecture of Apiman]
 
-The apiman solution is made up of a number of pieces, including:
+The Apiman solution is made up of a number of pieces, including:
 
 * Keycloak Authentication Server
 * Relational Database
 * Elasticsearch Datastore
-* apiman API Gateway
-* apiman API Manager
+* Apiman API Gateway
+* Apiman API Manager
 
 The image above should give you an idea of how they all fit together.
 
 == Elasticsearch
 
-If you wish to enable metrics in apiman (who doesn't?) you'll need to install Elasticsearch.  This is
+If you wish to enable metrics in Apiman (who doesn't?) you'll need to install Elasticsearch.  This is
 because the API Gateway stores all metrics information in Elasticsearch (by default), and the API Manager
 queries that data to present analytics information in the UI.
 
@@ -41,19 +41,19 @@ specific information about how to configure a standalone Keycloak server, see th
 http://keycloak.github.io/docs/userguide/html/server-installation.html
 
 Once Keycloak is installed as a standalone server, you must configure the ‘apiman' realm.  This realm will
-be used for authentication into each of the apiman components (API Manager REST services, API Manager UI,
+be used for authentication into each of the Apiman components (API Manager REST services, API Manager UI,
 API Gateway REST services, etc).
 
-TIP: You can configure additional Keycloak Realms for use with the apiman "Keycloak OAuth2 Policy".
+TIP: You can configure additional Keycloak Realms for use with the Apiman "Keycloak OAuth2 Policy".
 
-Fortunately, apiman comes with a realm file you can import.  Simply log into your Keycloak server and then
-create the apiman realm using this file:
+Fortunately, Apiman comes with a realm file you can import.  Simply log into your Keycloak server and then
+create the `apiman` realm using this file:
 
 https://github.com/apiman/apiman/blob/master/distro/data/src/main/resources/data/apiman-realm.json
 
 WARNING: The realm file contains some credentials/secrets that you will want to modify or regenerate. The defaults are obviously *not* secure.
 
-Once you have created the apiman realm, you must use the Keycloak UI to add your API Manager UI as a valid
+Once you have created the `apiman` realm, you must use the Keycloak UI to add your API Manager UI as a valid
 redirect URL for the 'apimanui' client.  To do this, log into the Keycloak admin console and choose the
 *apiman* realm.  Next click "clients" in the left navigation, and choose *apimanui* in the resulting list.
 From there you can add public URL if your API Manager UI to the list of "*_Valid Redirect URIs_*".  It might

@@ -2,20 +2,20 @@
 
 == External Keycloak Authentication
 
-The apiman quickstart overlay ZIP comes with an embedded version of Keycloak that we use for authentication.
+The Apiman quickstart overlay ZIP comes with an embedded version of Keycloak that we use for authentication.
 You may already have a Keycloak instance that you use.
-This section explains how to modify apiman to use yours instead of ours.
+This section explains how to modify Apiman to use yours instead of ours.
 
 === High Level Overview
 
-. Create the apiman Realm in Keycloak
+. Create the Apiman Realm in Keycloak
 . Configure the API Manager UI client in Keycloak
-. Point apiman at the remote Keycloak
+. Point Apiman at the remote Keycloak
 
-=== Create the apiman Realm in Keycloak
+=== Create the Apiman Realm in Keycloak
 
 You'll need to make sure you create the *apiman* realm in your Keycloak server.
-A quick way to do that is to use the Keycloak admin console to import the apiman realm file located here:
+A quick way to do that is to use the Keycloak admin console to import the Apiman realm file located here:
 
 https://github.com/apiman/apiman/blob/master/distro/data/src/main/resources/data/apiman-realm.json
 
@@ -32,9 +32,9 @@ For example, the values may be something like:
 
 TIP: Don't forget the "*" wildcard at the end of the URL.
 
-=== Point apiman at the remote Keycloak
+=== Point Apiman at the remote Keycloak
 
-You must modify the *standalone-apiman.xml* configuration file to point apiman at the remote Keycloak server.
+You must modify the *standalone-apiman.xml* configuration file to point Apiman at the remote Keycloak server.
 
 Make sure you know the full public URL of your Keycloak server and add it to the following section of *standalone-apiman.xml*:
 
