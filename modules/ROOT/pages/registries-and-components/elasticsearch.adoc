@@ -16,13 +16,20 @@ NOTE: Many of the shipped configurations make use of variable substitution to re
 | String
 a| The Elasticsearch client type:
 
-*Default Value*: es
+* *Default Value*: es
 
 | client.protocol
 | String
 a| The Elasticsearch protocol to use
 
-*Default Value*: http
+* *Default Value*: http
+* *Allowed Values*: http, https
+
+| client.indexPrefix
+| String
+a| Elasticsearch index prefix
+
+* *Default Value*: name of component
 
 | client.host
 | String
@@ -34,9 +41,10 @@ a| The ES port
 
 | client.timeout
 | Integer
-a| Client timeout
+a| Client timeout (milliseconds)
 
-*Default Value*: 10000
+* *Default Value*: 10000
+* *Allowed Values*: 0 infinite timeout or any positive int
 
 |===
 
@@ -55,7 +63,7 @@ a| An alternative Elasticsearch index name.
 
 | client.initialize
 | Boolean
-a| Initilize the storage
+a| Initialise the storage
 
 | client.username
 | String
@@ -69,6 +77,13 @@ a| Password if using an auth mechanism like SearchGuard, Shield, etc
 | String
 a| Path to the client KeyStore
 
+| client.keystore.format
+| String
+a| Format of keystore
+
+* *Default Value*: jks
+* *Allowed Values*: pkcs12, jks
+
 | client.keystore.password
 | String
 a| Password for the client KeyStore
@@ -77,21 +92,40 @@ a| Password for the client KeyStore
 | String
 a| Path to the TrustStore
 
+| client.truststore.format
+| String
+a| Format of truststore
+
+* *Default Value*: jks
+* *Allowed Values*: pkcs12, jks
+
 | client.truststore.password
 | String
 a| Password for the TrustStore
 
-| client.allowSelfSigned
+| client.allowSelfSigned / client.trust.certificate
 | Boolean
 a| Trust self-signed certificates
 
-| client.allowAnyHost
-| Boolean
-a| Disbale hostname verification checks
+* *Default Value*: false
 
-| client.pollingTime
+| client.allowAnyHost / client.trust.host
+| Boolean
+a| Disable hostname verification checks
+
+* *Default Value*: false
+
+| client.trustAll
+| Boolean
+a| Trust all SSL endpoints without any checks (use with great care)
+
+* *Default Value*: false
+
+| client.pollingTime / client.polling.time
 | String
-a| The timespan to try polling for elasticsearch
+a| Polling frequency for client attempting connection to Elasticsearch (milliseconds). This is only relevant if the client is unable to connect on first attempt.
+
+* *Default Value*: 600
 
 |===
 
@@ -152,8 +186,8 @@ Refer also to <<Global Required Parameters>>.
 | Integer
 a| Cache polling interval in seconds.
 
-*Default Value*: 10
-*Implementations*: PollCachingESRegistry
+* *Default Value*: 10
+* *Implementations*: PollCachingESRegistry
 
 |===
 
@@ -172,8 +206,8 @@ Refer also to <<Global Optional Parameters>>.
 | Integer
 a| Polling startup delay in seconds.
 
-*Default Value*: 30
-*Implementations*: PollCachingESRegistry
+* *Default Value*: 30
+* *Implementations*: PollCachingESRegistry
 
 |===
 
@@ -233,15 +267,29 @@ Refer also to <<Global Required Parameters>>.
 | Integer
 a| Maximum metrics queue size
 
-*Default Value*: 10000
+* *Default Value*: 10000
 
 | batch.size
 | Integer
 a| Maximum metrics batching size
 
-*Default Value*: 1000
+* *Default Value*: 1000
+
+| custom.headers.request
+| List<String>
+a| Case-insensitive list of _request_ headers to capture, for example `X-Correlation-Id`.
+
+| custom.headers.response
+| List<String>
+a| Case-insensitive list of _response_ headers to capture
+
+| custom.query-params
+| List<String>
+a| Case-insensitive list of HTTP https://en.wikipedia.org/wiki/Query_string[query parameters^] to capture
 
 |===
+
+NOTE: For custom header and query param capture, we add entries into the Elasticsearch index dynamically using https://www.elastic.co/guide/en/elasticsearch/reference/current/dynamic-templates.html[dynamic templates^].
 
 // Rate limiting.
 == Components
