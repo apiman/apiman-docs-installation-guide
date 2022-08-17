@@ -102,8 +102,8 @@ Finally, you must update the *apiman.properties* file to configure the Hibernate
 Apiman includes specific dialects that should be used when installing your database via the included DDL files:
 
 * *_H2_*: `io.apiman.manager.api.jpa.ApimanH2Dialect`
-* *_MySQL_*: `io.apiman.manager.api.jpa.ApimanMySQL5Dialect`
-* *_Oracle_*: `io.apiman.manager.api.jpa.ApimanOracle12Dialect`
+* *_MySQL_*: `ApimanMySQL8Dialect`
+* *_Oracle_*: `ApimanOracle19Dialect`
 * *_Postgresql_*: `io.apiman.manager.api.jpa.ApimanPostgreSQLDialect`
 
 For example, here is the line you should change in the *apiman.properties* file:
