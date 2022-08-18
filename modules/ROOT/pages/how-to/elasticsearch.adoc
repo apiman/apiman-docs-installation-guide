@@ -1,8 +1,9 @@
 = How To: Elasticsearch
 
+[#_use_elasticsearch_instead_of_an_rdbms]
 == Use Elasticsearch instead of an RDBMS
 
-The API Manager is configured (by default) to use JPA as the persistence technology for storing all of its data.  But this isn't the only persistence technology supported.
+The API Manager is configured (by default) to use JPA as the persistence technology for storing all of its data.But this isn't the only persistence technology supported.
 Another option is to use Elasticsearch.
 This section details how to set up Apiman to use Elasticsearch instead of an RDBMS to store your API Manager data.
 
@@ -74,6 +75,7 @@ This built-in configuration will be lost when you switch from JPA to Elasticsear
 You will need to use the Apiman admin UI to reconfigure these settings.
 Refer to the "System Administration" section of the User Guide for more information on this.
 
+[#_use_standalone_elasticsearch_instancecluster]
 == Use standalone Elasticsearch instance/cluster
 
 The Apiman quickstart overlay ZIP ships by default with an embedded instance of Elasticsearch.

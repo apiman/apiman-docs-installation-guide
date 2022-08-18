@@ -1,10 +1,11 @@
 = Security
 
+[#_gateway_api_authentication]
 == Gateway API Authentication
 
 The Gateway's REST API is what the API Manager invokes when publishing APIs and Client Apps to the Gateway footnote:[Some advanced configurations may interact directly with the Gateway API, whilst others may bypass it entirely by using polling, etc.].
 
-NOTE: The quickstart configurations should work out of the box, but they assume the locality of all components, including Keycloak. Real deployments will likely need to perform some reconfiguration.
+NOTE: The quickstart configurations should work out of the box, but they assume the locality of all components, including Keycloak.Real deployments will likely need to perform some reconfiguration.
 
 This REST API should be protected, often using BASIC authentication.
 
@@ -72,6 +73,7 @@ Here is the relevant portion of the **standalone-apiman.xml** file that you must
 </realm>
 ----
 
+[#_mtls_mutual_ssl_endpoint_security]
 == MTLS (Mutual SSL) Endpoint Security
 
 If you wish to use mutual SSL to ensure endpoint security between the Apiman API Gateway and your back-end API(s), you must update some settings.

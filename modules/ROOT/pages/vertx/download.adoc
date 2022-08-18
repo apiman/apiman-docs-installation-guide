@@ -6,6 +6,7 @@ The implementation is the _Apiman Gateway_ only, and hence is normally paired wi
 
 There are a few different common configuration examples shipped with the Vert.x distro; they are outlined in more detail below, but you can customise your configurations however you see fit by xref:registries-and-components/overview.adoc[mixing and matching components].
 
+[#_download_launch]
 == Download & launch
 
 Download the latest Apiman Vert.x distro from http://www.apiman.io/latest/download.html#vertx[apiman.io downloads] page, or:
@@ -66,6 +67,7 @@ $ ./apiman-gateway.sh --version
 [INFO ] ApimanVersionCommand - Vert.x 3.4.0
 ----
 
+[#_configurations]
 == Configurations
 
 Some example configurations ship with the distro, aiming to provide sensible defaults.
@@ -73,6 +75,7 @@ Some example configurations ship with the distro, aiming to provide sensible def
 TIP: Refer to the comments within the shipped configuration files, the xref:vertx/config-guide.adoc[configuration guide] and the xref:registries-and-components/overview.adoc[registries & components] documentation for further detail.
 
 
+[#_elasticsearch]
 === Elasticsearch
 
 The Elasticsearch config `conf-es.json` comes pre-configured with Elasticsearch components.
@@ -106,9 +109,10 @@ You can optionally set a username and password; this is only useful if you are u
 
 NOTE: Refer to the xref:registries-and-components/elasticsearch.adoc[Elasticsearch registries & components documentation] for a complete list of configuration options.
 
+[#_headless_elasticsearch]
 === Headless Elasticsearch
 
-The Apiman Headless Elasticsearch config `conf-headless-es.json` uses an immutable registry to load its configuration from a local or remote JSON file. All other components (e.g. metrics, rate-limiting, etc) use Elasticsearch.
+The Apiman Headless Elasticsearch config `conf-headless-es.json` uses an immutable registry to load its configuration from a local or remote JSON file.All other components (e.g. metrics, rate-limiting, etc) use Elasticsearch.
 
 First, alter your configuration as detailed in the <<Elasticsearch>> section.
 

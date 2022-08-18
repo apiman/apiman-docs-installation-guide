@@ -1,5 +1,6 @@
 = General Apiman Manager Configuration
 
+[#_logging_in]
 == Logging In
 
 Once Apiman is running, you should be able to log in to the API Manager by pointing your browser at the following URL:
@@ -188,6 +189,7 @@ Additional DDLs for various databases can be found in `apiman/ddls/`.
 
 If you have issues with DDLs, please open a https://github.com/apiman/apiman/issues[GitHub Issue^].
 
+[#_custom_api_catalog]
 == Custom API Catalog
 
 The API Manager has a feature allowing users can import APIs from a globally configured API Catalog.
@@ -196,7 +198,7 @@ By default, Apiman comes with a community catalog that contains a set of common 
 
 When deploying Apiman into an enterprise setting, it is often useful to replace the community API Catalog with something that lists out the internal APIs available within the enterprise.
 
-You can also provide your own custom implementation which is able to integrate with your internal systems. For example, by connecting to your internal API registry.
+You can also provide your own custom implementation which is able to integrate with your internal systems.For example, by connecting to your internal API registry.
 
 === High Level Overview
 
@@ -241,6 +243,7 @@ This approach will allow you to find your APIs in whatever location they happen 
 Please see the Developer Guide for more information on how to create a truly custom API Catalog.
 ====
 
+[#_custom_plugin_registry]
 == Custom Plugin Registry
 
 The API Manager uses a plugin registry to show admin users a list of available plugins that can be installed.
@@ -280,6 +283,7 @@ The value of this property is a comma-separated list of URLs.
 Each URL in the list should point to a valid plugin registry JSON file.
 To include your enterprise plugins in the list, simply add the URL to your plugin registry to the end of the existing list.
 
+[#_property_replacement_in_policy_config]
 == Property Replacement in Policy Config
 
 It is often useful to externalize certain information that varies from one deployment environment to another.

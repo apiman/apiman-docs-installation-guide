@@ -1,3 +1,4 @@
+[#_backup_migration]
 = Backup & Migration
 
 == Data Export/Import
@@ -38,6 +39,7 @@ In the future, we hope to build tools that will make this editing of the exporte
 
 Once you have edited the exported file, you can simply log into your production Apiman instance and use the Export/Import UI page to import the data.
 
+[#_upgrading_to_a_new_apiman_version]
 == Upgrading to a New Apiman Version
 
 Whenever you wish to upgrade from an old to a newer version of Apiman, you will likely want to preserve all the Plan, API, and Client App configurations you have created.

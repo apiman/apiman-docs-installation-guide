@@ -1,5 +1,6 @@
 = How To: Security
 
+[#_external_keycloak_authentication]
 == External Keycloak Authentication
 
 The Apiman quickstart overlay ZIP comes with an embedded version of Keycloak that we use for authentication.

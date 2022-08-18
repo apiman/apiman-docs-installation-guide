@@ -10,6 +10,7 @@ Apiman can target WildFly as a runtime environment.
 In order to install Apiman you will need to download both WildFly and the Apiman overlay distribution.
 Once both are downloaded, it's a simple matter of unpacking both into the same location.
 
+[#_download]
 === Download
 
 First you will need to download both WildFly and Apiman:
@@ -55,6 +56,7 @@ cd wildfly-{wildfly-version}
 ./bin/standalone.sh -c standalone-apiman.xml
 ----
 
+[#_installing_using_docker]
 == Installing using Docker
 
 Another option when installing Apiman is to use our docker image.

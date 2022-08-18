@@ -20,17 +20,15 @@
 
 * Gateway
 
-** Registries and Components
+** xref:registries-and-components/overview.adoc[Registries & Components]
+*** xref:registries-and-components/jdbc.adoc[JDBC]
+*** xref:registries-and-components/elasticsearch.adoc[Elasticsearch]
+***  xref:registries-and-components/influxdb.adoc[InfluxDB Metrics]
+*** xref:registries-and-components/headless.adoc[Headless]
 
-*** xref:registries-and-components/overview.adoc[Registries & Components]
-**** xref:registries-and-components/jdbc.adoc[JDBC]
-**** xref:registries-and-components/elasticsearch.adoc[Elasticsearch]
-****  xref:registries-and-components/influxdb.adoc[InfluxDB Metrics]
-**** xref:registries-and-components/headless.adoc[Headless]
-
-*** xref:gateway/security.adoc[Security]
-**** xref:gateway/security.adoc#_gateway_api_authentication[Gateway API Authentication]
-**** xref:gateway/security.adoc#_mtls_mutual_ssl_endpoint_security[Mutual TLS (MTLS/MSSL)]
+** xref:gateway/security.adoc[Security]
+*** xref:gateway/security.adoc#_gateway_api_authentication[Gateway API Authentication]
+*** xref:gateway/security.adoc#_mtls_mutual_ssl_endpoint_security[Mutual TLS (MTLS/MSSL)]
 
 
 * Manager
