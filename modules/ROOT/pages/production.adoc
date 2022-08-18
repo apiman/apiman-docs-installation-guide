@@ -3,7 +3,9 @@
 This guide should serve as a guide to manually deploy Apiman into production.
 
 == Architecture Summary
+
 Before we get started, it may be useful to know the overall architecture of Apiman.
+
 Let's start with a picture!
 
 .Architecture of Apiman
@@ -46,8 +48,8 @@ API Gateway REST services, etc).
 
 TIP: You can configure additional Keycloak Realms for use with the Apiman "Keycloak OAuth2 Policy".
 
-Fortunately, Apiman comes with a realm file you can import.  Simply log into your Keycloak server and then
-create the `apiman` realm using this file:
+Fortunately, Apiman comes with a realm file you can import.
+Simply log into your Keycloak server and then create the `apiman` realm using this file:
 
 https://github.com/apiman/apiman/blob/{apiman-version-release}/distro/data/src/main/resources/data/apiman-realm.json
 

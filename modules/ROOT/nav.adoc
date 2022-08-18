@@ -2,6 +2,7 @@
 * Installation
 ** xref:index.adoc[Introduction]
 ** xref:quickstart.adoc[Quickstart]
+** xref:keycloak.adoc[Set up Keycloak SSO]
 
 * Apiman Platforms
 
