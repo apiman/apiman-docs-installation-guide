@@ -19,20 +19,10 @@ The distribution consists of:
 
 In order to manage our users and provide login security we will use Keycloak.
 
-. Download https://www.keycloak.org[Keycloak^] (using a container might be convenient).
+For instructions, please refer to: xref:keycloak.adoc[]
 
-. Initialise Keycloak with the Apiman default realm.
-
-.. You can find the realm definition in the distribution zip: `apiman/data/apiman-realm-for-keycloak.json`
-
-.. There are several ways to import a realm, https://www.keycloak.org/server/importExport[please refer to the Keycloak docs^]. However, for this example, we'll do:
-+
-`./bin/kc.sh start-dev --hostname localhost --port 8081 --import apiman-realm-for-keycloak.json`
-
-. Carefully note which **host** and **port** your Keycloak instance is running on.
-We will assume you have not changed anything with the realm definition for the purpose of this guide.
-
-. Set the `APIMAN_AUTH_URL` environment variable to point at Keycloak: `export APIMAN_AUTH_URL="http://localhost:8081"`
+We will assume you have not changed anything from the default Keycloak realm definition for the purposes of this guide footnote:[Available in your distro zip, `apiman/data/default-realm-for-apiman.json`].
+Please substitute your changes, where appropriate.
 
 === Installing Apiman on WildFly
 
@@ -82,6 +72,7 @@ The Apiman overlay contains everything needed to run Apiman, including:
 
 [source,bash,subs=attributes+]
 ----
+export APIMAN_AUTH_URL=<Your keycloak URL>
 cd wildfly-{wildfly-version}
 ./bin/standalone.sh -c standalone-apiman.xml
 ----

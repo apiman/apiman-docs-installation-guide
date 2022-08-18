@@ -78,4 +78,4 @@ apiman.es.password=es_admin_password
 
 == Pointing the API Gateway to a Remote Keycloak
 
-Refer to the Installation section on xref:how-to/security.adoc#_external_keycloak_authentication[configuring a Remote Keycloak instance].
+Refer to the Keycloak guide on xref:keycloak.adoc[configuring a Keycloak SSO instance and importing the default Apiman realm].
