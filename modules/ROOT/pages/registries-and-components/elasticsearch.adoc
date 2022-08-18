@@ -131,27 +131,34 @@ a| Polling frequency for client attempting connection to Elasticsearch (millisec
 
 == Registry
 
-
 Assign your chosen implementation as shown in the example, providing configuration.
 
-=== Vert.x
-
-[source,json5]
-----
-"registry": {
-  "class": "io.apiman.gateway.engine.es.PollCachingESRegistry",
-  "config": {
-    // <registry configuration>
-  }
-},
-----
-
-=== Servlet
-
+[tabs]
+====
+Servlet (Properties)::
++
+--
 [source,properties]
 ----
-apiman-gateway.registry=<IMPLEMENTATION>
+apiman-gateway.registry=io.apiman.gateway.engine.es.PollCachingESRegistry
 ----
+--
+Vert.x (JSON)::
++
+--
+[source,json5]
+----
+{
+  "registry": {
+    "class": "io.apiman.gateway.engine.es.PollCachingESRegistry",
+    "config": {
+      // <registry configuration>
+    }
+  }
+}
+----
+--
+====
 
 .Available implementations:
 [cols="2", options="header"]
@@ -215,8 +222,19 @@ a| Polling startup delay in seconds.
 
 Set the metrics implementation as shown.
 
-=== Vert.x
-
+[tabs]
+====
+Servlet (Properties)::
++
+--
+[source,properties]
+----
+apiman-gateway.metrics=io.apiman.gateway.engine.es.ESMetrics
+----
+--
+Vert.x (JSON)::
++
+--
 [source,json5]
 ----
 "metrics": {
@@ -232,13 +250,11 @@ Set the metrics implementation as shown.
    }
 }
 ----
+--
+====
 
 === Servlet
 
-[source,properties]
-----
-apiman-gateway.metrics=io.apiman.gateway.engine.es.ESMetrics
-----
 
 .Available implementations:
 [cols="2", options="header"]
@@ -298,8 +314,21 @@ NOTE: For custom header and query param capture, we add entries into the Elastic
 
 Set shared state implementation as shown.
 
-=== Vert.x
-
+[tabs]
+====
+Servlet (Properties)::
++
+--
+[source,properties]
+----
+apiman-gateway.components.ISharedStateComponent=io.apiman.gateway.engine.es.ESSharedStateComponent
+apiman-gateway.components.ISharedStateComponent.client.type=es
+# <configuration options>
+----
+--
+Vert.x (JSON)::
++
+--
 [source,json5]
 ----
 "components": {
@@ -318,15 +347,8 @@ Set shared state implementation as shown.
   }
 }
 ----
-
-=== Servlet
-
-[source,properties]
-----
-apiman-gateway.components.ISharedStateComponent=io.apiman.gateway.engine.es.ESSharedStateComponent
-apiman-gateway.components.ISharedStateComponent.client.type=es
-# <configuration options>
-----
+--
+====
 
 ==== Required Parameters
 
@@ -336,8 +358,21 @@ Refer to <<Global Required Parameters>>.
 
 Set rate limiter implementation as shown.
 
-=== Vert.x
-
+[tabs]
+====
+Servlet (Properties)::
++
+--
+[source,properties]
+----
+apiman-gateway.components.IRateLimiterComponent=io.apiman.gateway.engine.es.ESRateLimiterComponent
+apiman-gateway.components.IRateLimiterComponent.client.type=es
+# <configuration options>
+----
+--
+Vert.x (JSON)::
++
+--
 [source,json5]
 ----
 "components": {
@@ -356,15 +391,8 @@ Set rate limiter implementation as shown.
   }
 }
 ----
-
-=== Servlet
-
-[source,properties]
-----
-apiman-gateway.components.IRateLimiterComponent=io.apiman.gateway.engine.es.ESRateLimiterComponent
-apiman-gateway.components.IRateLimiterComponent.client.type=es
-# <configuration options>
-----
+--
+====
 
 ==== Required Parameters
 
@@ -374,8 +402,21 @@ Refer to <<Global Required Parameters>>.
 
 Set cache store implementation as shown.
 
-==== Vert.x
-
+[tabs]
+====
+Servlet (Properties)::
++
+--
+[source,properties]
+----
+apiman-gateway.components.IRateLimiterComponent=io.apiman.gateway.engine.es.ESRateLimiterComponent
+apiman-gateway.components.IRateLimiterComponent.client.type=es
+# <configuration options>
+----
+--
+Vert.x (JSON)::
++
+--
 [source,json5]
 ----
 "components": {
@@ -394,15 +435,8 @@ Set cache store implementation as shown.
   }
 }
 ----
-
-==== Servlet
-
-[source,properties]
-----
-apiman-gateway.components.IRateLimiterComponent=io.apiman.gateway.engine.es.ESRateLimiterComponent
-apiman-gateway.components.IRateLimiterComponent.client.type=es
-# <configuration options>
-----
+--
+====
 
 ==== Required Parameters
 

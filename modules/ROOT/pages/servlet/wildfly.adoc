@@ -1,4 +1,4 @@
-= Wildfly & EAP
+= WildFly
 
 == Overview
 
@@ -15,7 +15,7 @@ Once both are downloaded, it's a simple matter of unpacking both into the same l
 
 First you will need to download both WildFly and Apiman:
 
-* http://download.jboss.org/wildfly/{wildfly-version}/wildfly-{wildfly-version}.zip[Download WildFly]
+* http://download.jboss.org/wildfly/{wildfly-version}/wildfly-{wildfly-version}.zip[Download WildFly {wildfly-version}]
 * http://downloads.jboss.org/apiman/{apiman-version-release}/apiman-distro-wildfly-{apiman-version-release}-overlay.zip[Download Apiman {apiman-version-release}]
 
 [source,bash,subs=attributes+]
@@ -24,7 +24,6 @@ wget https://download.jboss.org/wildfly/{wildfly-version}/wildfly-{wildfly-versi
 
 wget https://github.com/apiman/apiman/releases/download/{apiman-version-release}/apiman-distro-wildfly-{apiman-version-release}-overlay.zip
 ----
-
 
 === Unpack
 
