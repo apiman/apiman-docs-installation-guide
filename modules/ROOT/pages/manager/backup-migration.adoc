@@ -1,18 +1,79 @@
 [#_backup_migration]
 = Backup & Migration
+:author: marc@blackparrotlabs.io
+:author: eric.wittmann@redhat.com
+:liquibase: https://www.liquibase.org
 
-== Data Export/Import
+.Apiman Migration Guide
+****
+Apiman has a full xref:core:migration:migrations.adoc[migration guide] that documents changes between Apiman versions that administrators should pay close attention to.
+****
 
-Apiman has a feature that allows admin users to export all the configuration data from the Manager into a single export file (JSON formatted).
+== Automatic SQL Migrations (Liquibase)
+
+After Apiman 3.0.0.Final, automatic SQL migrations are available.
+
+Simply deploy the newest version of Apiman, and it {liquibase}[Liquibase^] attempt to apply any migrations that it has not already applied.
+
+IMPORTANT: There is no guarantee that the automated migrations always work smoothly; hence, users **must** back up before proceeding with an upgrade.
+
+=== Apply updates automatically
+
+Do nothing, just start Apiman against your database.
+
+Refer to: xref:manager/database.adoc[] to ensure you have given Apiman the connection details for your database correctly.
+
+If the user you connect Apiman to your database with has limited permissions, then you will likely need to disable liquibase and apply the patches manually.
+
+=== Disable Liquibase
+
+Set the Java system property `liquibase.should.run=false`.
+Use this if you prefer to apply the SQL migrations out-of-band.
+
+=== Apply Liquibase patches manually
+:liquibase-in-repo: https://github.com/apiman/apiman/tree/{apiman-version-release}/distro/ddl/src/main/resources/liquibase
+
+You can use the `liquibase` command-line tool to instantiate your database, and other useful functions such as rollbacks.
+
+Liquibase CLI can be found on many package managers, or can be downloaded directly from the https://docs.liquibase.com/install/home.html[Liquibase website^].
+
+You can find Apiman's master Liquibase log, along with all patches, {liquibase-in-repo}[in the Apiman GitHub repository^].
+
+We provide an example here, but please refer to the {liquibase}[extensive Liquibase documentation^] for more, as it likely supports your favourite workflow.
+
+.Apply Apiman's master.xml to a MySQL database
+[source,shell]
+----
+liquibase --classpath="/path/to/mysql-connector-java-8.0.29.jar" \ <1>
+--url="jdbc:mysql://localhost:3306/apiman" \ <2>
+--username=root \ <3>
+--password="admin123\!" \
+--changeLogFile=master.xml \ <4>
+update <5>
+----
+<1> Liquibase ships with certain drivers, but if you are unlucky, you may need to download and add one.
+<2> The standard JDBC URL to your database, which you should already have created
+<3> A user with permission to run DDL, which may include higher risk actions such as creating and deleting tables, columns, etc. This may not always be the same as the 'day-to-day' user, depending on your permissions scheme.
+<4> Apiman's Liquibase master.xml file, which can be found {liquibase-in-repo}[Apiman's repo^].
+
+It is also possible to get Liquibase to generate SQL/DDL diffs for you, which can be applied via your databases' console.
+
+== JSON Data Export-Import
+
+Apiman has an export-import feature that allows admin users to export all the configuration data from the Manager into a single export file (JSON formatted).
 This exported file can then be edited (if necessary) and then imported into another instance of Apiman.
-This feature attempts to address the following use-cases:
+
+Export-import attempts to address the following use-cases:
 
 * Data backups
 * Migrating between environments
-* Upgrading Apiman to a new version
+* Upgrading Apiman to a new major version
 
-Using the feature is simple - you must log into the Apiman UI as an admin user, then navigate to the "Export/Import" UI page by clicking the "Export/Import Data" link on the API Manager Dashboard.
-From there you can export or import data.
+Using the feature is simple:
+
+. You must log into the Apiman UI as an admin user.
+. Navigate to the "Export/Import" UI page by clicking the "Export/Import Data" link on the API Manager Dashboard.
+. From there you can export or import data.
 
 == Backing Up Your Data
 
@@ -26,7 +87,7 @@ This can be done via the UI or via the following API Manager REST endpoint:
 https://HOST:PORT/apiman/system/export
 ----
 
-== Migrating Data Between Environments
+=== Migrating Data Between Environments
 
 Often times you may have a Test version of Apiman deployed, as well as a Production version.
 Depending on your workflow, you may wish to configure your APIs in the Test environment and then migrate that configuration into Production (rather than having to re-create the same configuration in Production manually).
@@ -34,13 +95,13 @@ This can be accomplished by Exporting data from Test and then importing it into 
 
 When doing this, note that the Export feature will export the entire set of configuration from Apiman.
 This may be precisely what you want, but many times only a subset of the data is desired.
-If this is the case, then you will need to edit the resulting JSON file to only include the data you wish to migrate.
+If this is the case, you will need to edit the resulting JSON file to only include the data you wish to migrate.
 In the future, we hope to build tools that will make this editing of the exported file easier.
 
 Once you have edited the exported file, you can simply log into your production Apiman instance and use the Export/Import UI page to import the data.
 
 [#_upgrading_to_a_new_apiman_version]
-== Upgrading to a New Apiman Version
+=== Upgrading to a New Apiman Version
 
 Whenever you wish to upgrade from an old to a newer version of Apiman, you will likely want to preserve all the Plan, API, and Client App configurations you have created.
 
