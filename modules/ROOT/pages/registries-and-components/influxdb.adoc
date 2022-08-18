@@ -13,7 +13,7 @@ Set the metrics implementation as shown.
 
 [tabs]
 ====
-Servlet (Properties)::
+Properties (Servlet)::
 +
 --
 [source,properties]
@@ -21,7 +21,7 @@ Servlet (Properties)::
 apiman-gateway.metrics=io.apiman.gateway.engine.influxdb.InfluxDbMetrics
 ----
 --
-Vert.x (JSON)::
+JSON (Vert.x)::
 +
 --
 [source,json5]

@@ -5,17 +5,12 @@ This guide provides detailed information about how to install and configure Apim
 == Switching formats
 
 On some pages different configuration instructions and examples are available for each platform.
-They merely encode the same information using different formats.
-
-=== Vert.x
-Your configuration file for Vert.x is your chosen `conf.json` file, so refer to the JSON examples.
-
-=== Servlet
-Your configuration file for Servlet is *`apiman.properties`*!, so refer to the properties examples.
+They encode the same information using different formats.
+You can choose which format you want via the tabbed sample boxes.
 
 == Understanding syntax
 
-In many places in the documentation you will see format agnostic syntax which can be translated trivially into your chosen format.
+In many places in the documentation you will see format agnostic syntax which can be translated into your chosen format.
 
 For example:
 
@@ -56,8 +51,26 @@ a| Favourite project?
 
 |===
 
-=== As JSON
 
+[tabs]
+====
+Properties (Servlet)::
++
+--
+[source,properties]
+----
+project.name=apiman
+project.type=JAVA
+project.tags=api-management,excellent
+project.version.major=1
+project.version.minor=3
+project.version.micro=0
+project.favourite=true
+----
+--
+JSON (Vert.x)::
++
+--
 [source,json]
 ----
 {
@@ -74,16 +87,7 @@ a| Favourite project?
   }
 }
 ----
+--
+====
 
-=== As Properties
 
-[source,properties]
-----
-project.name=apiman
-project.type=JAVA
-project.tags=api-management,excellent
-project.version.major=1
-project.version.minor=3
-project.version.micro=0
-project.favourite=true
-----
