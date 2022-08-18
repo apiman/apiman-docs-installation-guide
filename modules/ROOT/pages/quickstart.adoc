@@ -1,36 +1,13 @@
 = Apiman Quickstart
 Marc Savy <marc@rhymewithgravy.com>
 :gw-install-walkthrough: xref:vertx/install.adoc
-:ui-footnote: footnote:[Typically this will be http://localhost:8080/apimanui]
+:docker-compose-distro: https://github.com/apiman/apiman-docker/releases/download/{apiman-version-release}/apiman-docker-compose-{apiman-version-release}.zip
 
+. Download the {docker-compose-distro}[Apiman Docker Compose distribution^].
+. `unzip apiman-docker-compose-{apiman-version-release}.zip && cd apiman-docker-compose-{apiman-version-release}`
+. `docker-compose -f docker-compose.setup.yml up`
+. `docker-compose up`
+. Open http://apiman.local.gd:8080/apimanui
+. 🎉 Success!
 
-== Choose Your Setup
-
-. <<Vert.x Gateway and Servlet-based Manager>> *_Recommended for best performance_*.
-. <<Servlet-based Gateway and Servlet-based Manager>>. Simplest for a quick test.
-
-'''
-
-== Vert.x Gateway and Servlet-based Manager
-
-Apiman consists of two broad parts, the Gateway and the Manager.
-This quickstart separates those elements, with the Gateway implemented in Vert.x; our most performant platform, and the Manager a Servlet-based implementation.
-
-They are linked together in a trivial few steps.
-
-. Select and download a xref:servlet/wildfly.adoc[Servlet all-in-one distro] of Apiman (e.g. WildFly, Tomcat).
-    * Optional: Before launching, remove `apiman-gateway.war` from the deployment.
-. Download the xref:vertx/download.adoc[Vert.x distro] and launch using the `conf-es.json` configuration.
-. Log into the Apiman UI {ui-footnote} as an admin user (default: admin/admin123!).
-. Follow the steps outlined in the {gw-install-walkthrough}[gateway installation walkthrough] footnote:[If you created a new gateway rather than editing an existing entry, you may want to delete the old one to avoid any confusion.].
-
-🎉  Done!
-
-== Servlet-based Gateway and Servlet-based Manager
-
-The Servlet-based quickstart is an all-in-one with little-or-no additional configuration needed to get going. You can start with this platform and migrate to the Vert.x gateway at a later date. It's ideal for trying out Apiman in the shortest possible time.
-
-. Select and download a xref:servlet/wildfly.adoc[Servlet all-in-one distro] of Apiman (e.g. WildFly, EAP, Tomcat).
-. Launch and log into the Apiman UI.
-
-🎉  Done!
+TIP: Check the distro's README.adoc for more information. It's inside the zip.
