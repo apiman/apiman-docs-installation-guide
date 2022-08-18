@@ -41,7 +41,8 @@ In order to configure the gateway properly, you will need to configure the locat
 TIP: You will need to replace the values with those appropriate for your installation of Elasticsearch.
 
 === Vert.x
-To do this, modify these properties in the `conf.json` file **for each ES component**. For example:
+
+To do this, modify these properties in the `conf-es.json` file **for each ES component**. For example:
 
 [source,json5]
 ----
@@ -50,7 +51,7 @@ To do this, modify these properties in the `conf.json` file **for each ES compon
     "class": "io.apiman.gateway.engine.es.ESRegistry",
     "config": {
       "client": {
-        "type": "jest",
+        "type": "es",
         "cluster-name": "elasticsearch",
         "host": "localhost", // <1>
         "port": "9200",
@@ -77,4 +78,4 @@ apiman.es.password=es_admin_password
 
 == Pointing the API Gateway to a Remote Keycloak
 
-Refer to the Installation section on xref:how-to/security.adoc#_external_keycloak_authentication[configuring a Remote Keycloak instance]. Be sure to select your implementation by clicking on the *Vert.x* or *Servlet* tabs at the top right.
+Refer to the Installation section on xref:how-to/security.adoc#_external_keycloak_authentication[configuring a Remote Keycloak instance].

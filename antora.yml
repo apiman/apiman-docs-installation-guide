@@ -9,3 +9,4 @@ asciidoc:
   attributes:
     apiman-version-release: 3.0.0-SNAPSHOT
     wildfly-version: 23.0.2.Final
+    keycloak-version: 18.0.2

@@ -3,7 +3,7 @@
 ** xref:index.adoc[Introduction]
 ** xref:quickstart.adoc[Quickstart]
 
-* Platforms
+* Apiman Platforms
 
 ** xref:servlet/wildfly.adoc[WildFly]
 *** xref:servlet/wildfly.adoc#_download[Download & Launch]
