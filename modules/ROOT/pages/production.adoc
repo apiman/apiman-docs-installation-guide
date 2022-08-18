@@ -49,7 +49,7 @@ TIP: You can configure additional Keycloak Realms for use with the Apiman "Keycl
 Fortunately, Apiman comes with a realm file you can import.  Simply log into your Keycloak server and then
 create the `apiman` realm using this file:
 
-https://github.com/apiman/apiman/blob/master/distro/data/src/main/resources/data/apiman-realm.json
+https://github.com/apiman/apiman/blob/{apiman-version-release}/distro/data/src/main/resources/data/apiman-realm.json
 
 WARNING: The realm file contains some credentials/secrets that you will want to modify or regenerate. The defaults are obviously *not* secure.
 
