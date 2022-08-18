@@ -43,6 +43,7 @@ Please refer to the `apiman.properties` file itself, as well as this document, f
 
 TIP: If you are running a non-Servlet gateway implementation (e.g. Vert.x), then you should refer to that gateway's configuration documentation to understand how to configure it.
 
+[[apiman_manager_database_config]]
 === API Manager Database
 
 The API Manager, by default, is a typical CDI application and uses JPA/Hibernate to persist its data.
@@ -66,7 +67,7 @@ https://github.com/apiman/apiman/issues/2265[Let us know] if you want Apiman to 
 
 You are always able to edit `standalone-apiman.xml` and `apiman.properties` if you have an advanced setup that is not catered for by Apiman's default configuration.
 
-[[required_parameters]]
+[[database_required_parameters]]
 ==== Required Parameters
 
 NOTE: This only applies to WildFly distribution, currently.If you are using Tomcat, you will need to configure the datasources manually.
