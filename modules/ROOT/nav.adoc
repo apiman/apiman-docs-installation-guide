@@ -19,6 +19,16 @@
 *** xref:vertx/install.adoc[Installation Walkthrough]
 *** xref:vertx/config-guide.adoc[Config Guide]
 
+* Manager
+
+** xref:manager/database.adoc[Database Configuration]
+** xref:manager/configuration.adoc[Apiman Customisation]
+*** xref:manager/configuration.adoc#_custom_api_catalog[Custom API Catalog]
+*** xref:manager/configuration.adoc#_custom_plugin_registry[Custom Plugin Registry]
+*** xref:manager/configuration.adoc#_property_replacement_in_policy_config[Policy Config Property Replacement]
+** xref:manager/backup-migration.adoc#_backup_migration[Backup & Migration]
+** xref:manager/backup-migration.adoc#_upgrading_to_a_new_apiman_version[Upgrading Apiman]
+
 * Gateway
 
 ** xref:registries-and-components/overview.adoc[Registries & Components]
@@ -31,21 +41,7 @@
 *** xref:gateway/security.adoc#_gateway_api_authentication[Gateway API Authentication]
 *** xref:gateway/security.adoc#_mtls_mutual_ssl_endpoint_security[Mutual TLS (MTLS/MSSL)]
 
-
-* Manager
-
-** xref:manager/configuration.adoc[General Configuration]
-*** xref:manager/configuration.adoc#_logging_in[Logging In]
-*** xref:manager/configuration.adoc#_custom_api_catalog[Custom API Catalog]
-*** xref:manager/configuration.adoc#_custom_plugin_registry[Custom Plugin Registry]
-*** xref:manager/configuration.adoc#_property_replacement_in_policy_config[Policy Config Property Replacement]
-
-** xref:manager/backup-migration.adoc#_backup_migration[Backup & Migration]
-** xref:manager/backup-migration.adoc#_upgrading_to_a_new_apiman_version[Upgrading Apiman]
-
-
 * How to
-** xref:how-to/security.adoc#_external_keycloak_authentication[External Keycloak Authentication]
 ** xref:how-to/jdbc.adoc[SQL Metrics Instead of Elasticsearch]
 
 * xref:production.adoc[Production Guide]

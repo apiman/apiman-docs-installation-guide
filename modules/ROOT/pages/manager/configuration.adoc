@@ -1,26 +1,5 @@
 = General Apiman Manager Configuration
-
-[#_logging_in]
-== Logging In
-
-Once Apiman is running, you should be able to log in to the API Manager by pointing your browser at the following URL:
-
-[source,log]
-----
-http://localhost:8080/apimanui/
-
-or
-
-https://localhost:8443/apimanui/
-----
-
-You may log in with credentials *admin/admin123!*
-
-[CAUTION]
-====
-We strongly advise that you immediately change the Keycloak admin user's password, as well as the *_admin_* user found in the *_apiman_* realm!
-====
-
+// Apiman registries?
 == General Configuration
 
 Apiman is made up of a number of different components, many of which can be configured to use various implementations and/or providers.
@@ -36,159 +15,12 @@ All Apiman WARs share a common configuration file called *apiman.properties*, wh
 * *standalone/configuration/apiman.properties* for WildFly.
 * *conf/apiman.properties* for Tomcat.
 
-This file therefore can contain configuration settings for all four applications: API Manager, API Manager UI, API Gateway, Developer Portal.
+This file therefore can contain configuration settings for all three main applications: API Manager, API Manager UI, API Gateway.
 In many production-grade deployments, these will be split up into separate deployments (especially the gateways).
 
 Please refer to the `apiman.properties` file itself, as well as this document, for more information on each property's purpose and possible values.
 
 TIP: If you are running a non-Servlet gateway implementation (e.g. Vert.x), then you should refer to that gateway's configuration documentation to understand how to configure it.
-
-[[apiman_manager_database_config]]
-=== API Manager Database
-
-The API Manager, by default, is a typical CDI application and uses JPA/Hibernate to persist its data.
-The JPA layer requires a data source to connect to a supported database.
-
-Apiman's Manager JDBC datasource JNDI name is: `java:/apiman/datasources/apiman-manager`
-
-As of Apiman 3, we use Liquibase to initialise the database and apply migrations. If you prefer to do this manually, set the system property `liquibase.should.run=false`.
-
-To add or remove datasources, you can:
-
-* Open `standalone/configuration/standalone-apiman.xml` and edit the `datasources` subsystem.
-* Use the WildFly CLI.
-* Use the WildFly Administration console.
-
-Out of the box, this data source is usually a simple H2 configuration, but you can (of course) change it to support whatever database you desire.
-
-To make getting started easy, we ship Apiman with H2, Postgres, and MySQL JDBC drivers; system properties and environment properties are available that synchronise settings across Apiman to make database configuration as seamless as possible.
-
-https://github.com/apiman/apiman/issues/2265[Let us know] if you want Apiman to ship with drivers for other databases by default.
-
-You are always able to edit `standalone-apiman.xml` and `apiman.properties` if you have an advanced setup that is not catered for by Apiman's default configuration.
-
-[[database_required_parameters]]
-==== Required Parameters
-
-NOTE: This only applies to WildFly distribution, currently.If you are using Tomcat, you will need to configure the datasources manually.
-
-.Required Params
-[cols="2,1,4",options="header"]
-|===
-
-| Name
-| Type
-| Description
-
-a| * System property: apiman.db.driver
-  * Env var: APIMAN_DB_DRIVER
-| String
-a| WildFly database driver name, as defined in `datasources/drivers`
-
-* *Default Value*: h2
-* *Allowed Values*: postgresql9, mysql8, (plus any value you have manually configured)
-
-a| * System property: apiman.db.url
-* Env var: APIMAN_DB_URL
-| String
-a| Apiman database JDBC URL
-
-* *Default Value*: h2 (local file database)
-
-a| * System property: apiman.db.username
-* Env var: APIMAN_DB_USERNAME
-| String
-a| Apiman database username
-
-* *Default Value*: sa
-
-a| * System property: apiman.db.password
-* Env var: APIMAN_DB_PASSWORD
-| String
-a| Apiman database password
-
-* *Default Value*: sa
-
-a| * System property: liquibase.should.run
-| Boolean
-a| Whether https://www.liquibase.org/[Liquibase^], our SQL change management engine, should run at startup to initialise your database and/or apply the latest SQL migrations.
-
-* *Default Value*: true
-
-|===
-
-
-.Examples
-|===
-|Setup | Command
-
-|Postgres -- system properties
-a|
-[source,shell]
-----
-./bin/standalone.sh \
-    -Dapiman.db.url="jdbc:postgresql://localhost:5432/apiman" \
-    -Dapiman.db.username=postgres \
-    -Dapiman.db.password="admin123\!" \
-    -Dapiman.db.driver=postgres9
-----
-
-|Postgres -- env vars
-a|
-[source,shell]
-----
-export APIMAN_DB_URL="jdbc:postgresql://localhost:5432/apiman"
-export APIMAN_DB_USERNAME="postgres"
-export APIMAN_DB_PASSWORD="admin123\!"
-export APIMAN_DB_DRIVER="postgresql9"
-
-./bin/standalone.sh
-----
-
-|MySQL/MariaDB -- system properties
-a|
-[source,shell]
-----
-./bin/standalone.sh \
-    -Dapiman.db.url="jdbc:mysql://localhost:3306/apiman" \
-    -Dapiman.db.username=root \
-    -Dapiman.db.password="admin123\!" \
-    -Dapiman.db.driver=mysql8
-----
-
-|MySQL/MariaDB -- env vars
-a|
-[source,shell]
-----
-export APIMAN_DB_URL="jdbc:mysql://localhost:3306/apiman"
-export APIMAN_DB_USERNAME="root"
-export APIMAN_DB_PASSWORD="admin123\!"
-export APIMAN_DB_DRIVER="mysql8"
-
-./bin/standalone.sh
-----
-
-|===
-
-==== Advanced configuration
-
-You can set the Hibernate dialect manually yourself, including via a fully qualified class name (FQCN):
-
-[source,properties]
-----
-apiman.hibernate.dialect=io.apiman.manager.api.jpa.ApimanMySQL8Dialect
-----
-
-Note that the following dialects are available:
-
-* `ApimanH2Dialect` / `h2`
-* `ApimanMySQL8Dialect` / `mysql8`
-* `ApimanOracle19Dialect` / `oracle19`
-* `ApimanPostgreSQLDialect` / `postgres9`
-
-Additional DDLs for various databases can be found in `apiman/ddls/`.
-
-If you have issues with DDLs, please open a https://github.com/apiman/apiman/issues[GitHub Issue^].
 
 [#_custom_api_catalog]
 == Custom API Catalog
