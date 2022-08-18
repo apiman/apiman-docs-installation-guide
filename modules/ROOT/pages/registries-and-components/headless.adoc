@@ -49,7 +49,7 @@ a| URI to file containing registry configuration. Supports `file`, `http`, `http
 | Enum
 a| Auth mechanism to access resource indicated in `configUri`.
 
-.*Must be one of:*
+.*Allowed Values:*
 * NONE: No auth needed.
 * <<BASIC>>: BASIC auth.
 * <<Keycloak OAuth2,KEYCLOAKOAUTH2>>: Convenience Keycloak OAuth2 implementation.
@@ -145,7 +145,7 @@ IMPORTANT: Due to a current limitation in the underlying OAuth2 library you may 
 | Enum
 a| The OAuth2 flow for your configuration.
 
-.Must be one of:
+.Allowed Values:
 * PASSWORD
 * CLIENT
 * AUTH_CODE
@@ -187,7 +187,7 @@ TIP: The combination of required parameters and optional parameters will vary co
 | Enum
 a| The OAuth2 flow for your configuration.
 
-.Must be one of:
+.Allowed Values:
 * PASSWORD
 * CLIENT
 * AUTH_CODE
@@ -380,7 +380,7 @@ In the following sample we've built a JSON configuration corresponding to the sc
 }
 ----
 
-And escaped it, before inserting into `policyJsonConfig`: footnote:[One might wonder why JSON is escaped inside of JSON. The field name is somewhat of a misnomer, it is intended to be generic and could be XML, YAML, etc.]
+And escaped it, before inserting into `policyJsonConfig`: footnote:[You might wonder why JSON is escaped inside JSON. The field name is somewhat of a misnomer, it is intended to be generic and could be XML, YAML, etc.]
 
 .Example Simple Header Policy in policyJsonConfig
 [source,text]

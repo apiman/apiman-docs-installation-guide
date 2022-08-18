@@ -1,7 +1,7 @@
 = Elasticsearch Registry & Components
 Marc Savy <marc@rhymewithgravy.com>
 
-NOTE: Many of the shipped configurations make use of variable substitution to reduce repetition.
+TIP: Many of the shipped configurations make use of variable substitution to reduce repetition.
 
 == Global Required Parameters
 
@@ -19,7 +19,7 @@ a| The Elasticsearch client type:
 * *Default Value*: es
 
 | client.protocol
-| String
+| Enum
 a| The Elasticsearch protocol to use
 
 * *Default Value*: http
@@ -78,7 +78,7 @@ a| Password if using an auth mechanism like SearchGuard, Shield, etc
 a| Path to the client KeyStore
 
 | client.keystore.format
-| String
+| Enum
 a| Format of keystore
 
 * *Default Value*: jks
@@ -93,7 +93,7 @@ a| Password for the client KeyStore
 a| Path to the TrustStore
 
 | client.truststore.format
-| String
+| Enum
 a| Format of truststore
 
 * *Default Value*: jks
@@ -135,7 +135,7 @@ Assign your chosen implementation as shown in the example, providing configurati
 
 [tabs]
 ====
-Servlet (Properties)::
+Properties (Servlet)::
 +
 --
 [source,properties]
@@ -143,7 +143,7 @@ Servlet (Properties)::
 apiman-gateway.registry=io.apiman.gateway.engine.es.PollCachingESRegistry
 ----
 --
-Vert.x (JSON)::
+JSON (Vert.x)::
 +
 --
 [source,json5]
@@ -224,7 +224,7 @@ Set the metrics implementation as shown.
 
 [tabs]
 ====
-Servlet (Properties)::
+Properties (Servlet)::
 +
 --
 [source,properties]
@@ -232,7 +232,7 @@ Servlet (Properties)::
 apiman-gateway.metrics=io.apiman.gateway.engine.es.ESMetrics
 ----
 --
-Vert.x (JSON)::
+JSON (Vert.x)::
 +
 --
 [source,json5]
@@ -292,15 +292,15 @@ a| Maximum metrics batching size
 * *Default Value*: 1000
 
 | custom.headers.request
-| List<String>
+| String[]
 a| Case-insensitive list of _request_ headers to capture, for example `X-Correlation-Id`.
 
 | custom.headers.response
-| List<String>
+| String[]
 a| Case-insensitive list of _response_ headers to capture
 
 | custom.query-params
-| List<String>
+| String[]
 a| Case-insensitive list of HTTP https://en.wikipedia.org/wiki/Query_string[query parameters^] to capture
 
 |===
@@ -316,17 +316,17 @@ Set shared state implementation as shown.
 
 [tabs]
 ====
-Servlet (Properties)::
+Properties (Servlet)::
 +
 --
 [source,properties]
 ----
 apiman-gateway.components.ISharedStateComponent=io.apiman.gateway.engine.es.ESSharedStateComponent
 apiman-gateway.components.ISharedStateComponent.client.type=es
-# <configuration options>
+# <other configuration options>
 ----
 --
-Vert.x (JSON)::
+JSON (Vert.x)::
 +
 --
 [source,json5]
@@ -360,7 +360,7 @@ Set rate limiter implementation as shown.
 
 [tabs]
 ====
-Servlet (Properties)::
+Properties (Servlet)::
 +
 --
 [source,properties]
@@ -370,7 +370,7 @@ apiman-gateway.components.IRateLimiterComponent.client.type=es
 # <configuration options>
 ----
 --
-Vert.x (JSON)::
+JSON (Vert.x)::
 +
 --
 [source,json5]
@@ -404,7 +404,7 @@ Set cache store implementation as shown.
 
 [tabs]
 ====
-Servlet (Properties)::
+Properties (Servlet)::
 +
 --
 [source,properties]
@@ -414,7 +414,7 @@ apiman-gateway.components.IRateLimiterComponent.client.type=es
 # <configuration options>
 ----
 --
-Vert.x (JSON)::
+JSON (Vert.x)::
 +
 --
 [source,json5]
