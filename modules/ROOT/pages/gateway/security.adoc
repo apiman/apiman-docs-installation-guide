@@ -1,37 +1,165 @@
 = Security
+:keycloak: https://www.keycloak.org
+
+== Keycloak IDM
+
+NOTE: As of Apiman 3, we no longer bundle the Keycloak server into Apiman quickstart distributions.
+
+In order to use the Apiman quickstarts, you need to run Keycloak.
+
+{keycloak}[Keycloak^] is used to manage a range of security tasks for Apiman, including user account management, login security, OIDC provider, etc.
+
+To provide flexibility, there are a few ways you can configure Apiman to point to your Keycloak server.
+
+[[kc-configuration-options]]
+=== Configuration
+
+.Required Params
+[cols="2,1,4",options="header"]
+|===
+
+| Name
+| Type
+| Description
+
+a| * System property: apiman.auth.realm
+* Env var: APIMAN_AUTH_REALM
+| String
+a| Keycloak realm name.
+
+* *Default Value*: apiman
+
+a| * System property: apiman.auth.url
+* Env var: APIMAN_AUTH_URL
+| String
+a| Keycloak auth server URL
+
+NOTE: In older versions of Keycloak the auth server might have `/auth` at the end of the URL, rather than being at root (i.e. `http://old-keycloak:8080/auth` vs `http://new-keycloak:8080/auth`).
+
+a| * System property: apiman.auth.api.secret
+* Env var: APIMAN_AUTH_API_SECRET
+| String
+a| Keycloak secret credential for the Apiman Manager API (`apiman` client)
+
+* *Default Value*: password
+
+a| * System property: apiman.auth.ui.secret
+* Env var: APIMAN_AUTH_UI_SECRET
+| String
+a| Keycloak secret credential for the Apiman Manager UI (`apimanui` client)
+
+* *Default Value*: password
+
+a| * System property: apiman.auth.gateway.secret
+* Env var: APIMAN_AUTH_GATEWAY_SECRET
+| String
+a| Keycloak secret credential for the Apiman Gateway API (`apiman-gateway-api` client)
+
+* *Default Value*: password
+
+a| * System property: apiman.auth.realm-public-key
+* Env var: APIMAN_AUTH_REALM_PUBLIC_KEY
+| String
+a| Public key for Apiman realm (only needed on Vert.x Gateway).
+
+* *Default Value*: example Apiman realm key
+
+|===
+
+WARNING: Please change default secrets and keys before deploying Apiman to production.
+
+=== Setting up Keycloak
+
+As a quick way to run Keycloak and initialise it with the Apiman's default realm, here's an example Docker Compose file:
+
+.Example Docker Compose file
+[source,yaml,subs=attributes+]
+----
+services:
+  keycloak:
+    container_name: keycloak_server_all
+    image: quay.io/keycloak/keycloak:{keycloak-version}
+    entrypoint: ['/bin/bash', '-c']
+    command:
+      - |
+        cd /opt/keycloak
+        ./bin/kc.sh build
+        ./bin/kc.sh start-dev --import-realm
+    ports:
+      - "8081:8080"
+    environment:
+      - "KEYCLOAK_ADMIN=admin"
+      - "KEYCLOAK_ADMIN_PASSWORD=admin123!"
+      - "KEYCLOAK_FRONTEND_URL=http://localhost:8081"
+    volumes:
+      - ${PWD}/apiman-realm-for-keycloak.json:/opt/keycloak/data/import/apiman-realm-for-keycloak.json <1>
+----
+<1> Copy `apiman-realm-for-keycloak.json` from `apiman/data/apiman-realm-for-keycloak.json`
+
+. Create a file called `docker-compose.yml` with the contents shown above.
+
+. Copy `apiman/data/apiman-realm-for-keycloak.json` from your distro zip to the same directory as your `docker-compose.yml`.
+
+. Start with `docker-compose up`.
+
+. You should now have Keycloak running on localhost port 8081
+. Try it with: `http://localhost:8081/admin`
+.. Admin username: `admin`
+.. Admin password: `admin123!`
+. Your Apiman Auth URL is: `http://localhost:8081` (see <<kc-configuration-options>>)
+
+NOTE: This is running in dev mode. For production, refer to the Keycloak Production Guides.
 
 [#_gateway_api_authentication]
 == Gateway API Authentication
 
-The Gateway's REST API is what the API Manager invokes when publishing APIs and Client Apps to the Gateway footnote:[Some advanced configurations may interact directly with the Gateway API, whilst others may bypass it entirely by using polling, etc.].
+The Apiman Gateway's REST API is what the API Manager invokes when publishing APIs and Client Apps to the Gateway footnote:[Some advanced configurations may interact directly with the Gateway API, whilst others may bypass it entirely by using polling, etc.].
 
-NOTE: The quickstart configurations should work out of the box, but they assume the locality of all components, including Keycloak.Real deployments will likely need to perform some reconfiguration.
+[NOTE]
+====
+The quickstart configurations should work out of the box, but they assume the locality of all components.
 
-This REST API should be protected, often using BASIC authentication.
+Real deployments will likely need to perform some reconfiguration.
+====
 
-By default, the Gateway REST API requires BASIC authentication credentials, as well as a role of `apipublisher`.
-In other words, the Gateway REST API can only be invoked by a valid user, and that user must have the `apipublisher` role.
+This REST API should be protected, usually by BASIC authentication.
 
-The Keycloak client for this API is `apiman-gateway-api`, and the default user and password are: *apimanager*/*apiman123!*
+By default, the Apiman Gateway REST API requires BASIC authentication credentials, as well as a role of `apipublisher`.
 
-=== Setup
+* The Apiman Gateway REST API can only be invoked by a valid user, and that user must have the `apipublisher` role.
 
-==== Vert.x
+* The Keycloak client for this API is `apiman-gateway-api`
+** The default user is: *apimanager*
+** The default password is: *apiman123!*
 
-For the Vert.x gateway, the simplest way to retrieve the necessary configuration is to generate it from your Keycloak server footnote:[Normally located at `http://localhost:8080/auth` if you're using the quickstart]:
+=== Advanced Setup
+
+For more advanced setups, the environment variables/system properties may not be sufficient; manual editing of configuration files might be necessary.
+
+==== Vert.x Gateway
+
+For the Vert.x gateway, the simplest way to retrieve the necessary configuration is to generate it from your Keycloak server.
 
 The gateway accepts Keycloak's generated JSON, allowing you to paste your chosen client configuration from the Keycloak console into the `auth.config` section.
 
 To retrieve it:
 
-. Log into Keycloak (e.g http://localhost:8080/auth).
+. Log into your Keycloak Administrator console (e.g http://localhost:8081/admin).
+
 . `Clients` -> `apiman-gateway-api` -> `Installation`.
+
 . Select `Keycloak OIDC JSON` for `Format Option`.
+
 . Copy the contents and merge into the `config` selection where indicated below.
 
 The precise configuration you need to provide will vary depending upon your Keycloak setup.
 
-IMPORTANT: Due to a current limitation in the underlying OAuth2 library you may be required to provide a `credentials` section to avoid issues. You can change your client type to `confidential`, or simply provide a dummy `credentials` section.
+[IMPORTANT]
+====
+Due to a current limitation in the underlying OAuth2 library you may be required to provide a `credentials` section to avoid issues.
+
+You can change your client type to `confidential`, or simply provide a dummy `credentials` section.
+====
 
 [source,json5]
 ----
@@ -56,17 +184,20 @@ IMPORTANT: Due to a current limitation in the underlying OAuth2 library you may 
 }
 ----
 
-==== Servlet
+==== Servlet Gateway
 
-The API Gateway has a REST based configuration API which the API Manager uses when publishing APIs to it. This API is protected by Keycloak authentication. The configuration included in the Apiman quickstart overlay ZIP assumes that the Keycloak server is local, so you’ll need to modify the standalone-apiman.xml file to point to the remote Keycloak instance.
+The API Gateway has a REST based configuration API which the API Manager uses when publishing APIs to it.
+This API is protected by Keycloak authentication.
 
-Here is the relevant portion of the **standalone-apiman.xml** file that you must change:
+Most options can be configured using environment variables or system properties, rather than editing configuration directly. Please see the <<kc-configuration-options, Keycloak Configuration Options>> section for details.
+
+If not, the relevant portion of the **standalone-apiman.xml** file that you must change is `keycloak` subsystem.
+It looks something like this:
 
 [source,xml]
 ----
 <realm name="apiman">
-  <realm-public-key>MIIB..snip..QAB</realm-public-key>
-  <auth-server-url>https://keycloak-host.org:8443/auth</auth-server-url>
+  <auth-server-url>https://keycloak-host.org:8443</auth-server-url>
   <ssl-required>none</ssl-required>
   <enable-cors>false</enable-cors>
   <principal-attribute>preferred_username</principal-attribute>

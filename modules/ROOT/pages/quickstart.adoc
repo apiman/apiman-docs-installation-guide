@@ -3,6 +3,8 @@ Marc Savy <marc@rhymewithgravy.com>
 :gw-install-walkthrough: xref:vertx/install.adoc
 :docker-compose-distro: https://github.com/apiman/apiman-docker/releases/download/{apiman-version-release}/apiman-docker-compose-{apiman-version-release}.zip
 
+The easiest way to try Apiman is with our Docker Compose distribution.
+
 . Download the {docker-compose-distro}[Apiman Docker Compose distribution^].
 . `unzip apiman-docker-compose-{apiman-version-release}.zip && cd apiman-docker-compose-{apiman-version-release}`
 . `docker-compose -f docker-compose.setup.yml up`
@@ -10,4 +12,10 @@ Marc Savy <marc@rhymewithgravy.com>
 . Open http://apiman.local.gd:8080/apimanui
 . 🎉 Success!
 
-TIP: Check the distro's README.adoc for more information. It's inside the zip.
+[TIP]
+====
+Refer to the distro's **`README.adoc`** for more information. It's in the root of the zip.
+
+Don't forget to look at `.env` for a variety of useful settings.
+====
+

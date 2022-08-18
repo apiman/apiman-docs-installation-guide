@@ -2,7 +2,7 @@
 
 The Servlet version of the Apiman gateway uses Java properties as its primary source of configuration.
 
-This includes such platforms as WildFly, EAP, Jetty and Tomcat.
+This includes such platforms as WildFly and Tomcat.
 
 == Configuration Properties
 
