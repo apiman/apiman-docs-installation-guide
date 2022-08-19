@@ -52,7 +52,7 @@ a| Favourite project?
 |===
 
 
-[tabs]
+[tabset]
 ====
 Properties (Servlet)::
 +

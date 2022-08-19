@@ -40,7 +40,7 @@ a| Port for Prometheus scrape server to listen on
 
 Set the metrics implementation as shown.
 
-[tabs]
+[tabset]
 ====
 Properties (Servlet)::
 +

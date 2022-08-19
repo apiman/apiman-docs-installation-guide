@@ -16,7 +16,7 @@ https://github.com/apiman/apiman/issues/2264[If you need explicit support for In
 
 Set the metrics implementation as shown.
 
-[tabs]
+[tabset]
 ====
 Properties (Servlet)::
 +
