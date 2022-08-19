@@ -36,13 +36,13 @@ Point Apiman at your Keycloak server
 | Type
 | Description
 
-a| * System property: apiman.auth.url
-* Env var: APIMAN_AUTH_URL
+a| * System property: `apiman.auth.url`
+* Env var: `APIMAN_AUTH_URL`
 | String
 a| Keycloak auth server URL
 
-a| * System property: apiman.auth.realm-public-key
-* Env var: APIMAN_AUTH_REALM_PUBLIC_KEY
+a| * System property: `apiman.auth.realm-public-key`
+* Env var: `APIMAN_AUTH_REALM_PUBLIC_KEY`
 | String
 a|  **(Vert.x Gateway only).**
 
@@ -60,8 +60,8 @@ Public key for Apiman realm. Get this from Keycloak.
 | Type
 | Description
 
-a| * System property: apiman.auth.realm
-* Env var: APIMAN_AUTH_REALM
+a| * System property: `apiman.auth.realm`
+* Env var: `APIMAN_AUTH_REALM`
 | String
 a| Keycloak realm name.
 
@@ -69,22 +69,22 @@ a| Keycloak realm name.
 
 NOTE: In older versions of Keycloak the auth server might have `/auth` at the end of the URL, rather than being at root (i.e. `http://old-keycloak:8080/auth` vs `http://new-keycloak:8080/auth`).
 
-a| * System property: apiman.auth.api.secret
-* Env var: APIMAN_AUTH_API_SECRET
+a| * System property: `apiman.auth.api.secret`
+* Env var: `APIMAN_AUTH_API_SECRET`
 | String
 a| Keycloak secret credential for the Apiman Manager API (`apiman` client)
 
 * *Default Value*: password
 
-a| * System property: apiman.auth.ui.secret
-* Env var: APIMAN_AUTH_UI_SECRET
+a| * System property: `apiman.auth.ui.secret`
+* Env var: `APIMAN_AUTH_UI_SECRET`
 | String
 a| Keycloak secret credential for the Apiman Manager UI (`apimanui` client)
 
 * *Default Value*: password
 
-a| * System property: apiman.auth.gateway.secret
-* Env var: APIMAN_AUTH_GATEWAY_SECRET
+a| * System property: `apiman.auth.gateway.secret`
+* Env var: `APIMAN_AUTH_GATEWAY_SECRET`
 | String
 a| Keycloak secret credential for the Apiman Gateway API (`apiman-gateway-api` client)
 
@@ -129,7 +129,7 @@ services:
     volumes:
       - ${PWD}/apiman-realm-for-keycloak.json:/opt/keycloak/data/import/apiman-realm-for-keycloak.json <1>
 ----
-<1> Copy `apiman-realm-for-keycloak.json` from `apiman/data/apiman-realm-for-keycloak.json`
+<1> Copy `apiman-realm-for-keycloak.json` from `apiman/data/apiman-realm-for-keycloak.json` to the same directory as your `docker-compose.yml` file.
 
 ==== Steps
 . Create a file called `docker-compose.yml` with the contents shown above.
@@ -140,15 +140,15 @@ services:
 
 . You should now have Keycloak running on localhost port 8081
 . Try it with: `http://localhost:8081/admin`
-.. Admin username: `admin`
-.. Admin password: `admin123!`
+** Admin username: `admin`
+** Admin password: `admin123!`
 . Your Apiman Auth URL is: `http://localhost:8081` (see <<kc-configuration-options>>)
 
-NOTE: This is running in dev mode. For production, refer to the {keycloak}[Keycloak Production Guides^].
+NOTE: In this Docker Compose example, Keycloak  is running in dev mode. For production, refer to the {keycloak}[Keycloak Production Guides^].
 
-=== Alternative: Keycloak Quarkus Distro
+=== Alternative: Download Keycloak Quarkus Distro
 
-Alternatively, you can download the bare metal distro.
+Alternatively, you can download the bare metal Quarkus distribution (older versions run on EAP and WildFly, but we won't provide any guides here).
 
 ==== Steps
 
@@ -175,7 +175,7 @@ Please also refer to <<kc-configuration-options>> for more options.
 [#_gateway_api_authentication]
 == Gateway API Authentication
 
-The Apiman Gateway's REST API is what the API Manager invokes when publishing APIs and Client Apps to the Gateway footnote:[Some advanced configurations may interact directly with the Gateway API, whilst others may bypass it entirely by using polling, etc.].
+The Apiman Gateway's REST API is what the API Manager invokes when publishing APIs and Client Apps to the Apiman Gateway footnote:[Some advanced configurations may interact directly with the Gateway API, whilst others may bypass it entirely by using polling, etc.].
 
 [NOTE]
 ====
@@ -191,12 +191,12 @@ By default, the Apiman Gateway REST API requires BASIC authentication credential
 * The Apiman Gateway REST API can only be invoked by a valid user, and that user must have the `apipublisher` role.
 
 * The Keycloak client for this API is `apiman-gateway-api`
-** The default user is: *apimanager*
-** The default password is: *apiman123!*
+** The default user is: `apimanager`
+** The default password is: `apiman123!`
 
 === Configure the API Manager UI client in Keycloak
 
-Once the apiman realm has been created or imported, make sure to configure the *Valid Redirect URIs* section of the *apimanui*, *apiman*, *portal*, and *apiman-gateway-api* clients.
+Once the Apiman realm has been created or imported, make sure to configure the *Valid Redirect URIs* section of the *apimanui*, *apiman*, *devportal*, and *apiman-gateway-api* clients.
 
 The default relative URL of each should be replaced by the full (absolute) public URL of your API Manager UI.
 
@@ -206,7 +206,7 @@ This is good for testing, but unsafe for production.
 For example, the values may be something like:
 
 apimanui:: `https://apiman.myorg.com/apimanui/*`
-apiman-developer-portal:: `https://apiman.myorg.com/portal/*`
+devportal:: `https://apiman.myorg.com/portal/*`
 apiman:: `https://apiman.myorg.com/apiman/*`
 apiman-gateway-api:: `https://apiman.myorg.com/apiman-gateway-api/*`
 

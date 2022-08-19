@@ -46,7 +46,7 @@ apiman-gateway.registry=<IMPLEMENTATION>
 | Type
 | Description
 
-| datasource.jndi-location
+| `datasource.jndi-location`
 | String
 a| The JNDI location of the datasource you wish to use.
 
@@ -69,11 +69,11 @@ apiman-gateway.registry.datasource.jndi-location=java:/apiman/datasources/apiman
 | Type
 | Description
 
-| cache-polling-interval
+| `cache-polling-interval`
 | Integer
 a| Polling interval in millis
 
-| cache-polling-startup-delay
+| `cache-polling-startup-delay`
 | Integer
 a| How long to wait before starting polling in millis
 
@@ -94,23 +94,23 @@ To enable this feature, you must configure the API Gateway JDBC initializer in `
 | Type
 | Description
 
-| apiman-gateway.initializers
+| `apiman-gateway.initializers`
 | String
 a| Initializer type (always JDBC for this use-case)
 
 * *Required Value*: `jdbc`
 
-| apiman-gateway.initializers.jdbc=
+| `apiman-gateway.initializers.jdbc`
 | String
 a| Use JDBC initialiser (always for this use-case)
 
 * *Required Value*: `io.apiman.gateway.engine.jdbc.JdbcInitializer`
 
-| apiman-gateway.initializers.jdbc.datasource.jndi-location
+| `apiman-gateway.initializers.jdbc.datasource.jndi-location`
 | String
 a| JNDI location for your data source 
 
-| apiman-gateway.initializers.jdbc.datasource.type
+| `apiman-gateway.initializers.jdbc.datasource.type`
 | String
 a| Datasource type: 
 
@@ -159,7 +159,7 @@ IMPORTANT: Must be configured with the JNDI location of the datasource to use.
 | Type
 | Description
 
-| queue.size
+| `queue.size`
 | Integer
 | Metrics maximum queue size
 

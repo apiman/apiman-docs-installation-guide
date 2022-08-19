@@ -12,7 +12,7 @@ Apiman components for https://www.hazelcast.com[Hazelcast^].
 | Type
 | Description
 
-| eager-init
+| `eager-init`
 | Boolean
 | false
 
