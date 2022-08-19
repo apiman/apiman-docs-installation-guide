@@ -2,7 +2,7 @@ name: Trigger rebuild and redeployment of Apiman docs website
 
 on:
   push:
-    branches: [ antora ]
+    branches: [ antora, 2.x, 1.x ]
     paths-ignore:
       - '.github/workflows/**'
   workflow_dispatch:
