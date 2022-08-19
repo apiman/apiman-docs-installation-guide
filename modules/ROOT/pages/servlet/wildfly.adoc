@@ -65,10 +65,10 @@ IMPORTANT: Ensure you have set `APIMAN_AUTH_URL` as described in the <<keycloak_
 The Apiman overlay contains everything needed to run Apiman, including:
 
 * Apiman binaries (several WAR files)
-* Apiman-specific WildFly configuration (*standalone-apiman.xml*)
+* Apiman-specific WildFly configuration (*`standalone-apiman.xml`*)
 * Apiman RDBMS datasource (h2)
-* Pre-configured *admin* user with password *admin123!*
-* Pre-configured h2 database (populated with default values)
+* Drivers for some popular databases, including H2, PostgreSQL, and MySQL. See xref:manager/database.adoc[] for more.
+* Pre-configured *`admin`* user with password *`admin123!`*
 
 [source,bash,subs=attributes+]
 ----
@@ -86,7 +86,7 @@ Once Apiman is running, you should be able to log in to the API Manager by point
 http://localhost:8080/apimanui/
 ----
 
-Log in with credentials *admin/admin123!*
+Log in with credentials *`admin`/`admin123!`*
 
 [CAUTION]
 ====

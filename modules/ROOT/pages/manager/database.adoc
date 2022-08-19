@@ -49,36 +49,36 @@ If you are using Tomcat, you will need to configure the datasources manually.
 | Type
 | Description
 
-a| * System property: apiman.db.driver
-* Env var: APIMAN_DB_DRIVER
+a| * System property: `apiman.db.driver`
+* Env var: `APIMAN_DB_DRIVER`
 | String
 a| WildFly database driver name, as defined in `datasources/drivers`
 
 * *Default Value*: h2
 * *Allowed Values*: postgresql9, mysql8, (plus any value you have manually configured)
 
-a| * System property: apiman.db.url
-* Env var: APIMAN_DB_URL
+a| * System property: `apiman.db.url`
+* Env var: `APIMAN_DB_URL`
 | String
 a| Apiman database JDBC URL
 
 * *Default Value*: `jdbc:h2:${jboss.server.data.dir}/h2/apiman-manager-api`
 
-a| * System property: apiman.db.username
-* Env var: APIMAN_DB_USERNAME
+a| * System property: `apiman.db.username`
+* Env var: `APIMAN_DB_USERNAME`
 | String
 a| Apiman database username
 
 * *Default Value*: sa
 
-a| * System property: apiman.db.password
-* Env var: APIMAN_DB_PASSWORD
+a| * System property: `apiman.db.password`
+* Env var: `APIMAN_DB_PASSWORD`
 | String
 a| Apiman database password
 
 * *Default Value*: sa
 
-a| * System property: liquibase.should.run
+a| * System property: `liquibase.should.run`
 | Boolean
 a| Whether https://www.liquibase.org/[Liquibase^], our SQL change management engine, should run at startup to initialise your database and/or apply the latest SQL migrations.
 
@@ -89,7 +89,8 @@ a| Whether https://www.liquibase.org/[Liquibase^], our SQL change management eng
 
 .Examples
 |===
-|Setup | Command
+|Setup
+|Command
 
 |Postgres -- system properties
 a|

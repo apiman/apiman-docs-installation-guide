@@ -151,7 +151,7 @@ Don't worry, the *Test* button will simply try to make a connection to the Apima
 [TIP]
 ====
 You will need to log into the UI.
-The default credentials are: admin/admin123!
+The default credentials are: `admin`/`admin123!`
 
 You may have changed the default user credentials when you installed and configured Keycloak.
 If so, make sure you use those credentials.

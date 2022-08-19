@@ -12,7 +12,7 @@ This file therefore contains configuration settings for all three applications (
 
 Please refer to the `apiman.properties` file itself, as well as this documentation, for more information on each property's purpose and possible values.
 
-To discover available options for components, refer to the link:../registries-and-components/overview.adoc[Registries & Components] documentation.
+To discover available options for components, refer to the xref:registries-and-components/overview.adoc[Registries & Components] documentation.
 
 TIP: If you are running a non-Servlet gateway implementation (e.g. Vert.x), then you should refer to that gateway's configuration documentation to understand how to configure that element.
 

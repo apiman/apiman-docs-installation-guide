@@ -132,9 +132,10 @@ The hostname to bind to.
 ----
 
 Force the gateway to report the given gateway endpoint when it is queried by the manager.
-By default the gateway will inspect the request used to hit the Gateway API, and use whichever address was used to reach it as the endpoint.
+By default, the gateway will inspect the request used to hit the Gateway API, and use whichever address was used to reach it as the endpoint.
 
-== SSL
+[[SSL]]
+== SSL (TLS)
 
 The SSL section configures transport security to the gateway's *front end*; that is, connections established between client app ⇋ Apiman Gateway.
 
@@ -156,7 +157,7 @@ The SSL section configures transport security to the gateway's *front end*; that
 
 The precise keystore and truststore setups to use will vary considerably depending upon your organisation and security requirements; hence, they are out of the scope of this guide.
 
-NOTE: Refer to the https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html[Java keytool reference] for more information on creating keystores and truststores.
+NOTE: Refer to the https://docs.oracle.com/en/java/javase/11/tools/keytool.html[Java keytool reference^] for more information on creating keystores and truststores.
 
 === Allowed TLS Protocols
 
