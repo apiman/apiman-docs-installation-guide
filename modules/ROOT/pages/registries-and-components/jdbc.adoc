@@ -1,12 +1,15 @@
 = JDBC Registry & Components
 Marc Savy <marc@rhymewithgravy.com>
 
+Apiman components for JDBC (SQL).
+
 NOTE: These components are presently optimised for Servlet editions of the gateway, whilst they will work with Vert.x the experience will likely be less performant than normal.
 
 TIP: We ship a range of sample DDLs to get you started for all major databases. In your distribution, look in the `apiman/ddls` directory, or refer to the link:https://github.com/apiman/apiman/tree/{apiman-version-release}/distro/data/src/main/resources/ddls[Apiman Repo^].
 
 A gateway registry and components that uses JDBC (i.e. SQL databases, such as PostgreSQL, MySQL, Oracle, etc).
 
+[#_registry]
 == Registry
 
 To set your registry, assign your chosen implementation to:
@@ -17,7 +20,7 @@ apiman-gateway.registry=<IMPLEMENTATION>
 ----
 
 .Available implementations:
-[cols="2", options="header"]
+[cols="2",options="header"]
 |===
 
 | Implementation
@@ -130,6 +133,7 @@ apiman-gateway.initializers.jdbc.datasource.jndi-location=${apiman.jdbc.datasour
 apiman-gateway.initializers.jdbc.datasource.type=postgresql9
 ----
 
+[#_metrics]
 == Metrics
 
 Set the metrics implementation as shown:
@@ -160,3 +164,4 @@ IMPORTANT: Must be configured with the JNDI location of the datasource to use.
 | Metrics maximum queue size
 
 |===
+

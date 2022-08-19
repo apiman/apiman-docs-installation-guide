@@ -4,14 +4,14 @@
 
 [IMPORTANT]
 ====
-As of Apiman 3, we no longer bundle the Keycloak server into Apiman quickstart distributions.
+As of Apiman 3, we no longer bundle Keycloak server into Apiman quickstart distributions.
 
 You need to run Keycloak before you can use Apiman footnote:[It is possible to use other auth providers, but this is out of the scope of this guide.].
 ====
 
 [MaintainerMessage]
 ****
-If you are interested in support for other SSO providers, please let us know in this https://github.com/apiman/apiman/issues/1704[GitHub Issue^].
+If you are interested in support for other SSO providers, please let us know in this https://github.com/apiman/apiman/issues/2270[GitHub Issue^].
 ****
 
 In order to use the Apiman quickstarts, you need to run Keycloak.
@@ -20,8 +20,8 @@ In order to use the Apiman quickstarts, you need to run Keycloak.
 
 To provide flexibility, there are a few ways you can tell Apiman's components where your Keycloak server is:
 
-* For simpler configurations, environment variables or Java system properties are available. See <<kc-configuration-options>>.
-* For advanced configurations, manual editing of config files may be required. See <<_kc-advanced-configuration>>.
+* For simpler configurations, environment variables or Java system properties are available. See the <<kc-configuration-options>> section.
+* For advanced configurations, manual editing of config files may be required. See the <<_kc-advanced-configuration>> section.
 
 [[kc-configuration-options]]
 == Apiman Auth Configuration

@@ -3,9 +3,12 @@ Marc Savy <marc@rhymewithgravy.com>
 
 TIP: Many of the shipped configurations make use of variable substitution to reduce repetition.
 
+Apiman components for https://www.elastic.co[Elasticsearch^].
+
+[#_global_required_parameters]
 == Global Required Parameters
 
-[cols="2,1,4", options="header"]
+[cols="2,1,4",options="header"]
 |===
 
 | Name
@@ -48,9 +51,10 @@ a| Client timeout (milliseconds)
 
 |===
 
+[#_global_optional_parameters]
 == Global Optional Parameters
 
-[cols="2,1,4", options="header"]
+[cols="2,1,4",options="header"]
 |===
 
 | Name
@@ -129,6 +133,7 @@ a| Polling frequency for client attempting connection to Elasticsearch (millisec
 
 |===
 
+[#_registry]
 == Registry
 
 Assign your chosen implementation as shown in the example, providing configuration.
@@ -218,6 +223,7 @@ a| Polling startup delay in seconds.
 
 |===
 
+[#_metrics]
 == Metrics
 
 Set the metrics implementation as shown.
@@ -237,24 +243,47 @@ JSON (Vert.x)::
 --
 [source,json5]
 ----
-"metrics": {
-  "class": "io.apiman.gateway.engine.es.ESMetrics",
-  "config": {
-    "client": {
-       "type": "es",
-       "protocol": "${apiman.es.protocol}",
-       "host": "${apiman.es.host}",
-       "port": "${apiman.es.port}"
-       // <metrics configuration>
+{
+  "metrics": {
+    "class": "io.apiman.gateway.engine.es.ESMetrics",
+    "config": {
+      "client": {
+         "type": "es",
+         "protocol": "${apiman.es.protocol}",
+         "host": "${apiman.es.host}",
+         "port": "${apiman.es.port}"
+         // <metrics configuration>
+       }
      }
-   }
+  }
 }
 ----
 --
 ====
 
-=== Servlet
+Set the Apiman Manager metrics accessor implementation to enable Apiman Manager UI to provide some basic visualisations from your Elasticsearch data.
 
+[TIP]
+====
+* A commented-out segment should be in your `apiman.properties` already.
+
+* All the same global <<_global_required_parameters, required>> and <<_global_optional_parameters, optional>> options are available.
+====
+
+[source,properties]
+----
+# API Manager metrics settings.
+apiman-manager.metrics.type=io.apiman.manager.api.es.EsMetricsAccessor
+
+apiman-manager.metrics.es.client.type=es
+# All options available as in global mandatory and optional
+apiman-manager.metrics.es.client.protocol=${apiman.es.protocol}
+apiman-manager.metrics.es.client.host=${apiman.es.host}
+apiman-manager.metrics.es.client.port=${apiman.es.port}
+
+----
+
+=== Servlet
 
 .Available implementations:
 [cols="2", options="header"]
@@ -310,6 +339,7 @@ NOTE: For custom header and query param capture, we add entries into the Elastic
 // Rate limiting.
 == Components
 
+[#_shared_state]
 === Shared State
 
 Set shared state implementation as shown.
@@ -331,17 +361,19 @@ JSON (Vert.x)::
 --
 [source,json5]
 ----
-"components": {
-  // Shared State Component Settings
-  "ISharedStateComponent": {
-    "class": "io.apiman.gateway.engine.es.ESSharedStateComponent",
-    "config": {
-      "client": {
-        "type": "es",
-        "protocol": "${apiman.es.protocol}",
-        "host": "${apiman.es.host}",
-        "port": "${apiman.es.port}"
-        //<configuration options>
+{
+  "components": {
+    // Shared State Component Settings
+    "ISharedStateComponent": {
+      "class": "io.apiman.gateway.engine.es.ESSharedStateComponent",
+      "config": {
+        "client": {
+          "type": "es",
+          "protocol": "${apiman.es.protocol}",
+          "host": "${apiman.es.host}",
+          "port": "${apiman.es.port}"
+          //<configuration options>
+        }
       }
     }
   }
@@ -354,6 +386,7 @@ JSON (Vert.x)::
 
 Refer to <<Global Required Parameters>>.
 
+[#_rate_limiter]
 === Rate Limiter
 
 Set rate limiter implementation as shown.
@@ -375,17 +408,19 @@ JSON (Vert.x)::
 --
 [source,json5]
 ----
-"components": {
-  // Rate Limiter Component Settings
-  "IRateLimiterComponent": {
-    "class": "io.apiman.gateway.engine.es.ESRateLimiterComponent",
-    "config": {
-      "client": {
-        "type": "es",
-        "protocol": "${apiman.es.protocol}",
-        "host": "${apiman.es.host}",
-        "port": "${apiman.es.port}"
-        // <configuration options>
+{
+  "components": {
+    // Rate Limiter Component Settings
+    "IRateLimiterComponent": {
+      "class": "io.apiman.gateway.engine.es.ESRateLimiterComponent",
+      "config": {
+        "client": {
+          "type": "es",
+          "protocol": "${apiman.es.protocol}",
+          "host": "${apiman.es.host}",
+          "port": "${apiman.es.port}"
+          // <configuration options>
+        }
       }
     }
   }
@@ -398,6 +433,7 @@ JSON (Vert.x)::
 
 Refer to <<Global Required Parameters>>.
 
+[#_cache_store]
 === Cache Store
 
 Set cache store implementation as shown.
@@ -409,8 +445,8 @@ Properties (Servlet)::
 --
 [source,properties]
 ----
-apiman-gateway.components.IRateLimiterComponent=io.apiman.gateway.engine.es.ESRateLimiterComponent
-apiman-gateway.components.IRateLimiterComponent.client.type=es
+apiman-gateway.components.ICacheStoreComponent=io.apiman.gateway.engine.es.EsCacheStoreComponent
+apiman-gateway.components.ICacheStoreComponent.client.type=es
 # <configuration options>
 ----
 --
@@ -419,17 +455,19 @@ JSON (Vert.x)::
 --
 [source,json5]
 ----
-"components": {
-  // Cache Store Component Settings
-  "ICacheStoreComponent": {
-    "class": "io.apiman.gateway.engine.es.ESCacheStoreComponent",
-    "config": {
-      "client": {
-        "type": "es",
-        "protocol": "${apiman.es.protocol}",
-        "host": "${apiman.es.host}",
-        "port": "${apiman.es.port}"
-        // <configuration options>
+{
+  "components": {
+    // Cache Store Component Settings
+    "ICacheStoreComponent": {
+      "class": "io.apiman.gateway.engine.es.ESCacheStoreComponent",
+      "config": {
+        "client": {
+          "type": "es",
+          "protocol": "${apiman.es.protocol}",
+          "host": "${apiman.es.host}",
+          "port": "${apiman.es.port}"
+          // <configuration options>
+        }
       }
     }
   }

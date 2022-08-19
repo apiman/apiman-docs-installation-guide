@@ -23,17 +23,16 @@ The image above should give you an idea of how they all fit together.
 
 == Elasticsearch
 
-If you wish to enable metrics in Apiman (who doesn't?) you'll need to install Elasticsearch.  This is
-because the API Gateway stores all metrics information in Elasticsearch (by default), and the API Manager
-queries that data to present analytics information in the UI.
+If you wish to enable metrics in Apiman (who doesn't?) you'll need to install Elasticsearch.
+The API Gateway can store all metrics information in Elasticsearch (by default), and the API Manager queries that data to present analytics information in the UI.
 
-Please see the Elasticsearch documentation for how to install and configure it in production.  Ultimately you
-will need Elasticsearch running in a well known and accessible location.  We also recommend you enable
-authentication (e.g. via Shield) and SSL.
+Please see the Elasticsearch documentation for how to install and configure it in production.
+Ultimately you  will need Elasticsearch running in a well known and accessible location.  We also recommend you enable authentication (e.g. via Shield) and SSL.
 
-TIP: The data in Elasticsearch is not backed up or stored in some other location - Elasticsearch is being
-used as the primary/canonical data store for the metrics information.  You may wish to configure backup
-procedures
+TIP: The data in Elasticsearch is not backed up or stored in some other location - Elasticsearch is being used as the primary/canonical data store for the metrics information.
+You may wish to configure backup procedures.
+
+See:
 
 
 == Keycloak

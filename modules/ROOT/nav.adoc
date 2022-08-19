@@ -1,5 +1,6 @@
 
 * Installation
+
 ** xref:index.adoc[Introduction]
 ** xref:quickstart.adoc[Quickstart]
 ** xref:keycloak.adoc[Set up Keycloak SSO]
@@ -26,20 +27,23 @@
 *** xref:manager/configuration.adoc#_custom_api_catalog[Custom API Catalog]
 *** xref:manager/configuration.adoc#_custom_plugin_registry[Custom Plugin Registry]
 *** xref:manager/configuration.adoc#_property_replacement_in_policy_config[Policy Config Property Replacement]
-** xref:manager/backup-migration.adoc#_backup_migration[Backup & Migration]
+** xref:manager/backup-migration.adoc[Backup & Migration]
 ** xref:manager/backup-migration.adoc#_upgrading_to_a_new_apiman_version[Upgrading Apiman]
 
 * Gateway
 
 ** xref:registries-and-components/overview.adoc[Registries & Components]
-*** xref:registries-and-components/jdbc.adoc[JDBC]
+*** xref:registries-and-components/jdbc.adoc[JDBC / SQL]
 *** xref:registries-and-components/elasticsearch.adoc[Elasticsearch]
 ***  xref:registries-and-components/influxdb.adoc[InfluxDB Metrics]
+***  xref:registries-and-components/hazelcast.adoc[Hazelcast]
+***  xref:registries-and-components/prometheus.adoc[Prometheus]
+***  xref:registries-and-components/redis.adoc[Redis]
 *** xref:registries-and-components/headless.adoc[Headless]
 
 ** xref:gateway/security.adoc[Security]
 *** xref:gateway/security.adoc#_gateway_api_authentication[Gateway API Authentication]
-*** xref:gateway/security.adoc#_mtls_mutual_ssl_endpoint_security[Mutual TLS (MTLS/MSSL)]
+*** xref:gateway/security.adoc#_mtls_mutual_ssl_endpoint_security[Mutual TLS (mTLS)]
 
 * How to
 ** xref:how-to/jdbc.adoc[SQL Metrics Instead of Elasticsearch]

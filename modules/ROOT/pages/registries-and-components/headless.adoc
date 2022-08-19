@@ -1,10 +1,11 @@
+[#_headless_registry]
 = Headless Registry
 Marc Savy <marc@rhymewithgravy.com>
 
 The Apiman headless registry uses an immutable registry to load its configuration from a local or remote JSON file.
 
 .Available implementations:
-[cols="2", options="header"]
+[cols="2",options="header"]
 |===
 
 | Implementation

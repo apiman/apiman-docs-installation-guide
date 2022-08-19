@@ -1,7 +1,4 @@
-[#_backup_migration]
 = Backup & Migration
-:author: marc@blackparrotlabs.io
-:author: eric.wittmann@redhat.com
 :liquibase: https://www.liquibase.org
 
 .Apiman Migration Guide

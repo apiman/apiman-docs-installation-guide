@@ -1,6 +1,8 @@
 = InfluxDB Components
 Marc Savy <marc@blackparrotlabs.io>
 
+Apiman components for https://www.influxdata.com[InfluxDB^].
+
 InfluxDB is a popular time-series database.
 Apiman supports the InfluxDB 1 protocol.
 Refer to the https://docs.influxdata.com/influxdb/v2.3/reference/api/influxdb-1x/#[InfluxDB v2 documentation on _InfluxDB 1.x compatibility API_].

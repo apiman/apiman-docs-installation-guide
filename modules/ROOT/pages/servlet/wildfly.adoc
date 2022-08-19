@@ -26,7 +26,7 @@ Please substitute your changes, where appropriate.
 
 === Installing Apiman on WildFly
 
-Apiman can target WildFly as a runtime environment.
+Apiman can target https://www.wildfly.org[WildFly^] as a runtime environment.
 In order to install Apiman you will need to download both WildFly and the Apiman overlay distribution.
 
 Once both are downloaded, it's a simple matter of unpacking both into the same location.
