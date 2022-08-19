@@ -15,34 +15,34 @@ Apiman components for https://www.elastic.co[Elasticsearch^].
 | Type
 | Description
 
-| client.type
+| `client.type`
 | String
 a| The Elasticsearch client type:
 
 * *Default Value*: es
 
-| client.protocol
+| `client.protocol`
 | Enum
 a| The Elasticsearch protocol to use
 
 * *Default Value*: http
 * *Allowed Values*: http, https
 
-| client.indexPrefix
+| `client.indexPrefix`
 | String
 a| Elasticsearch index prefix
 
 * *Default Value*: name of component
 
-| client.host
+| `client.host`
 | String
 a| The ES host
 
-| client.port
+| `client.port`
 | Integer
 a| The ES port
 
-| client.timeout
+| `client.timeout`
 | Integer
 a| Client timeout (milliseconds)
 
@@ -61,71 +61,71 @@ a| Client timeout (milliseconds)
 | Type
 | Description
 
-| client.index
+| `client.index`
 | String
 a| An alternative Elasticsearch index name.
 
-| client.initialize
+| `client.initialize`
 | Boolean
 a| Initialise the storage
 
-| client.username
+| `client.username`
 | String
 a| Username if using an auth mechanism like SearchGuard, Shield, etc
 
-| client.password
+| `client.password`
 | String
 a| Password if using an auth mechanism like SearchGuard, Shield, etc
 
-| client.keystore.path
+| `client.keystore.path`
 | String
 a| Path to the client KeyStore
 
-| client.keystore.format
+| `client.keystore.format`
 | Enum
 a| Format of keystore
 
 * *Default Value*: jks
 * *Allowed Values*: pkcs12, jks
 
-| client.keystore.password
+| `client.keystore.password`
 | String
 a| Password for the client KeyStore
 
-| client.truststore.path
+| `client.truststore.path`
 | String
 a| Path to the TrustStore
 
-| client.truststore.format
+| `client.truststore.format`
 | Enum
 a| Format of truststore
 
 * *Default Value*: jks
 * *Allowed Values*: pkcs12, jks
 
-| client.truststore.password
+| `client.truststore.password`
 | String
 a| Password for the TrustStore
 
-| client.allowSelfSigned / client.trust.certificate
+| `client.allowSelfSigned` / `client.trust.certificate`
 | Boolean
 a| Trust self-signed certificates
 
 * *Default Value*: false
 
-| client.allowAnyHost / client.trust.host
+| `client.allowAnyHost` / `client.trust.host`
 | Boolean
 a| Disable hostname verification checks
 
 * *Default Value*: false
 
-| client.trustAll
+| `client.trustAll`
 | Boolean
 a| Trust all SSL endpoints without any checks (use with great care)
 
 * *Default Value*: false
 
-| client.pollingTime / client.polling.time
+| `client.pollingTime` / `client.polling.time`
 | String
 a| Polling frequency for client attempting connection to Elasticsearch (milliseconds). This is only relevant if the client is unable to connect on first attempt.
 
@@ -194,7 +194,7 @@ Refer also to <<Global Required Parameters>>.
 | Type
 | Description
 
-| cache-polling-interval
+| `cache-polling-interval`
 | Integer
 a| Cache polling interval in seconds.
 
@@ -214,7 +214,7 @@ Refer also to <<Global Optional Parameters>>.
 | Type
 | Description
 
-| cache-polling-startup-delay
+| `cache-polling-startup-delay`
 | Integer
 a| Polling startup delay in seconds.
 
@@ -308,27 +308,27 @@ Refer also to <<Global Required Parameters>>.
 | Type
 | Description
 
-| queue.size
+| `queue.size`
 | Integer
 a| Maximum metrics queue size
 
 * *Default Value*: 10000
 
-| batch.size
+| `batch.size`
 | Integer
 a| Maximum metrics batching size
 
 * *Default Value*: 1000
 
-| custom.headers.request
+| `custom.headers.request`
 | String[]
 a| Case-insensitive list of _request_ headers to capture, for example `X-Correlation-Id`.
 
-| custom.headers.response
+| `custom.headers.response`
 | String[]
 a| Case-insensitive list of _response_ headers to capture
 
-| custom.query-params
+| `custom.query-params`
 | String[]
 a| Case-insensitive list of HTTP https://en.wikipedia.org/wiki/Query_string[query parameters^] to capture
 

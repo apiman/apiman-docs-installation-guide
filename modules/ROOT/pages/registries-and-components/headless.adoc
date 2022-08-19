@@ -42,11 +42,11 @@ NOTE: This registry is optimised for the Vert.x gateway implementation. Although
 | Type
 | Description
 
-| configUri
+| `configUri`
 | String
 a| URI to file containing registry configuration. Supports `file`, `http`, `https`.
 
-| auth
+| `auth`
 | Enum
 a| Auth mechanism to access resource indicated in `configUri`.
 
@@ -62,6 +62,7 @@ Refer to the subsections for each auth mechanism for respective configuration op
 
 |===
 
+[#_authentication]
 == Authentication
 
 === BASIC
@@ -69,18 +70,18 @@ Refer to the subsections for each auth mechanism for respective configuration op
 Standard BASIC auth with static credentials.
 
 .Required Parameters
-[cols="2,1,4", options="header"]
+[cols="2,1,4",options="header"]
 |===
 
 | Name
 | Type
 | Description
 
-| username
+| `username`
 | String
 a| A username. Consider using variable substitution.
 
-| password
+| `password`
 | String
 a| A password. Consider using variable substitution.
 
@@ -142,15 +143,15 @@ IMPORTANT: Due to a current limitation in the underlying OAuth2 library you may 
 | Type
 | Description
 
-| flowType
+| `flowType`
 | Enum
 a| The OAuth2 flow for your configuration.
 
 .Allowed Values:
-* PASSWORD
-* CLIENT
-* AUTH_CODE
-* AUTH_JWT
+* `PASSWORD`
+* `CLIENT`
+* `AUTH_CODE`
+* `AUTH_JWT`
 
 |===
 
@@ -162,11 +163,11 @@ a| The OAuth2 flow for your configuration.
 | Type
 | Description
 
-| username
+| `username`
 | String
 a| A username. Usually only useful if using the password `flowType`.
 
-| password
+| `password`
 | String
 a| A password. Usually only useful if using the password `flowType`.
 
@@ -184,25 +185,25 @@ TIP: The combination of required parameters and optional parameters will vary co
 | Type
 | Description
 
-| flowType
+| `flowType`
 | Enum
 a| The OAuth2 flow for your configuration.
 
 .Allowed Values:
-* PASSWORD
-* CLIENT
-* AUTH_CODE
-* AUTH_JWT
+* `PASSWORD`
+* `CLIENT`
+* `AUTH_CODE`
+* `AUTH_JWT`
 
-| oauthUri
+| `oauthUri`
 | String
 a| The OAuth2 URI.
 
-| clientId
+| `clientId`
 | String
 a| The OAuth2 client ID.
 
-| clientSecret
+| `clientSecret`
 | String
 a| The OAuth2 client secret.
 
@@ -216,72 +217,73 @@ a| The OAuth2 client secret.
 | Type
 | Description
 
-| site
+| `site`
 | String
 a| Site URI
 
-| publicKey
+| `publicKey`
 | String
 a| Public key
 
-| clientSecret
+| `clientSecret`
 | String
 a| Client secret
 
-| username
+| `username`
 | String
 a| A username. Usually only useful if using the password `flowType`.
 
-| password
+| `password`
 | String
 a| A password. Usually only useful if using the password `flowType`.
 
-| authorizationPath
+| `authorizationPath`
 | String
 a| The authorization path
 
-| tokenPath
+| `tokenPath`
 | String
 a| The token path
 
-| recovationPath
+| `recovationPath`
 | String
 a| The revocation path
 
-| scopeSeparator
+| `scopeSeparator`
 | String
 a| The introspection path
 
-| logoutPath
+| `logoutPath`
 | String
 a| The logout path (OIDC)
 
-| useBasicAuthorizationHeader
+| `useBasicAuthorizationHeader`
 | boolean
 a| Whether to use BASIC auth header (OIDC)
 
-| clientSecretParameterName
+| `clientSecretParameterName`
 | String
 a| Client secret query parameter name (OIDC)
 
-| userInfoPath
+| `userInfoPath`
 | String
 a| User info path (OIDC)
 
-| introspectionPath
+| `introspectionPath`
 | String
 a| User info path (RFC7662)
 
-| userAgent
+| `userAgent`
 | String
 a| User agent
 
-| privateKey
+| `privateKey`
 | String
 a| Private key
 
 |===
 
+[#_configuration_file_format]
 == Configuration File Format
 
 Configuration of the registry is via a JSON file, https://gist.github.com/msavy/f79766b4f448672cdaf84ce4159ba2e9[the schema for which can be found on GitHub].

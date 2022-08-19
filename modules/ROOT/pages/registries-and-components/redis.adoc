@@ -12,7 +12,7 @@ Apiman components for https://redis.io/[Redis^].
 | Type
 | Description
 
-| config.file
+| `config.file`
 | String
 a| Path to https://github.com/redisson/redisson/wiki/2.-Configuration/#22-declarative-configuration[your Redisson client configuration file^].
 

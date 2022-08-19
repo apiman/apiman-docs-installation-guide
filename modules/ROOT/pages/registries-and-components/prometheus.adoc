@@ -26,7 +26,7 @@ If you would like to see Apiman's Prometheus component expanded or improved, ple
 | Type
 | Description
 
-| port
+| `port`
 | Integer
 a| Port for Prometheus scrape server to listen on
 
