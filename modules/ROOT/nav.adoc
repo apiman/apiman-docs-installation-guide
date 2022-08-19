@@ -29,6 +29,7 @@
 *** xref:manager/configuration.adoc#_property_replacement_in_policy_config[Policy Config Property Replacement]
 ** xref:manager/backup-migration.adoc[Backup & Migration]
 ** xref:manager/backup-migration.adoc#_upgrading_to_a_new_apiman_version[Upgrading Apiman]
+** xref:manager/notifications.adoc[Notifications]
 
 * Gateway
 
@@ -50,6 +51,6 @@
 
 * xref:production.adoc[Production Guide]
 ** Gateway
-*** xref:gateway/production-gateway.adoc[Vertx]
-*** xref:gateway/production-gateway-wildfly.adoc[Wildfly]
+*** xref:gateway/production-gateway.adoc[Vert.x]
+*** xref:gateway/production-gateway-wildfly.adoc[WildFly]
 ** xref:manager/production-manager.adoc[Manager]

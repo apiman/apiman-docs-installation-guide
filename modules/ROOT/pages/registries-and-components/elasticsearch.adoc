@@ -138,7 +138,7 @@ a| Polling frequency for client attempting connection to Elasticsearch (millisec
 
 Assign your chosen implementation as shown in the example, providing configuration.
 
-[tabs]
+[tabset]
 ====
 Properties (Servlet)::
 +
@@ -228,7 +228,7 @@ a| Polling startup delay in seconds.
 
 Set the metrics implementation as shown.
 
-[tabs]
+[tabset]
 ====
 Properties (Servlet)::
 +
@@ -344,7 +344,7 @@ NOTE: For custom header and query param capture, we add entries into the Elastic
 
 Set shared state implementation as shown.
 
-[tabs]
+[tabset]
 ====
 Properties (Servlet)::
 +
@@ -391,7 +391,7 @@ Refer to <<Global Required Parameters>>.
 
 Set rate limiter implementation as shown.
 
-[tabs]
+[tabset]
 ====
 Properties (Servlet)::
 +
@@ -438,7 +438,7 @@ Refer to <<Global Required Parameters>>.
 
 Set cache store implementation as shown.
 
-[tabs]
+[tabset]
 ====
 Properties (Servlet)::
 +

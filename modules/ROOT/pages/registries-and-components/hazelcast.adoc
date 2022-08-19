@@ -23,7 +23,7 @@ Apiman components for https://www.hazelcast.com[Hazelcast^].
 [#_cache_store]
 === Cache Store
 
-[tabs]
+[tabset]
 ====
 Properties (Servlet)::
 +
@@ -55,7 +55,7 @@ JSON (Vert.x)::
 [#_rate_limiter]
 === Rate Limiter
 
-[tabs]
+[tabset]
 ====
 Properties (Servlet)::
 +
@@ -87,7 +87,7 @@ JSON (Vert.x)::
 [#_shared_state]
 === Shared State
 
-[tabs]
+[tabset]
 ====
 Properties (Servlet)::
 +
