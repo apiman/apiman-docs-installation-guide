@@ -99,7 +99,7 @@ You can optionally set a username and password; this is only useful if you are u
       "es": {
         "protocol": "http",
         "host": "localhost",
-        "port": 19200, // <1>
+        "port": 9200,
         "username": null, // Optional
         "password": null, // Optional
         "timeout": 10000
@@ -110,7 +110,6 @@ You can optionally set a username and password; this is only useful if you are u
   // rest of your config...
 }
 ----
-<1> The default port of a standalone ES cluster is typically 9200. The ES bundled with the _apiman Manager_ is set to 19200 by default to avoid port clashes.
 
 NOTE: Refer to the xref:registries-and-components/elasticsearch.adoc[Elasticsearch registries & components documentation] for a complete list of configuration options.
 
