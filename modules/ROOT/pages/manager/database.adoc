@@ -1,7 +1,4 @@
-[[apiman_manager_database_config]]
 = API Manager Database Configuration
-:author: marc@blackparrotlabs.io
-:author: eric.wittmann@redhat.com
 :liquibase: https://www.liquibase.org
 
 The API Manager is a CDI application and uses JPA/Hibernate to persist its data (SQL).
