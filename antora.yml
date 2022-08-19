@@ -1,10 +1,11 @@
 name: installation-guide
 title: Installation Guide
-version: 2.2.3.Final
+version: 3.0.0-SNAPSHOT
 start_page: ROOT:index.adoc
+prerelease: true
 nav:
   - modules/ROOT/nav.adoc
 asciidoc:
   attributes:
-    apiman-version-release: 2.2.3.Final
+    apiman-version-release: 3.0.0-SNAPSHOT
     wildfly-version: 23.0.2.Final
