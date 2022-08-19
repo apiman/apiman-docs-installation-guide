@@ -156,7 +156,9 @@ Alternatively, you can download the bare metal Quarkus distribution (older versi
 
 . Initialise Keycloak with the Apiman default realm.
 
-.. You can find the default realm definition in your distribution zip: `apiman/data/apiman-realm-for-keycloak.json`
+.. You can find the default realm definition in your distribution zip:
++
+`apiman/data/apiman-realm-for-keycloak.json`
 
 .. There are several ways to import a realm, https://www.keycloak.org/server/importExport[please refer to the Keycloak docs^]. However, for this example, we'll do:
 +
@@ -168,7 +170,7 @@ Alternatively, you can download the bare metal Quarkus distribution (older versi
 +
 `export APIMAN_AUTH_URL="http://<somehost>:<someport>"`.
 +
-For example, if your hostname is `localhost` and your port is `8081`, then your `APIAN_AUTH_URL` would be `http://localhost:8081/`
+For example, if your hostname is `localhost` and your port is `8081`, then your `APIMAN_AUTH_URL` would be `http://localhost:8081/`
 
 Please also refer to <<kc-configuration-options>> for more options.
 
