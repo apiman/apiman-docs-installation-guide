@@ -139,20 +139,22 @@ By default, the gateway will inspect the request used to hit the Gateway API, an
 
 The SSL section configures transport security to the gateway's *front end*; that is, connections established between client app ⇋ Apiman Gateway.
 
-[source,json5]
+[source,json]
 ----
- "ssl": {
-   "keystore": {
-     "path": "/the/keystore/path/here.jks",
-     "password": "password-here"
-   },
-   "truststore": {
-     "path": "/the/truststore/path/here.jks",
-     "password": "password-here"
-   },
-   // Allowed TLS/SSL protocols for Client <-> Gateway (Server)
-   "allowedProtocols": "TLSv1.1, TLSv1.2"
- }
+{
+  "ssl": {
+    "keystore": {
+      "path": "/the/keystore/path/here.jks",
+      "password": "password-here"
+    },
+    "truststore": {
+      "path": "/the/truststore/path/here.jks",
+      "password": "password-here"
+    },
+    // Allowed TLS/SSL protocols for Client <-> Gateway (Server)
+    "allowedProtocols": "TLSv1.1, TLSv1.2"
+  }
+}
 ----
 
 The precise keystore and truststore setups to use will vary considerably depending upon your organisation and security requirements; hence, they are out of the scope of this guide.

@@ -18,7 +18,7 @@ However, if all you want is the basic graphs/charts shown in the Apiman UI, you 
 Using a set of system properties or environment variables, Apiman can quickly bootstrap your JDBC datasource.
 If your setup isn't supported out of the box, you may need to configure your own datasources, including JDBC drivers.
 
-Please refer to the xref:registries-and-components/../manager/configuration.adoc#apiman_manager_database_config[Apiman database configuration] section for how to do this.
+Please refer to the xref:manager/database.adoc[Apiman database configuration] section for how to do this.
 
 == Enable the Apiman Gateway JDBC initializer
 
@@ -30,7 +30,7 @@ To enable this feature, you must configure the Apiman Gateway JDBC initializer i
 
 [source,properties]
 ----
-apiman.jdbc.datasource.jndi-location=java:jboss/datasources/apiman-gateway
+apiman.jdbc.datasource.jndi-location=java:/apiman/datasources/apiman-gateway
 apiman-gateway.initializers=jdbc
 apiman-gateway.initializers.jdbc=io.apiman.gateway.engine.jdbc.JdbcInitializer
 apiman-gateway.initializers.jdbc.datasource.jndi-location=${apiman.jdbc.datasource.jndi-location}
@@ -44,10 +44,10 @@ Note that you will need to set the correct value of *apiman-gateway.initializers
 Possible values for this property include:
 
 * h2
-* mysql5
+* mysql8
 * postgresql9
-* mssql11
-* oracle12
+* mssql15
+* oracle19
 
 == Configure the Apiman Gateway metrics provider to be JDBC
 

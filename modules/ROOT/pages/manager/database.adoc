@@ -86,13 +86,11 @@ a| Whether https://www.liquibase.org/[Liquibase^], our SQL change management eng
 
 |===
 
+=== Examples
 
-.Examples
-|===
+Postgres -- system properties::
 
-|Postgres -- system properties
-a|
-[source,shell]
+[source,bash]
 ----
 ./bin/standalone.sh -c standalone-apiman.xml \
     -Dapiman.db.url="jdbc:postgresql://localhost:5432/apiman" \
@@ -101,9 +99,9 @@ a|
     -Dapiman.db.driver=postgres9
 ----
 
-|Postgres -- env vars
-a|
-[source,shell]
+Postgres -- env vars::
+
+[source,bash]
 ----
 export APIMAN_DB_URL="jdbc:postgresql://localhost:5432/apiman"
 export APIMAN_DB_USERNAME="postgres"
@@ -113,9 +111,9 @@ export APIMAN_DB_DRIVER="postgresql9"
 ./bin/standalone.sh -c standalone-apiman.xml
 ----
 
-|MySQL/MariaDB -- system properties
-a|
-[source,shell]
+MySQL/MariaDB -- system properties::
+
+[source,bash]
 ----
 ./bin/standalone.sh -c standalone-apiman.xml \
     -Dapiman.db.url="jdbc:mysql://localhost:3306/apiman" \
@@ -124,9 +122,9 @@ a|
     -Dapiman.db.driver=mysql8
 ----
 
-|MySQL/MariaDB -- env vars
-a|
-[source,shell]
+MySQL/MariaDB -- env vars::
+
+[source,bash]
 ----
 export APIMAN_DB_URL="jdbc:mysql://localhost:3306/apiman"
 export APIMAN_DB_USERNAME="root"
@@ -135,8 +133,6 @@ export APIMAN_DB_DRIVER="mysql8"
 
 ./bin/standalone.sh -c standalone-apiman.xml
 ----
-
-|===
 
 == Advanced configuration
 
