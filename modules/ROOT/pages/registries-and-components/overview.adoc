@@ -53,6 +53,7 @@ Cache data on Apiman instead of hitting real back end.
 * xref:registries-and-components/hazelcast.adoc#_cache_store[Hazelcast]
 * In-memory
 
+[#_metrics]
 == Metrics
 
 Apiman has a metrics engine that collects a variety of valuable data before passing it to a pluggable metrics component.

@@ -1,6 +1,6 @@
 = Apiman Production Guide
 
-This guide should serve as a guide to manually deploy Apiman into production.
+This guide should serve as an example of manually deploying Apiman into production.
 
 == Architecture Summary
 
@@ -21,48 +21,75 @@ The Apiman solution is made up of a number of pieces, including:
 
 The image above should give you an idea of how they all fit together.
 
-== Elasticsearch
+== Auth: Keycloak
 
-If you wish to enable metrics in Apiman (who doesn't?) you'll need to install Elasticsearch.
-The API Gateway can store all metrics information in Elasticsearch (by default), and the API Manager queries that data to present analytics information in the UI.
-
-Please see the Elasticsearch documentation for how to install and configure it in production.
-Ultimately you  will need Elasticsearch running in a well known and accessible location.  We also recommend you enable authentication (e.g. via Shield) and SSL.
-
-TIP: The data in Elasticsearch is not backed up or stored in some other location - Elasticsearch is being used as the primary/canonical data store for the metrics information.
-You may wish to configure backup procedures.
-
-See:
-
-
-== Keycloak
-In production, it is typically preferred to deploy Keycloak server as a standalone solution.  For more
-specific information about how to configure a standalone Keycloak server, see the Keycloak documentation:
-
-http://keycloak.github.io/docs/userguide/html/server-installation.html
-
-Once Keycloak is installed as a standalone server, you must configure the ‘apiman' realm.  This realm will
-be used for authentication into each of the Apiman components (API Manager REST services, API Manager UI,
-API Gateway REST services, etc).
+Once https://www.keycloak.org[Keycloak^] is installed, you must configure the `apiman` realm.
+This realm will be used for authentication into each of the Apiman components.
 
 TIP: You can configure additional Keycloak Realms for use with the Apiman "Keycloak OAuth2 Policy".
 
 Fortunately, Apiman comes with a realm file you can import.
-Simply log into your Keycloak server and then create the `apiman` realm using this file:
+Please refer to: xref:keycloak.adoc#keycloak-bare-metal[Keycloak setup guide] for more information about importing a realm and setting up keycloak.
 
-https://github.com/apiman/apiman/blob/{apiman-version-release}/distro/data/src/main/resources/data/apiman-realm.json
+For a production setup, you should:
 
-WARNING: The realm file contains some credentials/secrets that you will want to modify or regenerate. The defaults are obviously *not* secure.
+* Change the client redirect URLs to be specific to your organisation's endpoints
 
-Once you have created the `apiman` realm, you must use the Keycloak UI to add your API Manager UI as a valid
-redirect URL for the 'apimanui' client.  To do this, log into the Keycloak admin console and choose the
-*apiman* realm.  Next click "clients" in the left navigation, and choose *apimanui* in the resulting list.
-From there you can add public URL if your API Manager UI to the list of "*_Valid Redirect URIs_*".  It might
-be something like:
+.Example redirect UI for `apimanui` client.
+****
+https://apimanager.mycompany.org:8443/apimanui/*
+****
 
-    https://apimanager.mycompany.org:8443/apimanui/*
+* Use signed certificates and/or generate your own. Do not use the defaults.
 
-That will allow users of the API Manager UI to actually log in and be properly redirected back to the
-application!
+* Regenerate any client secrets.
 
-NOTE: If you're behind load-balancers, you may need to ensure https://www.keycloak.org/docs/latest/server_installation/#_setting-up-a-load-balancer-or-proxy[X-Forwarded-For] is set properly.
+* Review account permissions, signup settings, and other security procedures.
+For example, the default realm would anyone to sign up without verifying their email address.
+
+[WARNING]
+====
+* The realm file contains some credentials/secrets that you will want to modify or regenerate.
+The defaults are obviously *not* secure.
+
+* If you're behind load-balancers, you may need to ensure `X-Forwarded-For` is set properly.
+Please refer to the Keycloak documentation.
+====
+
+== Database: PostgreSQL
+
+In this example, we'll use https://www.postgresql.org/[PostgreSQL^] for our production database.
+
+After installing Postgres, create a database called `apiman`, and a corresponding service account `sa_apiman`.
+
+Apiman ships with a recent Postgres driver, which means you don't need to install drivers or configure datasources.
+
+As of Apiman 3, there is also support for automated Liquibase migrations.
+We just need to start Apiman with the right database settings, and Apiman will wire everything up.
+
+[source,bash]
+----
+./bin/standalone.sh -c standalone-apiman.xml \
+    -Dapiman.db.url="jdbc:postgresql://<your database hostname>:5432/apiman" \
+    -Dapiman.db.username=postgres \
+    -Dapiman.db.password="admin123\!" \
+    -Dapiman.db.driver=postgres9
+----
+
+Please refer to xref:manager/database.adoc[our database configuration guide] for more information.
+
+== Metrics: Elasticsearch
+
+In this example, we'll use Elasticsearch for metrics.
+Other implementations xref:registries-and-components/overview.adoc#_metrics[are available].
+
+The Apiman API Gateway can store all metrics information in Elasticsearch, and the API Manager queries that data to present analytics information in the UI.
+
+To get started, you will need to install and run https://www.elastic.co[Elasticsearch^].
+We recommend you enable authentication, where possible.
+Please see the Elasticsearch documentation for how to install and configure it in production.
+
+TIP: The data in Elasticsearch is not backed up or stored in some other location; Elasticsearch is being used as the primary/canonical data store for the metrics information.
+You may wish to configure backup procedures.
+
+Please refer to our xref:registries-and-components/elasticsearch.adoc[Elasticsearch configuration guide] for more information.

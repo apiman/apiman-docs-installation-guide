@@ -146,6 +146,7 @@ services:
 
 NOTE: In this Docker Compose example, Keycloak  is running in dev mode. For production, refer to the {keycloak}[Keycloak Production Guides^].
 
+[[keycloak-bare-metal]]
 === Alternative: Download Keycloak Quarkus Distro
 
 Alternatively, you can download the bare metal Quarkus distribution (older versions run on EAP and WildFly, but we won't provide any guides here).
