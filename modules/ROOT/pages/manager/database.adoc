@@ -89,14 +89,12 @@ a| Whether https://www.liquibase.org/[Liquibase^], our SQL change management eng
 
 .Examples
 |===
-|Setup
-|Command
 
 |Postgres -- system properties
 a|
 [source,shell]
 ----
-./bin/standalone.sh \
+./bin/standalone.sh -c standalone-apiman.xml \
     -Dapiman.db.url="jdbc:postgresql://localhost:5432/apiman" \
     -Dapiman.db.username=postgres \
     -Dapiman.db.password="admin123\!" \
@@ -112,14 +110,14 @@ export APIMAN_DB_USERNAME="postgres"
 export APIMAN_DB_PASSWORD="admin123\!"
 export APIMAN_DB_DRIVER="postgresql9"
 
-./bin/standalone.sh
+./bin/standalone.sh -c standalone-apiman.xml
 ----
 
 |MySQL/MariaDB -- system properties
 a|
 [source,shell]
 ----
-./bin/standalone.sh \
+./bin/standalone.sh -c standalone-apiman.xml \
     -Dapiman.db.url="jdbc:mysql://localhost:3306/apiman" \
     -Dapiman.db.username=root \
     -Dapiman.db.password="admin123\!" \
@@ -135,7 +133,7 @@ export APIMAN_DB_USERNAME="root"
 export APIMAN_DB_PASSWORD="admin123\!"
 export APIMAN_DB_DRIVER="mysql8"
 
-./bin/standalone.sh
+./bin/standalone.sh -c standalone-apiman.xml
 ----
 
 |===

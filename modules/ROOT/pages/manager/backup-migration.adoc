@@ -52,6 +52,7 @@ update <5>
 <2> The standard JDBC URL to your database, which you should already have created
 <3> A user with permission to run DDL, which may include higher risk actions such as creating and deleting tables, columns, etc. This may not always be the same as the 'day-to-day' user, depending on your permissions scheme.
 <4> Apiman's Liquibase master.xml file, which can be found {liquibase-in-repo}[Apiman's repo^].
+<5> `update` command
 
 It is also possible to get Liquibase to generate SQL/DDL diffs for you, which can be applied via your databases' console.
 

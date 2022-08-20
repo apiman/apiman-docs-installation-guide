@@ -32,6 +32,7 @@ Different implementations have different semantic and performance characteristic
 
 * xref:registries-and-components/elasticsearch.adoc#_rate_limiter[Elasticsearch]
 * xref:registries-and-components/redis.adoc#_rate_limiter[Redis]
+* xref:registries-and-components/hazelcast.adoc#_rate_limiter[Hazelcast]
 * In-memory
 
 == Shared State
@@ -40,6 +41,7 @@ The shared state component is used by Apiman policies to share interesting state
 
 * xref:registries-and-components/elasticsearch.adoc#_shared_state[Elasticsearch]
 * xref:registries-and-components/redis.adoc#_shared_state[Redis]
+* xref:registries-and-components/hazelcast.adoc#_shared_state[Hazelcast]
 * In-memory
 
 == Cache Store
@@ -48,6 +50,7 @@ Cache data on Apiman instead of hitting real back end.
 
 * xref:registries-and-components/elasticsearch.adoc#_cache_store[Elasticsearch]
 * xref:registries-and-components/redis.adoc#_cache_store[Redis]
+* xref:registries-and-components/hazelcast.adoc#_cache_store[Hazelcast]
 * In-memory
 
 == Metrics
