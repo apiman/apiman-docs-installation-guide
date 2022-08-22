@@ -23,7 +23,7 @@ System properties and environment properties are available that synchronise sett
 
 Refer to <<database_parameters>> for more detail.
 
-[MaintainerMessage]
+[.MaintainerMessage]
 ****
 https://github.com/apiman/apiman/issues/2265[Let us know^] if you want Apiman to ship with drivers for additional databases by default.
 ****

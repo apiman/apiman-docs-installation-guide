@@ -12,7 +12,7 @@ If you choose Prometheus metrics, you can access your metrics data via: `http://
 Metrics will be *per gateway* instance; it is not a distributed metrics store.
 Each gateway will need to be individually added to your Prometheus scrape mappings.
 
-[MaintainerMessage]
+[.MaintainerMessage]
 ****
 If you would like to see Apiman's Prometheus component expanded or improved, please give us feedback in this https://github.com/apiman/apiman/issues/2269[GitHub Issue^]
 ****

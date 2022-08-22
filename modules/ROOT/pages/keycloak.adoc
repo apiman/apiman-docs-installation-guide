@@ -9,7 +9,7 @@ As of Apiman 3, we no longer bundle Keycloak server into Apiman quickstart distr
 You need to run Keycloak before you can use Apiman footnote:[It is possible to use other auth providers, but this is out of the scope of this guide.].
 ====
 
-[MaintainerMessage]
+[.MaintainerMessage]
 ****
 If you are interested in support for other SSO providers, please let us know in this https://github.com/apiman/apiman/issues/2270[GitHub Issue^].
 ****
