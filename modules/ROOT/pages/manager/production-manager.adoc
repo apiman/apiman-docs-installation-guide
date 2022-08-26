@@ -103,9 +103,9 @@ IMPORTANT: For a production setup, we recommend changing the Keycloak client sec
 
 `export APIMAN_AUTH_URL=<URL to the Keycloak auth server>`
 
-For example, if Keycloak is running on localhost port 8081:
+For example, if Keycloak is running on localhost port `8085`:
 
-`export APIMAN_AUTH_URL=http://localhost:8081`
+`export APIMAN_AUTH_URL=http://localhost:8085`
 
 === Connecting to the Database
 

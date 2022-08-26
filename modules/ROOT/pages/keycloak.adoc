@@ -121,11 +121,11 @@ services:
         ./bin/kc.sh build
         ./bin/kc.sh start-dev --import-realm
     ports:
-      - "8081:8080"
+      - "8085:8080"
     environment:
       - "KEYCLOAK_ADMIN=admin"
       - "KEYCLOAK_ADMIN_PASSWORD=admin123!"
-      - "KEYCLOAK_FRONTEND_URL=http://localhost:8081"
+      - "KEYCLOAK_FRONTEND_URL=http://localhost:8085"
     volumes:
       - ${PWD}/apiman-realm-for-keycloak.json:/opt/keycloak/data/import/apiman-realm-for-keycloak.json <1>
 ----
@@ -138,11 +138,11 @@ services:
 
 . Start with `docker-compose up`.
 
-. You should now have Keycloak running on localhost port 8081
-. Try it with: `http://localhost:8081/admin`
+. You should now have Keycloak running on localhost port 8085
+. Try it with: `http://localhost:8085/admin`
 ** Admin username: `admin`
 ** Admin password: `admin123!`
-. Your Apiman Auth URL is: `http://localhost:8081` (see <<kc-configuration-options>>)
+. Your Apiman Auth URL is: `http://localhost:8085` (see <<kc-configuration-options>>)
 
 NOTE: In this Docker Compose example, Keycloak  is running in dev mode. For production, refer to the {keycloak}[Keycloak Production Guides^].
 
@@ -171,7 +171,7 @@ Alternatively, you can download the bare metal Quarkus distribution (older versi
 +
 `export APIMAN_AUTH_URL="http://<somehost>:<someport>"`.
 +
-For example, if your hostname is `localhost` and your port is `8081`, then your `APIMAN_AUTH_URL` would be `http://localhost:8081/`
+For example, if your hostname is `localhost` and your port is `8085`, then your `APIMAN_AUTH_URL` would be `http://localhost:8085`
 
 Please also refer to <<kc-configuration-options>> for more options.
 
@@ -228,7 +228,7 @@ The gateway accepts Keycloak's generated JSON, allowing you to paste your chosen
 
 To retrieve it:
 
-. Log into your Keycloak Administrator console (e.g http://localhost:8081/admin).
+. Log into your Keycloak Administrator console (e.g http://localhost:8085/admin).
 
 . `Clients` -> `apiman-gateway-api` -> `Installation`.
 

@@ -93,7 +93,7 @@ Log in with credentials *`admin`/`admin123!`*
 We strongly advise that you immediately change the Keycloak admin user's password, as well as the *_admin_* user found in the *_apiman_* realm!
 
 You can do that by logging into your Keycloak console.
-If you followed this tutorial, it will be at http://localhost:8081/admin/
+If you followed this tutorial, it will be at http://localhost:8085/admin/
 ====
 
 
