@@ -96,7 +96,7 @@ Postgres -- system properties::
     -Dapiman.db.url="jdbc:postgresql://localhost:5432/apiman" \
     -Dapiman.db.username=postgres \
     -Dapiman.db.password="admin123\!" \
-    -Dapiman.db.driver=postgres9
+    -Dapiman.db.driver=postgresql10
 ----
 
 Postgres -- env vars::
@@ -148,7 +148,7 @@ The following dialects are available:
 * `h2` / `ApimanH2Dialect`
 * `mysql8` / `ApimanMySQL8Dialect`
 * `oracle19` / `ApimanOracle19Dialect`
-* `postgres9` / `ApimanPostgreSQLDialect`
+* `postgresql10` / `ApimanPostgreSQLDialect`
 
 Additional DDLs for various databases can be found in `apiman/ddls/`.
 
