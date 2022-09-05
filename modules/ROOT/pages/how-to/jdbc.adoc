@@ -45,7 +45,7 @@ Possible values for this property include:
 
 * h2
 * mysql8
-* postgresql9
+* postgresql10
 * mssql15
 * oracle19
 

@@ -55,7 +55,7 @@ a| * System property: `apiman.db.driver`
 a| WildFly database driver name, as defined in `datasources/drivers`
 
 * *Default Value*: h2
-* *Allowed Values*: postgresql9, mysql8, (plus any value you have manually configured)
+* *Allowed Values*: postgresql10, mysql8, (plus any value you have manually configured)
 
 a| * System property: `apiman.db.url`
 * Env var: `APIMAN_DB_URL`
@@ -106,7 +106,7 @@ Postgres -- env vars::
 export APIMAN_DB_URL="jdbc:postgresql://localhost:5432/apiman"
 export APIMAN_DB_USERNAME="postgres"
 export APIMAN_DB_PASSWORD="admin123\!"
-export APIMAN_DB_DRIVER="postgresql9"
+export APIMAN_DB_DRIVER="postgresql10"
 
 ./bin/standalone.sh -c standalone-apiman.xml
 ----

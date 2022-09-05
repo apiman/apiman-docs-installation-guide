@@ -114,7 +114,7 @@ a| JNDI location for your data source
 | String
 a| Datasource type: 
 
-* *Allowed Values*: h2, mysql8, postgresql9, oracle12
+* *Allowed Values*: h2, mysql8, postgresql10, oracle12
   
 Note, your particular DB version may work successfully with one of these variants.
 
@@ -130,7 +130,7 @@ apiman.jdbc.datasource.jndi-location=java:/apiman/datasources/apiman-gateway
 apiman-gateway.initializers=jdbc
 apiman-gateway.initializers.jdbc=io.apiman.gateway.engine.jdbc.JdbcInitializer
 apiman-gateway.initializers.jdbc.datasource.jndi-location=${apiman.jdbc.datasource.jndi-location}
-apiman-gateway.initializers.jdbc.datasource.type=postgresql9
+apiman-gateway.initializers.jdbc.datasource.type=postgresql10
 ----
 
 [#_metrics]

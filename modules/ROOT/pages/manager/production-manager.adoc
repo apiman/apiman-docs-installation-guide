@@ -123,7 +123,7 @@ We're going to use environment variables in this example, but you can also use s
 
 Set the following environment variables:
 
-* `APIMAN_DB_DRIVER="postgresql9"`
+* `APIMAN_DB_DRIVER="postgresql10"`
 * `APIMAN_DB_URL="jdbc:postgresql://localhost:5432/apiman"` (replace with your server and db name)
 * `APIMAN_DB_USERNAME="sa_apiman"` (replace with your account)
 * `APIMAN_DB_PASSWORD="admin123\!"` (replace with your password)
