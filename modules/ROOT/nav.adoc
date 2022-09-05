@@ -25,6 +25,7 @@
 ** xref:manager/database.adoc[Database Configuration]
 ** xref:manager/configuration.adoc[Apiman Customisation]
 ** xref:manager/notifications.adoc[Notifications]
+** xref:manager/portal.adoc[Developer Portal]
 ** xref:manager/backup-migration.adoc[Backup & Migration]
 ** xref:manager/backup-migration.adoc#_upgrading_to_a_new_apiman_version[Upgrading Apiman]
 
