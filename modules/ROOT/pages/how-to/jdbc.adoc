@@ -34,7 +34,7 @@ apiman.jdbc.datasource.jndi-location=java:/apiman/datasources/apiman-gateway
 apiman-gateway.initializers=jdbc
 apiman-gateway.initializers.jdbc=io.apiman.gateway.engine.jdbc.JdbcInitializer
 apiman-gateway.initializers.jdbc.datasource.jndi-location=${apiman.jdbc.datasource.jndi-location}
-apiman-gateway.initializers.jdbc.datasource.type=mysql5
+apiman-gateway.initializers.jdbc.datasource.type=mysql8
 ----
 
 This initializer will run whenever Apiman starts up, and it will install the Apiman Gateway schema/DDL into the configured database so that the metrics JDBC implementations can function properly.
@@ -43,11 +43,13 @@ Note that you will need to set the correct value of *apiman-gateway.initializers
 
 Possible values for this property include:
 
-* h2
-* mysql8
-* postgresql10
-* mssql15
-* oracle19
+* `h2`
+* `mysql8`
+* `postgresql11`
+* `mssql15`
+* `oracle19`
+
+TIP: Generally these work with newer database versions without issue.
 
 == Configure the Apiman Gateway metrics provider to be JDBC
 
