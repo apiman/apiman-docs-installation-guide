@@ -220,9 +220,7 @@ For more advanced setups, the environment variables/system properties may not be
 
 ==== Vert.x Gateway
 
-===== Install using Keycloak
-
-For the Vert.x gateway, the simplest way to retrieve the necessary configuration is to generate it from your Keycloak server.
+If you don't want to use the default discovery mechanism, then for the Vert.x gateway, the simplest way to retrieve the necessary configuration is to generate it from your Keycloak server administrator console.
 
 The gateway accepts Keycloak's generated JSON, allowing you to paste your chosen client configuration from the Keycloak console into the `auth.config` section.
 
