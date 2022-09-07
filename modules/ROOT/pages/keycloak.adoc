@@ -41,15 +41,6 @@ a| * System property: `apiman.auth.url`
 | String
 a| Keycloak auth server URL
 
-a| * System property: `apiman.auth.realm-public-key`
-* Env var: `APIMAN_AUTH_REALM_PUBLIC_KEY`
-| String
-a|  **(Vert.x Gateway only).**
-
-Public key for Apiman realm. Get this from Keycloak.
-
-* *Default Value*: example Apiman realm key
-
 |===
 
 .Optional Params
@@ -89,6 +80,13 @@ a| * System property: `apiman.auth.gateway.secret`
 a| Keycloak secret credential for the Apiman Gateway API (`apiman-gateway-api` client)
 
 * *Default Value*: password
+
+a| * System property: `apiman.auth.realm-public-key`
+* Env var: `APIMAN_AUTH_REALM_PUBLIC_KEY`
+| String
+a| Public key for Apiman realm. Get this from your Keycloak realm.
+
+* *Default Value*: Apiman will retrieve this from your Keycloak server's `.well-known` endpoint automatically.
 
 |===
 
@@ -221,6 +219,8 @@ TIP: Don't forget the "*" wildcard at the end of the URL.
 For more advanced setups, the environment variables/system properties may not be sufficient; manual editing of configuration files might be necessary.
 
 ==== Vert.x Gateway
+
+===== Install using Keycloak
 
 For the Vert.x gateway, the simplest way to retrieve the necessary configuration is to generate it from your Keycloak server.
 
